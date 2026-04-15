@@ -16,8 +16,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteId = "7ff55ad5-2e07-4c13-b612-d054f0bd2c71";
-const siteKey = "sk_919b18a6_omsu57qhb5v";
+const siteId = "8c4333c3-cd49-480a-8934-3914aec3901b";
+const siteKey = "sk_mo06cibl_0o7i2f0t7lxf";
 const gtmId = "GTM-TTDNNJDM";
 
 export const metadata: Metadata = {
