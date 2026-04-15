@@ -5,6 +5,7 @@ import { useEffect } from "react";
 interface TrackingConfig {
   siteKey?: string;
   gtmId?: string;
+  siteId?: string;
   gaId?: string;
   pixelId?: string;
 }
@@ -16,22 +17,31 @@ export function useTracking(config: TrackingConfig) {
     if (document.getElementById("optimizer-script")) return;
 
     const w = window as any;
+    w.API_ENDPOINT = "https://optimizer.gomega.ai";
+    w.TRACKING_API_ENDPOINT = "https://events-api.gomega.ai";
 
     if (config.siteKey) {
       w.MEGA_TAG_CONFIG = {
+        ...(w.MEGA_TAG_CONFIG || {}),
         siteKey: config.siteKey,
+        siteId: config.siteId,
         gtmId: config.gtmId,
         gaId: config.gaId,
         pixelId: config.pixelId,
       };
     }
 
-    w.API_ENDPOINT = "https://optimizer.gomega.ai";
-    w.TRACKING_API_ENDPOINT = "https://events-api.gomega.ai";
+    if (config.siteId && !document.querySelector('meta[name="mega-site-id"]')) {
+      const meta = document.createElement("meta");
+      meta.name = "mega-site-id";
+      meta.content = config.siteId;
+      document.head.appendChild(meta);
+    }
 
     const script = document.createElement("script");
     script.id = "optimizer-script";
     script.src = "https://cdn.gomega.ai/scripts/optimizer.min.js";
+    if (config.siteId) script.dataset.siteId = config.siteId;
     script.async = true;
     document.head.appendChild(script);
   }, [config]);

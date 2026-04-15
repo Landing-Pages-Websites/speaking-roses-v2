@@ -8,6 +8,7 @@ import { useTracking } from "@/hooks/useTracking";
 const BOOK_CALL_URL = "https://partnership.speakingroses.com/book-call";
 const SITE_KEY = "sk_mo06cibl_0o7i2f0t7lxf";
 const GTM_ID = "GTM-TTDNNJDM";
+const SITE_ID = "8c4333c3-cd49-480a-8934-3914aec3901b";
 
 type FormState = {
   firstName: string;
@@ -31,7 +32,7 @@ const proofPoints = [
   ["$334B+", "personalization market referenced on the Speaking Roses partnership page"],
   ["500+", "outlets and events referenced on the partnership page, including Forbes, Inc, Grammys, and Oscars"],
   ["20+ years", "developing the printing process, referenced on the Speaking Roses main site"],
-  ["$1,500+", "liquid funds or credit listed on the source form for Distributor applicants"],
+  ["$1,000+", "liquid funds or credit requested for Distributor applicants"],
 ];
 
 const paths = [
@@ -79,7 +80,7 @@ const faqs = [
   },
   {
     q: "What happens after I apply?",
-    a: "Qualified applicants with at least $1,500 in liquid funds or credit and a timeline within six months are redirected to schedule a Zoom call with the Speaking Roses team.",
+    a: "Qualified applicants with at least $1,000 in liquid funds or credit and a timeline within six months are redirected to schedule a Zoom call with the Speaking Roses team. Applicants under $1,000 or 6+ months out see a thank-you message instead.",
   },
 ];
 
@@ -109,6 +110,71 @@ function Icon({ children }: { children: React.ReactNode }) {
   return <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-rose/10 text-rose">{children}</div>;
 }
 
+type ApplyFormProps = {
+  form: FormState;
+  setField: (key: keyof FormState, value: string) => void;
+  formatPhone: (value: string) => string;
+  validatePhone: (value: string) => string;
+  phoneError: string;
+  setPhoneError: (value: string) => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
+  isSubmitting: boolean;
+  error: string;
+  submitted: boolean;
+  isQualified: boolean;
+  compact?: boolean;
+};
+
+function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, setPhoneError, handleSubmit, isSubmitting, error, submitted, isQualified, compact = false }: ApplyFormProps) {
+  return (
+    <div className={`rounded-[2rem] bg-white p-6 text-ink shadow-2xl ${compact ? "md:p-7" : "md:p-8"}`}>
+      {submitted && !isQualified ? (
+        <div className="rounded-3xl bg-petal p-8 text-center">
+          <h3 className="font-display text-4xl text-plum">Thanks for applying.</h3>
+          <p className="mt-4 text-ink/72">Your information has been received. The Speaking Roses team can follow up if your market and timing are a fit.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="grid gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
+            <input name="firstName" required placeholder="First Name" value={form.firstName} onChange={(e) => setField("firstName", e.target.value)} className="field" />
+            <input name="lastName" required placeholder="Last Name" value={form.lastName} onChange={(e) => setField("lastName", e.target.value)} className="field" />
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <input name="email" required type="email" placeholder="Email" value={form.email} onChange={(e) => setField("email", e.target.value)} className="field" />
+            <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
+          </div>
+          {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
+          <label className="grid gap-2 text-sm font-semibold text-plum">
+            <span>To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</span>
+            <select name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
+              <option value="">Select liquid funds</option>
+              <option value="under-1000">&lt;$1k</option>
+              <option value="1000-5000">$1k–$5k</option>
+              <option value="5000-10000">$5k–$10k</option>
+              <option value="10000-plus">$10k+</option>
+            </select>
+          </label>
+          <label className="grid gap-2 text-sm font-semibold text-plum">
+            <span>How soon would you like to start?</span>
+            <select name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
+              <option value="">Select timeline</option>
+              <option value="immediately">Immediately</option>
+              <option value="1-3-months">Over the next 1–3 months</option>
+              <option value="3-6-months">3–6 months</option>
+              <option value="6-plus-months">6+ months</option>
+            </select>
+          </label>
+          <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
+          {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
+          <button disabled={isSubmitting} className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-plum disabled:opacity-60">
+            {isSubmitting ? "Submitting..." : "Apply for Availability"}
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 function CTA({ dark = false }: { dark?: boolean }) {
   return (
     <div className="mt-10 flex items-center justify-center">
@@ -120,7 +186,7 @@ function CTA({ dark = false }: { dark?: boolean }) {
 }
 
 export default function Home() {
-  useTracking({ siteKey: SITE_KEY, gtmId: GTM_ID });
+  useTracking({ siteKey: SITE_KEY, gtmId: GTM_ID, siteId: SITE_ID });
   const { submit } = useMegaLeadForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -156,7 +222,7 @@ export default function Home() {
     return "";
   };
 
-  const isQualified = form.liquidFunds !== "under-1500" && form.timeline !== "6-plus-months";
+  const isQualified = form.liquidFunds !== "under-1000" && form.timeline !== "6-plus-months";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -219,11 +285,37 @@ export default function Home() {
               <span className="rounded-full bg-white px-4 py-2 shadow-sm">Influencer Partner</span>
               <span className="rounded-full bg-white px-4 py-2 shadow-sm">Licensee</span>
             </div>
+          </Reveal>
+          <Reveal className="relative">
+            <ApplyForm
+              form={form}
+              setField={setField}
+              formatPhone={formatPhone}
+              validatePhone={validatePhone}
+              phoneError={phoneError}
+              setPhoneError={setPhoneError}
+              handleSubmit={handleSubmit}
+              isSubmitting={isSubmitting}
+              error={error}
+              submitted={submitted}
+              isQualified={isQualified}
+              compact
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="product-showcase" className="bg-white py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_.95fr]">
+          <Reveal>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">The product</p>
+            <h2 className="font-display text-4xl text-plum md:text-6xl">A personalized rose customers can keep, gift, and remember.</h2>
+            <p className="mt-6 text-lg leading-8 text-ink/72">Move beyond ordinary flowers with printed logos, messages, and images on preserved rose petals for weddings, corporate gifts, retail, fundraising, and high-emotion occasions.</p>
             <CTA />
           </Reveal>
           <Reveal className="relative">
             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-rose/20 blur-2xl" />
-            <div className="overflow-hidden rounded-[2.5rem] bg-white p-3 shadow-2xl">
+            <div className="overflow-hidden rounded-[2.5rem] bg-petal p-3 shadow-2xl">
               <Image src="/hero.jpeg" alt="Personalized Speaking Roses preserved rose display" width={960} height={720} className="h-[560px] w-full rounded-[2rem] object-cover" priority />
             </div>
           </Reveal>
@@ -349,49 +441,20 @@ export default function Home() {
             <h2 className="font-display text-4xl md:text-6xl">See if your market is open.</h2>
             <p className="mt-6 text-lg leading-8 text-white/75">Qualified leads are redirected to book a call after submission. Unqualified leads are still captured for follow-up but do not receive the automatic booking redirect.</p>
           </Reveal>
-          <Reveal className="rounded-[2rem] bg-white p-6 text-ink shadow-2xl md:p-8">
-            {submitted && !isQualified ? (
-              <div className="rounded-3xl bg-petal p-8 text-center">
-                <h3 className="font-display text-4xl text-plum">Thanks for applying.</h3>
-                <p className="mt-4 text-ink/72">Your information has been received. The Speaking Roses team can follow up if your market and timing are a fit.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="grid gap-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <input name="firstName" required placeholder="First Name" value={form.firstName} onChange={(e) => setField("firstName", e.target.value)} className="field" />
-                  <input name="lastName" required placeholder="Last Name" value={form.lastName} onChange={(e) => setField("lastName", e.target.value)} className="field" />
-                </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <input name="email" required type="email" placeholder="Email" value={form.email} onChange={(e) => setField("email", e.target.value)} className="field" />
-                  <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
-                </div>
-                {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
-                <label className="grid gap-2 text-sm font-semibold text-plum">
-                  <span>To start as a Distributor you need $1,500+ in liquid funds or credit. Which best fits you?</span>
-                  <select name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
-                    <option value="">Select liquid funds</option>
-                    <option value="under-1500">I don’t have $1,500</option>
-                    <option value="1500-5000">$1,500–$5,000 liquid/credit</option>
-                    <option value="5000-10000">$5,000–$10,000 liquid/credit</option>
-                    <option value="10000-plus">$10,000+ liquid/credit</option>
-                  </select>
-                </label>
-                <label className="grid gap-2 text-sm font-semibold text-plum">
-                  <span>How soon would you like to start?</span>
-                  <select name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
-                    <option value="">Select timeline</option>
-                    <option value="immediately">Immediately</option>
-                    <option value="3-6-months">Within 3–6 months</option>
-                    <option value="6-plus-months">More than 6 months from now</option>
-                  </select>
-                </label>
-                <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
-                {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
-                <button disabled={isSubmitting} className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-plum disabled:opacity-60">
-                  {isSubmitting ? "Submitting..." : "Apply for Availability"}
-                </button>
-              </form>
-            )}
+          <Reveal>
+            <ApplyForm
+              form={form}
+              setField={setField}
+              formatPhone={formatPhone}
+              validatePhone={validatePhone}
+              phoneError={phoneError}
+              setPhoneError={setPhoneError}
+              handleSubmit={handleSubmit}
+              isSubmitting={isSubmitting}
+              error={error}
+              submitted={submitted}
+              isQualified={isQualified}
+            />
           </Reveal>
         </div>
       </section>
