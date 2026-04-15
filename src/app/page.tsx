@@ -370,9 +370,11 @@ export default function Home() {
             <p className="mt-6 text-lg leading-8 text-ink/72">Speaking Roses gives partners a product with visual impact and personalization, suited for both direct sales and relationship-driven local channels.</p>
             <CTA />
           </Reveal>
-          <Reveal className="grid gap-4 sm:grid-cols-2">
+          <Reveal className="grid content-center gap-3 sm:grid-cols-2">
             {markets.map((market) => (
-              <div key={market} className="rounded-3xl bg-white p-5 font-semibold text-plum shadow-sm">{market}</div>
+              <div key={market} className="flex min-h-14 items-center justify-center rounded-2xl bg-white px-4 py-3 text-center text-sm font-bold leading-snug text-plum shadow-sm ring-1 ring-blush/70">
+                {market}
+              </div>
             ))}
           </Reveal>
         </div>
