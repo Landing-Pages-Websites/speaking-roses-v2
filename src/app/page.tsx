@@ -27,11 +27,11 @@ const initialForm: FormState = {
   timeline: "",
 };
 
-const stats = [
-  ["$334B+", "personalization market referenced by Speaking Roses"],
-  ["500+", "media outlets and event features"],
-  ["$999", "opportunities start at just $999"],
-  ["Years", "preserved roses designed to last"],
+const proofPoints = [
+  ["Personalized roses", "Real preserved roses printed with messages, logos, or images on the petals."],
+  ["Distributor path", "Buy products at wholesale and resell locally without handling production."],
+  ["Licensee path", "Explore equipment, training, support, and territory-based production rights."],
+  ["Sales channels", "Gift shops, funeral homes, wedding planners, fundraising groups, promotional companies, retail, social, and e-commerce."],
 ];
 
 const paths = [
@@ -230,14 +230,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="proof" className="bg-plum py-12 text-white">
-        <div className="mx-auto grid max-w-7xl gap-4 px-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map(([value, label]) => (
-            <Reveal key={value} className="rounded-3xl border border-white/15 bg-white/8 p-6 text-center">
-              <div className="font-display text-4xl">{value}</div>
-              <p className="mt-2 text-sm leading-6 text-white/75">{label}</p>
-            </Reveal>
-          ))}
+      <section id="proof" className="bg-plum py-16 text-white">
+        <div className="mx-auto max-w-7xl px-5">
+          <Reveal className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-blush">What the opportunity includes</p>
+            <h2 className="font-display text-4xl md:text-5xl">Source-backed paths for qualified partners.</h2>
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {proofPoints.map(([title, label]) => (
+              <Reveal key={title} className="rounded-3xl border border-white/15 bg-white/8 p-6 text-left">
+                <div className="text-xl font-bold">{title}</div>
+                <p className="mt-3 text-sm leading-6 text-white/75">{label}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
         <CTA dark />
       </section>
