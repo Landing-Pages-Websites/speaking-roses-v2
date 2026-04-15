@@ -15,7 +15,6 @@ type FormState = {
   phone: string;
   liquidFunds: string;
   timeline: string;
-  market: string;
 };
 
 const initialForm: FormState = {
@@ -25,7 +24,6 @@ const initialForm: FormState = {
   phone: "",
   liquidFunds: "",
   timeline: "",
-  market: "",
 };
 
 const stats = [
@@ -157,13 +155,19 @@ export default function Home() {
     return "";
   };
 
-  const isQualified = form.liquidFunds === "1000-plus" && form.timeline === "under-6-months";
+  const isQualified = form.liquidFunds !== "under-1000" && form.timeline !== "6-plus-months";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const pError = validatePhone(form.phone);
     setPhoneError(pError);
     if (pError) return;
+
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+    if (!emailValid) {
+      setError("Enter a valid email address.");
+      return;
+    }
 
     setIsSubmitting(true);
     setError("");
@@ -175,7 +179,6 @@ export default function Home() {
         phone: form.phone,
         liquidFunds: form.liquidFunds,
         timeline: form.timeline,
-        market: form.market,
         qualified: isQualified ? "yes" : "no",
         smsConsent: "By submitting, applicant agrees to receive calls and SMS messages from Speaking Roses related to the partnership opportunity. Message and data rates may apply. Reply STOP to opt out.",
       });
@@ -356,17 +359,26 @@ export default function Home() {
                   <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
                 </div>
                 {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
-                <select name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
-                  <option value="">Liquid funds available?</option>
-                  <option value="1000-plus">$1,000 or more</option>
-                  <option value="under-1000">Less than $1,000</option>
-                </select>
-                <select name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
-                  <option value="">When do you want to start?</option>
-                  <option value="under-6-months">Within 6 months</option>
-                  <option value="over-6-months">More than 6 months from now</option>
-                </select>
-                <input name="market" required placeholder="City, state, or country you want to serve" value={form.market} onChange={(e) => setField("market", e.target.value)} className="field" />
+                <label className="grid gap-2 text-sm font-semibold text-plum">
+                  <span>To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</span>
+                  <select name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
+                    <option value="">Select liquid funds</option>
+                    <option value="under-1000">&lt;$1k</option>
+                    <option value="1000-5000">$1k–$5k</option>
+                    <option value="5000-10000">$5k–$10k</option>
+                    <option value="10000-plus">$10k+</option>
+                  </select>
+                </label>
+                <label className="grid gap-2 text-sm font-semibold text-plum">
+                  <span>How soon would you like to start?</span>
+                  <select name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
+                    <option value="">Select timeline</option>
+                    <option value="immediately">Immediately</option>
+                    <option value="1-3-months">Over the next 1–3 months</option>
+                    <option value="3-6-months">3–6 months</option>
+                    <option value="6-plus-months">6+ months</option>
+                  </select>
+                </label>
                 <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
                 {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
                 <button disabled={isSubmitting} className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-plum disabled:opacity-60">
