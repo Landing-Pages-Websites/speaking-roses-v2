@@ -197,9 +197,9 @@ export default function Home() {
     <main className="min-h-screen bg-white text-ink">
       <div className="scroll-progress" />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-blush bg-white/92 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#hero" className="flex items-center gap-3" aria-label="Speaking Roses home">
-            <Image src="/logo.svg" alt="Speaking Roses" width={168} height={44} className="h-10 w-auto" priority />
+            <Image src="/logo.svg" alt="Speaking Roses" width={300} height={78} className="h-16 w-auto md:h-20" priority />
           </a>
           <a href="#apply" className="rounded-full bg-plum px-5 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-rose">
             Apply Now
@@ -207,7 +207,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="hero" className="relative overflow-hidden bg-petal pt-24">
+      <section id="hero" className="relative overflow-hidden bg-petal pt-32 md:pt-36">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(224,192,200,.55),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(168,79,101,.18),transparent_40%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
           <Reveal className="flex flex-col justify-center">
