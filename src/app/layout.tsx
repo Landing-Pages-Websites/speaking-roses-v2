@@ -18,6 +18,7 @@ const inter = Inter({
 
 const siteId = "7ff55ad5-2e07-4c13-b612-d054f0bd2c71";
 const siteKey = "sk_919b18a6_omsu57qhb5v";
+const gtmId = "GTM-TTDNNJDM";
 
 export const metadata: Metadata = {
   title: "Speaking Roses Partnership | Distributor Recruitment",
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="mega-site-id" content={siteId} />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.MEGA_TAG_CONFIG={siteKey:"${siteKey}",siteId:"${siteId}"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";`,
+            __html: `window.MEGA_TAG_CONFIG={siteKey:"${siteKey}",siteId:"${siteId}",gtmId:"${gtmId}"};window.API_ENDPOINT="https://optimizer.gomega.ai";window.TRACKING_API_ENDPOINT="https://events-api.gomega.ai";`,
           }}
         />
         <script id="optimizer-script" src="https://cdn.gomega.ai/scripts/optimizer.min.js" data-site-id={siteId} async />

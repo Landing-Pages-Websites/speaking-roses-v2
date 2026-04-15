@@ -7,6 +7,7 @@ import { useTracking } from "@/hooks/useTracking";
 
 const BOOK_CALL_URL = "https://partnership.speakingroses.com/book-call";
 const SITE_KEY = "sk_919b18a6_omsu57qhb5v";
+const GTM_ID = "GTM-TTDNNJDM";
 
 type FormState = {
   firstName: string;
@@ -119,7 +120,7 @@ function CTA({ dark = false }: { dark?: boolean }) {
 }
 
 export default function Home() {
-  useTracking({ siteKey: SITE_KEY });
+  useTracking({ siteKey: SITE_KEY, gtmId: GTM_ID });
   const { submit } = useMegaLeadForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
