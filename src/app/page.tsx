@@ -28,10 +28,10 @@ const initialForm: FormState = {
 };
 
 const proofPoints = [
-  ["Personalized roses", "Real preserved roses printed with messages, logos, or images on the petals."],
-  ["Distributor path", "Buy products at wholesale and resell locally without handling production."],
-  ["Licensee path", "Explore equipment, training, support, and territory-based production rights."],
-  ["Sales channels", "Gift shops, funeral homes, wedding planners, fundraising groups, promotional companies, retail, social, and e-commerce."],
+  ["$334B+", "personalization market referenced on the Speaking Roses partnership page"],
+  ["500+", "outlets and events referenced on the partnership page, including Forbes, Inc, Grammys, and Oscars"],
+  ["20+ years", "developing the printing process, referenced on the Speaking Roses main site"],
+  ["$1,500+", "liquid funds or credit listed on the source form for Distributor applicants"],
 ];
 
 const paths = [
@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     q: "What happens after I apply?",
-    a: "Qualified applicants with at least $1,000 in liquid funds and a timeline under six months are redirected to schedule a Zoom call with the Speaking Roses team.",
+    a: "Qualified applicants with at least $1,500 in liquid funds or credit and a timeline within six months are redirected to schedule a Zoom call with the Speaking Roses team.",
   },
 ];
 
@@ -156,7 +156,7 @@ export default function Home() {
     return "";
   };
 
-  const isQualified = form.liquidFunds !== "under-1000" && form.timeline !== "6-plus-months";
+  const isQualified = form.liquidFunds !== "under-1500" && form.timeline !== "6-plus-months";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -239,7 +239,7 @@ export default function Home() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {proofPoints.map(([title, label]) => (
               <Reveal key={title} className="rounded-3xl border border-white/15 bg-white/8 p-6 text-left">
-                <div className="text-xl font-bold">{title}</div>
+                <div className="font-display text-4xl">{title}</div>
                 <p className="mt-3 text-sm leading-6 text-white/75">{label}</p>
               </Reveal>
             ))}
@@ -367,13 +367,13 @@ export default function Home() {
                 </div>
                 {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
                 <label className="grid gap-2 text-sm font-semibold text-plum">
-                  <span>To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</span>
+                  <span>To start as a Distributor you need $1,500+ in liquid funds or credit. Which best fits you?</span>
                   <select name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
                     <option value="">Select liquid funds</option>
-                    <option value="under-1000">&lt;$1k</option>
-                    <option value="1000-5000">$1k–$5k</option>
-                    <option value="5000-10000">$5k–$10k</option>
-                    <option value="10000-plus">$10k+</option>
+                    <option value="under-1500">I don’t have $1,500</option>
+                    <option value="1500-5000">$1,500–$5,000 liquid/credit</option>
+                    <option value="5000-10000">$5,000–$10,000 liquid/credit</option>
+                    <option value="10000-plus">$10,000+ liquid/credit</option>
                   </select>
                 </label>
                 <label className="grid gap-2 text-sm font-semibold text-plum">
@@ -381,9 +381,8 @@ export default function Home() {
                   <select name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
                     <option value="">Select timeline</option>
                     <option value="immediately">Immediately</option>
-                    <option value="1-3-months">Over the next 1–3 months</option>
-                    <option value="3-6-months">3–6 months</option>
-                    <option value="6-plus-months">6+ months</option>
+                    <option value="3-6-months">Within 3–6 months</option>
+                    <option value="6-plus-months">More than 6 months from now</option>
                   </select>
                 </label>
                 <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
