@@ -4,7 +4,7 @@ import { useEffect, useCallback, useRef } from "react";
 
 const CONFIG = {
   CUSTOMER_ID: "05dbed95-e904-49f2-9f7a-d654280dc8d8",
-  SITE_ID: "00000000-0000-0000-0000-000000000000",
+  SITE_ID: "7ff55ad5-2e07-4c13-b612-d054f0bd2c71",
   SOURCE_PROVIDER: "speaking-roses-distributor-recruitment",
   ENDPOINT: "https://analytics.gomega.ai/submission/submit",
 };

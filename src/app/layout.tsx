@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -15,8 +16,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteId = "speaking-roses-pending";
-const siteKey = "sk_speaking_roses_pending";
+const siteId = "7ff55ad5-2e07-4c13-b612-d054f0bd2c71";
+const siteKey = "sk_919b18a6_omsu57qhb5v";
 
 export const metadata: Metadata = {
   title: "Speaking Roses Partnership | Distributor Recruitment",
@@ -46,7 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script id="optimizer-script" src="https://cdn.gomega.ai/scripts/optimizer.min.js" data-site-id={siteId} async />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+        <Script src="https://572388.tctm.co/t.js" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }

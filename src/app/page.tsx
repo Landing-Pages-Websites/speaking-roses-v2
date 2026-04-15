@@ -6,7 +6,7 @@ import { useMegaLeadForm } from "@/hooks/useMegaLeadForm";
 import { useTracking } from "@/hooks/useTracking";
 
 const BOOK_CALL_URL = "https://partnership.speakingroses.com/book-call";
-const SITE_KEY = "sk_speaking_roses_pending";
+const SITE_KEY = "sk_919b18a6_omsu57qhb5v";
 
 type FormState = {
   firstName: string;
