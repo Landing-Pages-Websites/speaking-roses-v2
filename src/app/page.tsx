@@ -315,8 +315,10 @@ export default function Home() {
           </Reveal>
           <Reveal className="relative">
             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-rose/20 blur-2xl" />
-            <div className="overflow-hidden rounded-[2.5rem] bg-petal p-3 shadow-2xl">
-              <Image src="/hero.jpeg" alt="Personalized Speaking Roses preserved rose display" width={960} height={720} className="h-[560px] w-full rounded-[2rem] object-cover" priority />
+            <div className="rounded-[2.5rem] bg-petal p-3 shadow-2xl">
+              <div className="rounded-[2rem] bg-white p-4">
+                <Image src="/hero.jpeg" alt="Personalized Speaking Roses preserved rose display" width={960} height={720} className="h-auto max-h-[560px] w-full rounded-[1.5rem] object-contain" priority />
+              </div>
             </div>
           </Reveal>
         </div>
