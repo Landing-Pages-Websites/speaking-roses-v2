@@ -63,7 +63,7 @@ const markets = [
 const faqs = [
   {
     q: "Who is Speaking Roses looking for?",
-    a: "We are selective. This is not an open sign-up program. We are looking for serious, committed distributors, licensees, and strategic operators who are ready to lead their market and represent the brand correctly. Capacity is limited and every applicant is evaluated individually.",
+    a: "We are selective. This is not an open sign-up program. We are looking for serious, committed distributors, licensees, and exclusive partners who are ready to lead their market and represent the brand correctly. Capacity is limited and every applicant is evaluated individually.",
   },
   {
     q: "What does it mean to 'earn the right to represent'?",
