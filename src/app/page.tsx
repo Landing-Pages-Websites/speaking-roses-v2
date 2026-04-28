@@ -362,24 +362,23 @@ export default function Home() {
           {/* Full, powerful media logo strip */}
           <Reveal className="mt-12 flex flex-wrap items-center justify-center gap-3">
             {[
-              { src: "/logo-forbes-4x.png", alt: "Forbes", cls: "h-7" },
-              { src: "/logo-wsj-4x.png", alt: "Wall Street Journal", cls: "h-4" },
-              { src: "/logo-oscars-4x.png", alt: "Oscars", cls: "h-7" },
-              { src: "/logo-grammys.svg", alt: "Grammys", cls: "h-7" },
-              { src: "/logo-ellen-4x.png", alt: "The Ellen Show", cls: "h-8" },
-              { src: "/logo-fox-4x.png", alt: "Fox", cls: "h-7" },
-              { src: "/logo-cnn.svg", alt: "CNN", cls: "h-7" },
-              { src: "/logo-gma.svg", alt: "Good Morning America", cls: "h-7" },
-              { src: "/logo-inc.svg", alt: "Inc. Magazine", cls: "h-7" },
-              { src: "/logo-e-entertainment.png", alt: "E! Entertainment", cls: "h-7" },
+              { src: "/logo-forbes-4x.png", alt: "Forbes", cls: "h-6", dark: false },
+              { src: "/logo-wsj-4x.png", alt: "Wall Street Journal", cls: "h-3", dark: false },
+              { src: "/logo-oscars-4x.png", alt: "Oscars", cls: "h-6", dark: false },
+              { src: "/logo-grammys.svg", alt: "Grammys", cls: "h-6", dark: false },
+              { src: "/logo-ellen-4x.png", alt: "The Ellen Show", cls: "h-7", dark: true },
+              { src: "/logo-fox-4x.png", alt: "Fox", cls: "h-6", dark: false },
+              { src: "/logo-cnn.svg", alt: "CNN", cls: "h-6", dark: false },
+              { src: "/logo-gma.svg", alt: "Good Morning America", cls: "h-6", dark: false },
+              { src: "/logo-inc.svg", alt: "Inc. Magazine", cls: "h-6", dark: false },
+              { src: "/logo-e-entertainment.png", alt: "E! Entertainment", cls: "h-6", dark: true },
             ].map((logo) => (
-              <div key={logo.alt} className="flex h-12 items-center justify-center rounded-xl bg-white/10 px-4 py-2 ring-1 ring-white/15">
+              <div key={logo.alt} className={`flex h-12 items-center justify-center rounded-xl px-4 py-2 shadow-sm ${logo.dark ? "bg-plum" : "bg-white"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   className={`${logo.cls} w-auto object-contain`}
-                  style={{ filter: "brightness(0) invert(1)", imageRendering: "auto" }}
                 />
               </div>
             ))}
