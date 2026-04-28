@@ -304,7 +304,7 @@ export default function Home() {
               <div className="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-plum">
                 <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Distributor</span>
                 <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Licensee</span>
-                <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Strategic Operator</span>
+                <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Exclusive Partnerships</span>
               </div>
             </Reveal>
             {/* Product image — centered, larger, the star of the hero */}
