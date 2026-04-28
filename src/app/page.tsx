@@ -281,21 +281,17 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section id="hero" className="relative overflow-hidden pt-28 md:pt-32">
-        <div className="absolute inset-0">
-          <Image src="/hero-banner.png" alt="" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        {/* Split: left = image (smaller, full aspect ratio), right = text above form */}
+      <section id="hero" className="relative overflow-hidden pt-28 md:pt-32 bg-plum">
+        {/* Split: left = lifestyle image with product, right = text above form */}
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:py-20">
-          {/* Left: product image — natural aspect ratio, smaller overall via narrower column */}
+          {/* Left: couple + product lifestyle image */}
           <Reveal>
             <Image
-              src="/rose-product.webp"
-              alt="Speaking Roses personalized preserved rose"
-              width={720}
-              height={720}
-              className="w-full h-auto rounded-[1.5rem] shadow-2xl ring-2 ring-white/20"
+              src="/hero-couple-v3.png"
+              alt="Speaking Roses personalized preserved rose — the perfect gift for couples"
+              width={900}
+              height={600}
+              className="w-full h-auto rounded-[1.5rem] shadow-2xl ring-2 ring-white/20 object-cover"
               priority
             />
           </Reveal>
