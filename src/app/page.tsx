@@ -281,48 +281,28 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      {/* Product is the hero. Text left, product image center-right, form below on mobile / right column on desktop */}
       <section id="hero" className="relative overflow-hidden pt-28 md:pt-32">
-        {/* Hero background image */}
         <div className="absolute inset-0">
           <Image src="/hero-banner.png" alt="" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-5 py-16 lg:py-24">
-          {/* Top row: headline left, product image right */}
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <Reveal className="flex flex-col justify-center">
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">Selective Distributor Recruitment — Limited Spots</p>
-              {/* Change 1: "Bring" emphasized, headline updated per client */}
-              <h1 className="font-display leading-[0.95] text-white">
-                <span className="block text-6xl md:text-8xl font-black text-blush drop-shadow-lg">Bring</span>
-                <span className="block text-4xl md:text-6xl mt-1">Personalized Roses to Your Market</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-xl leading-8 text-white/85">
-                Speaking Roses prints messages, logos, and images directly on preserved rose petals — turning a flower into a lasting memory. We are expanding worldwide and accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-plum">
-                <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Distributor</span>
-                <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Licensee</span>
-                <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Exclusive Partnerships</span>
-              </div>
-            </Reveal>
-            {/* Product image — centered, larger, the star of the hero */}
-            <Reveal className="flex items-center justify-center">
-              <div className="w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl ring-4 ring-white/20">
-                <Image
-                  src="/rose-product.webp"
-                  alt="Speaking Roses personalized preserved rose"
-                  width={720}
-                  height={720}
-                  className="h-auto w-full object-cover"
-                  priority
-                />
-              </div>
-            </Reveal>
-          </div>
-          {/* Form below headline/product — full width, secondary */}
-          <Reveal className="mt-12 mx-auto max-w-2xl">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
+          <Reveal className="flex flex-col justify-center">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">Selective Distributor Recruitment — Limited Spots</p>
+            <h1 className="font-display leading-[0.95] text-white">
+              <span className="block text-6xl md:text-8xl font-black text-blush drop-shadow-lg">Bring</span>
+              <span className="block text-4xl md:text-6xl mt-1">Personalized Roses to Your Market</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-xl leading-8 text-white/85">
+              Speaking Roses prints messages, logos, and images directly on preserved rose petals — turning a flower into a lasting memory. We are expanding worldwide and accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-plum">
+              <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Distributor</span>
+              <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Licensee</span>
+              <span className="rounded-full bg-white/90 px-4 py-2 shadow-sm">Exclusive Partnerships</span>
+            </div>
+          </Reveal>
+          <Reveal>
             <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
           </Reveal>
         </div>
