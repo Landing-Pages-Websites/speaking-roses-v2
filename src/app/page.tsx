@@ -286,35 +286,31 @@ export default function Home() {
           <Image src="/hero-banner.png" alt="" fill className="object-cover object-center" priority />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        {/* Split: left = headline + product image, right = form only */}
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:py-20">
-          <Reveal className="flex flex-col gap-5">
-            <div>
-              <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-blush">Selective Distributor Recruitment — Limited Spots</p>
-              <h1 className="font-display leading-[0.95] text-white">
-                <span className="text-5xl md:text-7xl font-black text-blush drop-shadow-lg">Bring </span>
-                <span className="text-4xl md:text-6xl">Personalized Roses to Your Market</span>
-              </h1>
-            </div>
-            {/* Product image — smaller, contained below headline */}
-            <div className="overflow-hidden rounded-[1.5rem] shadow-2xl ring-2 ring-white/20 max-h-80 lg:max-h-96">
-              <Image
-                src="/rose-product.webp"
-                alt="Speaking Roses personalized preserved rose"
-                width={720}
-                height={720}
-                className="h-full w-full object-cover object-center"
-                priority
-              />
-            </div>
-            <div className="flex flex-wrap gap-3 text-sm font-semibold">
-              <span className="rounded-full bg-white/90 px-4 py-2 text-plum shadow-sm">Distributor</span>
-              <span className="rounded-full bg-white/90 px-4 py-2 text-plum shadow-sm">Licensee</span>
-              <span className="rounded-full bg-white/90 px-4 py-2 text-plum shadow-sm">Exclusive Partnerships</span>
-            </div>
-          </Reveal>
-          {/* Form only on the right — clean, no text crowding it */}
+        {/* Split: left = image (smaller, full aspect ratio), right = text above form */}
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:py-20">
+          {/* Left: product image — natural aspect ratio, smaller overall via narrower column */}
           <Reveal>
+            <Image
+              src="/rose-product.webp"
+              alt="Speaking Roses personalized preserved rose"
+              width={720}
+              height={720}
+              className="w-full h-auto rounded-[1.5rem] shadow-2xl ring-2 ring-white/20"
+              priority
+            />
+          </Reveal>
+          {/* Right: short text intro above form */}
+          <Reveal className="flex flex-col gap-4">
+            <div>
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush">Selective Distributor Recruitment — Limited Spots</p>
+              <h1 className="font-display leading-[0.95] text-white">
+                <span className="text-5xl md:text-6xl font-black text-blush drop-shadow-lg">Bring </span>
+                <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
+              </h1>
+              <p className="mt-3 text-base leading-7 text-white/80">
+                Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
+              </p>
+            </div>
             <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
           </Reveal>
         </div>
