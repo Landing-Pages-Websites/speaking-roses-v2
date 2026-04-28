@@ -177,7 +177,7 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
           {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
           <button disabled={isSubmitting} className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-plum disabled:opacity-60">
-            {isSubmitting ? "Submitting..." : "See If You Qualify"}
+            {isSubmitting ? "Submitting..." : "Apply to Check Availability"}
           </button>
         </form>
       )}
@@ -189,7 +189,7 @@ function CTA({ dark = false }: { dark?: boolean }) {
   return (
     <div className="mt-10 flex flex-col items-center gap-2">
       <a href="#apply" className={`rounded-full px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] shadow-xl transition hover:-translate-y-0.5 ${dark ? "bg-white text-plum" : "bg-rose text-white"}`}>
-        See If You Qualify
+        Apply to Check Availability
       </a>
       <p className={`text-xs font-semibold tracking-wide ${dark ? "text-white/60" : "text-ink/50"}`}>Limited spots available</p>
     </div>
@@ -541,7 +541,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {[
-              ["01", "See If You Qualify", "Tell us about your market, your available funds, and your timeline. Every application is reviewed individually — we are not an open sign-up."],
+              ["01", "Apply to Check Availability", "Tell us about your market, your available funds, and your timeline. Every application is reviewed individually — we are not an open sign-up."],
               ["02", "Qualification review", "Qualified partners have at least $1,500 in liquid funds or credit and a start timeline within six months. We evaluate every applicant and select serious partners only."],
               ["03", "Book a Zoom call", "Qualified applicants are redirected to schedule a call with the Speaking Roses team to explore the opportunity, your market, and next steps."],
             ].map(([num, title, body]) => (
@@ -579,7 +579,7 @@ export default function Home() {
       <section id="apply" className="bg-plum py-20 text-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[.9fr_1.1fr]">
           <Reveal>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">See If You Qualify</p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">Apply to Check Availability</p>
             <h2 className="font-display text-4xl text-white md:text-6xl">See if your market is open.</h2>
             <p className="mt-6 text-lg leading-8 text-white/75">
               Spots are limited. We evaluate every applicant individually. Partners with $1,500+ in liquid funds and a timeline within six months are redirected to book a call with the team. All leads are captured — the team may follow up for future openings.
@@ -596,7 +596,7 @@ export default function Home() {
 
       {showFloat && (
         <a href="#apply" className="fixed bottom-5 right-5 z-50 rounded-full bg-rose px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white shadow-2xl transition hover:-translate-y-1 md:bottom-7 md:right-7">
-          See If You Qualify
+          Apply to Check Availability
         </a>
       )}
     </main>
