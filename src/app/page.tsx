@@ -359,26 +359,26 @@ export default function Home() {
             </p>
           </Reveal>
 
-          {/* Full, powerful media logo strip */}
+          {/* Full media logo strip — SVG logos scale crisp, consistent pill sizing */}
           <Reveal className="mt-12 flex flex-wrap items-center justify-center gap-3">
             {[
-              { src: "/logo-forbes-4x.png", alt: "Forbes", cls: "h-6", dark: false },
-              { src: "/logo-wsj-4x.png", alt: "Wall Street Journal", cls: "h-3", dark: false },
-              { src: "/logo-oscars-4x.png", alt: "Oscars", cls: "h-6", dark: false },
-              { src: "/logo-grammys.svg", alt: "Grammys", cls: "h-6", dark: false },
-              { src: "/logo-ellen-4x.png", alt: "The Ellen Show", cls: "h-7", dark: true },
-              { src: "/logo-fox-4x.png", alt: "Fox", cls: "h-6", dark: false },
-              { src: "/logo-cnn.svg", alt: "CNN", cls: "h-6", dark: false },
-              { src: "/logo-gma.svg", alt: "Good Morning America", cls: "h-6", dark: false },
-              { src: "/logo-inc.svg", alt: "Inc. Magazine", cls: "h-6", dark: false },
-              { src: "/logo-e-entertainment.png", alt: "E! Entertainment", cls: "h-6", dark: true },
+              { src: "/logo-forbes.svg",   alt: "Forbes",              cls: "h-7",  dark: false },
+              { src: "/logo-wsj.svg",      alt: "Wall Street Journal", cls: "h-6",  dark: false },
+              { src: "/logo-oscars-4x.png",alt: "Oscars",              cls: "h-7",  dark: false },
+              { src: "/logo-grammys.svg",  alt: "Grammys",             cls: "h-7",  dark: false },
+              { src: "/logo-ellen.svg",    alt: "The Ellen Show",      cls: "h-7",  dark: true  },
+              { src: "/logo-fox.svg",      alt: "Fox News",            cls: "h-7",  dark: false },
+              { src: "/logo-cnn.svg",      alt: "CNN",                 cls: "h-8",  dark: false },
+              { src: "/logo-gma.svg",      alt: "Good Morning America",cls: "h-9",  dark: false },
+              { src: "/logo-inc.svg",      alt: "Inc. Magazine",       cls: "h-7",  dark: false },
+              { src: "/logo-e.svg",        alt: "E! Entertainment",    cls: "h-7",  dark: true  },
             ].map((logo) => (
-              <div key={logo.alt} className={`flex h-12 items-center justify-center rounded-xl px-4 py-2 shadow-sm ${logo.dark ? "bg-plum" : "bg-white"}`}>
+              <div key={logo.alt} className={`flex h-14 w-32 items-center justify-center rounded-xl px-3 py-2 shadow-sm ${logo.dark ? "bg-plum" : "bg-white"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className={`${logo.cls} w-auto object-contain`}
+                  className={`${logo.cls} w-auto max-w-full object-contain`}
                 />
               </div>
             ))}
