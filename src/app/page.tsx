@@ -281,29 +281,23 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section id="hero" className="relative overflow-hidden pt-28 md:pt-32 bg-plum">
-        {/* Split: left = lifestyle image with product, right = text above form */}
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:py-20">
-          {/* Left: couple + product lifestyle image */}
-          <Reveal>
-            <Image
-              src="/hero-couple-v3.png"
-              alt="Speaking Roses personalized preserved rose — the perfect gift for couples"
-              width={900}
-              height={600}
-              className="w-full h-auto rounded-[1.5rem] shadow-2xl ring-2 ring-white/20 object-cover"
-              priority
-            />
-          </Reveal>
-          {/* Right: short text intro above form */}
-          <Reveal className="flex flex-col gap-4">
+      <section id="hero" className="relative overflow-hidden pt-28 md:pt-32">
+        {/* Full-bleed background image — product on left, couple center, dark right for form */}
+        <div className="absolute inset-0">
+          <Image src="/hero-bg.png" alt="" fill className="object-cover object-left" priority />
+          {/* Subtle right-side gradient so form text stays legible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/30 to-black/70" />
+        </div>
+        {/* Content: form + headline pushed to the RIGHT so product is fully visible */}
+        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24 flex justify-end">
+          <Reveal className="flex flex-col gap-4 w-full max-w-lg">
             <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush">Selective Distributor Recruitment — Limited Spots</p>
-              <h1 className="font-display leading-[0.95] text-white">
-                <span className="text-5xl md:text-6xl font-black text-blush drop-shadow-lg">Bring </span>
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
+              <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
+                <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
                 <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
               </h1>
-              <p className="mt-3 text-base leading-7 text-white/80">
+              <p className="mt-3 text-base leading-7 text-white/90 drop-shadow">
                 Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
               </p>
             </div>
