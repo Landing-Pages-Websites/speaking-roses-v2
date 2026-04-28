@@ -23,7 +23,7 @@ const gtmId = "GTM-TTDNNJDM";
 export const metadata: Metadata = {
   title: "Speaking Roses Partnership | Distributor Recruitment",
   description:
-    "Apply to bring personalized preserved Speaking Roses products to your local market as a distributor, influencer partner, licensee, or strategic operator.",
+    "Apply to bring personalized preserved Speaking Roses products to your local market as a distributor, licensee, or exclusive partnership program..",
   openGraph: {
     title: "Speaking Roses Partnership | Distributor Recruitment",
     description:
