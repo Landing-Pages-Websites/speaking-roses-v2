@@ -281,15 +281,18 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section id="hero" className="relative overflow-hidden pt-28 md:pt-32">
-        {/* Full-bleed background image — product on left, couple center, dark right for form */}
+      {/* Hero: full-bleed 16:9 background — product left, form right */}
+      <section id="hero" className="relative overflow-hidden" style={{ aspectRatio: "16/9", minHeight: "520px", maxHeight: "100vh" }}>
+        {/* pt-28 spacer so content clears fixed nav */}
         <div className="absolute inset-0">
-          <Image src="/hero-bg.png" alt="" fill className="object-cover object-left" priority />
-          {/* Subtle right-side gradient so form text stays legible */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/30 to-black/70" />
+          <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-left-top" priority sizes="100vw" quality={100} />
+          {/* Right-side gradient only — left stays clean so product is fully visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-black/65" />
+          {/* Top gradient for nav legibility */}
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
         </div>
-        {/* Content: form + headline pushed to the RIGHT so product is fully visible */}
-        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24 flex justify-end">
+        {/* Form + headline on the right, vertically centered */}
+        <div className="relative h-full flex items-center justify-end max-w-7xl mx-auto px-5 pt-28 pb-10 md:pt-32 md:pb-14">
           <Reveal className="flex flex-col gap-4 w-full max-w-lg">
             <div>
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
