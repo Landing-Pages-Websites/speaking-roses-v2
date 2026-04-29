@@ -288,14 +288,18 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/50 to-transparent" />
 
         {/* H1 — top-left, above the rose product */}
-        <div className="absolute inset-x-0 top-0 max-w-7xl mx-auto px-5 pt-32 md:pt-36 w-1/2">
-          <Reveal>
-            <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
-            <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
-              <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
-              <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
-            </h1>
-          </Reveal>
+        <div className="absolute inset-x-0 top-0 pt-32 md:pt-36">
+          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end">
+            <div className="w-full max-w-lg">
+              <Reveal>
+                <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
+                <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
+                  <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
+                  <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
+                </h1>
+              </Reveal>
+            </div>
+          </div>
         </div>
 
         {/* Subheading + form — right side, vertically centered */}
