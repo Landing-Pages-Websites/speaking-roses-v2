@@ -269,7 +269,7 @@ export default function Home() {
       <div className="scroll-progress" />
 
       {/* ── NAV ── */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-blush bg-white/92 backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-transparent">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#hero" aria-label="Speaking Roses home">
             <Image src="/logo.svg" alt="Speaking Roses" width={300} height={78} className="h-14 w-auto md:h-16" priority />
