@@ -284,27 +284,39 @@ export default function Home() {
       {/* Hero — min-h-screen full viewport, product anchored left so cropping only hits dark right */}
       <section id="hero" className="relative min-h-screen overflow-hidden">
         <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-left" priority quality={100} sizes="100vw" />
-        {/* Right-side darkening for form legibility — left stays clear for product */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-black/20 to-black/75" />
         <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/50 to-transparent" />
-        {/* Form on the right, vertically centered, clears the fixed nav */}
+
+        {/* H1 — top-left, above the rose product */}
+        <div className="absolute inset-x-0 top-0 max-w-7xl mx-auto px-5 pt-32 md:pt-36 w-1/2">
+          <Reveal>
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
+            <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
+              <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
+              <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
+            </h1>
+          </Reveal>
+        </div>
+
+        {/* Subheading + form — right side, vertically centered */}
         <div className="absolute inset-0 flex items-center justify-end">
-          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pt-28 pb-10">
+          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pb-10">
             <Reveal className="flex flex-col gap-4 w-full max-w-lg">
-              <div>
-                <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
-                <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
-                  <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
-                  <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
-                </h1>
-                <p className="mt-3 text-base leading-7 text-white/90 drop-shadow">
-                  Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
-                </p>
-              </div>
+              <p className="text-base leading-7 text-white/90 drop-shadow">
+                Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
+              </p>
               <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
             </Reveal>
           </div>
         </div>
+
+        {/* Subheading bottom-left — below the rose */}
+        <div className="absolute inset-x-0 bottom-0 max-w-7xl mx-auto px-5 pb-10 w-1/2">
+          <Reveal>
+            <p className="text-sm leading-6 text-white/70 drop-shadow max-w-xs">The world's only preserved rose with a message printed directly on the petals.</p>
+          </Reveal>
+        </div>
+
       </section>
 
       {/* ── PRODUCT SECTION — finished product only, no process video ── */}
