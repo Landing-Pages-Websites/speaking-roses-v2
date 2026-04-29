@@ -289,7 +289,7 @@ export default function Home() {
 
         {/* H1 — top-left, above the rose product */}
         <div className="absolute inset-x-0 top-0 pt-32 md:pt-36">
-          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end">
+          <div className="w-full max-w-7xl mx-auto px-5">
             <div className="w-full max-w-lg">
               <Reveal>
                 <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
