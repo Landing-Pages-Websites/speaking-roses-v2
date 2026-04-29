@@ -306,12 +306,19 @@ export default function Home() {
         <div className="absolute inset-0 flex items-end justify-end">
           <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pb-12">
             <Reveal className="flex flex-col gap-4 w-full max-w-lg">
-              <p className="text-base leading-7 text-white/90 drop-shadow">
-                Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
-              </p>
               <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
             </Reveal>
           </div>
+        </div>
+
+        {/* Subheading bottom-left — centered under the rose */}
+        <div className="absolute bottom-0 left-0 pb-12 w-[42%] flex justify-center">
+          <Reveal className="text-center px-4">
+            <p className="text-base leading-7 text-white/90 drop-shadow">
+              Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
+            </p>
+            <p className="mt-2 text-sm leading-6 text-white/70 drop-shadow">The world's only preserved rose with a message printed directly on the petals.</p>
+          </Reveal>
         </div>
 
       </section>
