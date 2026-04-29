@@ -315,9 +315,9 @@ export default function Home() {
         </div>
 
         {/* Subheading bottom-left — below the rose */}
-        <div className="absolute inset-x-0 bottom-0 max-w-7xl mx-auto px-5 pb-10 w-1/2">
+        <div className="absolute bottom-0 left-0 pb-10 w-[42%] flex justify-center">
           <Reveal>
-            <p className="text-sm leading-6 text-white/70 drop-shadow max-w-xs">The world's only preserved rose with a message printed directly on the petals.</p>
+            <p className="text-sm leading-6 text-white/70 drop-shadow text-center">The world's only preserved rose with a message printed directly on the petals.</p>
           </Reveal>
         </div>
 
