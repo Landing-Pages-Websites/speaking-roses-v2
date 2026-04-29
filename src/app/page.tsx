@@ -269,12 +269,12 @@ export default function Home() {
       <div className="scroll-progress" />
 
       {/* ── NAV ── */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-transparent">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-gradient-to-b from-black/60 to-transparent">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#hero" aria-label="Speaking Roses home">
-            <Image src="/logo.svg" alt="Speaking Roses" width={300} height={78} className="h-14 w-auto md:h-16" priority />
+            <Image src="/logo.svg" alt="Speaking Roses" width={300} height={78} className="h-14 w-auto md:h-16 brightness-0 invert" priority />
           </a>
-          <a href="#apply" className="rounded-full bg-plum px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow transition hover:bg-rose">
+          <a href="#apply" className="rounded-full bg-rose px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow transition hover:bg-plum">
             Apply Now
           </a>
         </div>
