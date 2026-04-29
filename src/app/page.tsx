@@ -281,31 +281,35 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      {/* Hero: full-bleed 16:9 background — product left, form right */}
-      <section id="hero" className="relative overflow-hidden" style={{ aspectRatio: "16/9", minHeight: "520px", maxHeight: "100vh" }}>
-        {/* pt-28 spacer so content clears fixed nav */}
-        <div className="absolute inset-0">
-          <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-left-top" priority sizes="100vw" quality={100} />
-          {/* Right-side gradient only — left stays clean so product is fully visible */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-black/65" />
-          {/* Top gradient for nav legibility */}
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
-        </div>
-        {/* Form + headline on the right, vertically centered */}
-        <div className="relative h-full flex items-center justify-end max-w-7xl mx-auto px-5 pt-28 pb-10 md:pt-32 md:pb-14">
-          <Reveal className="flex flex-col gap-4 w-full max-w-lg">
-            <div>
-              <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
-              <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
-                <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
-                <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
-              </h1>
-              <p className="mt-3 text-base leading-7 text-white/90 drop-shadow">
-                Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
-              </p>
-            </div>
-            <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
-          </Reveal>
+      {/* Hero — image is NOT fill/cover. It sets its own height so nothing is ever cropped. */}
+      <section id="hero" className="relative">
+        <Image
+          src="/hero-hq.jpg"
+          alt="Speaking Roses personalized rose with couple"
+          width={4224}
+          height={2304}
+          className="w-full h-auto block"
+          priority
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/70" />
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/40 to-transparent" />
+        <div className="absolute inset-0 flex items-center justify-end">
+          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pt-28">
+            <Reveal className="flex flex-col gap-4 w-full max-w-lg">
+              <div>
+                <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
+                <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
+                  <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
+                  <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
+                </h1>
+                <p className="mt-3 text-base leading-7 text-white/90 drop-shadow">
+                  Speaking Roses is expanding worldwide — accepting serious, qualified partners to lead local markets. This is not open wholesale. Spots are earned.
+                </p>
+              </div>
+              <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
+            </Reveal>
+          </div>
         </div>
       </section>
 
