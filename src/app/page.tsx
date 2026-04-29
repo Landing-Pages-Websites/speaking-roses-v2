@@ -281,21 +281,15 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      {/* Hero — image is NOT fill/cover. It sets its own height so nothing is ever cropped. */}
-      <section id="hero" className="relative">
-        <Image
-          src="/hero-hq.jpg"
-          alt="Speaking Roses personalized rose with couple"
-          width={4224}
-          height={2304}
-          className="w-full h-auto block"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/70" />
-        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/40 to-transparent" />
+      {/* Hero — min-h-screen full viewport, product anchored left so cropping only hits dark right */}
+      <section id="hero" className="relative min-h-screen overflow-hidden">
+        <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-left" priority quality={100} sizes="100vw" />
+        {/* Right-side darkening for form legibility — left stays clear for product */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-black/20 to-black/75" />
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/50 to-transparent" />
+        {/* Form on the right, vertically centered, clears the fixed nav */}
         <div className="absolute inset-0 flex items-center justify-end">
-          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pt-28">
+          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pt-28 pb-10">
             <Reveal className="flex flex-col gap-4 w-full max-w-lg">
               <div>
                 <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
