@@ -178,7 +178,7 @@ type ApplyFormProps = {
 
 function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, setPhoneError, handleSubmit, isSubmitting, error, submitted, isQualified, compact = false, showTitle = false }: ApplyFormProps) {
   return (
-    <div className={`rounded-2xl bg-white shadow-2xl ${compact ? "p-5 md:p-6" : "p-7 md:p-8"}`}>
+    <div className={`rounded-2xl bg-white shadow-2xl ${compact ? "p-4 md:p-5" : "p-7 md:p-8"}`}>
       {showTitle && (
         <div className="mb-5 text-center">
           <h3 className="font-display text-2xl text-plum md:text-3xl">Tell us about you</h3>
@@ -191,8 +191,8 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <p className="mt-4 text-ink/70">Your information has been received. The Speaking Roses team will be in touch if your market and timing are a fit.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="grid gap-2.5">
-          <div className="grid gap-3.5 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} className={`grid ${compact ? "gap-2" : "gap-2.5"}`}>
+          <div className={`grid sm:grid-cols-2 ${compact ? "gap-2.5" : "gap-3.5"}`}>
             <input name="firstName" required placeholder="First Name" value={form.firstName} onChange={(e) => setField("firstName", e.target.value)} className="field" />
             <input name="lastName" required placeholder="Last Name" value={form.lastName} onChange={(e) => setField("lastName", e.target.value)} className="field" />
           </div>
@@ -213,9 +213,9 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
             <option value="3-6-months">3–6 months</option>
             <option value="6-plus-months">6+ months</option>
           </select>
-          <p className="text-xs leading-5 text-ink/50">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
+          <p className={`${compact ? "text-[0.6875rem] leading-4" : "text-xs leading-5"} text-ink/50`}>By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
           {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
-          <button type="submit" disabled={isSubmitting} className="w-full rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-plum disabled:opacity-60">
+          <button type="submit" disabled={isSubmitting} className={`w-full rounded-full bg-rose px-7 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-plum disabled:opacity-60 ${compact ? "py-3" : "py-4"}`}>
             {isSubmitting ? "Submitting…" : "Apply to Check Market Availability →"}
           </button>
           <p className="text-center text-xs text-ink/40">🔒 Your information is secure and will never be shared.</p>
@@ -330,7 +330,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/40 to-transparent" />
 
         {/* DESKTOP: headline left, form right */}
-        <div className="relative z-10 mx-auto hidden min-h-screen max-w-[1500px] items-center justify-between px-8 pb-14 pt-28 lg:flex lg:min-h-[760px] xl:min-h-screen">
+        <div className="relative z-10 mx-auto hidden min-h-screen max-w-[1500px] items-center justify-between px-8 pb-6 pt-24 lg:flex lg:min-h-[700px] xl:min-h-screen">
 
           {/* Left: headline card */}
           <div className="w-[420px] max-w-[38%]">
@@ -360,11 +360,11 @@ export default function Home() {
             <Reveal>
               <div className="rounded-2xl bg-white shadow-2xl overflow-hidden">
                 {/* Form header */}
-                <div className="bg-white px-6 pt-6 pb-3 text-center">
-                  <h2 className="font-display text-[1.375rem] font-semibold text-plum">Check Market Availability</h2>
+                <div className="bg-white px-5 pt-5 pb-1 text-center">
+                  <h2 className="font-display text-[1.25rem] font-semibold text-plum">Check Market Availability</h2>
                   <GoldDivider />
                 </div>
-                <div className="px-6 pb-6">
+                <div className="px-5 pb-5">
                   <ApplyForm
                     form={form} setField={setField} formatPhone={formatPhone}
                     validatePhone={validatePhone} phoneError={phoneError}
@@ -376,7 +376,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="mt-4 rounded-xl border border-blush/20 bg-plum/85 px-4 py-2.5 backdrop-blur-md">
+              <div className="mt-3 rounded-xl border border-blush/20 bg-plum/85 px-4 py-2 backdrop-blur-md">
                 <p className="text-xs font-bold uppercase tracking-widest text-blush">Limited partner openings available</p>
                 <p className="mt-0.5 text-xs text-white/65"><span className="text-blush">Apply today</span> — spots in your market may already be claimed.</p>
               </div>
