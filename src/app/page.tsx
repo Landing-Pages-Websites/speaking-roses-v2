@@ -766,8 +766,10 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="process" className="relative overflow-hidden py-10">
-        <Image src="/bg-how-it-works.png" alt="" fill className="object-cover object-center" quality={100} sizes="100vw" />
+      <section id="process" className="relative overflow-hidden pt-10 pb-32">
+        {/* Cream botanical background */}
+        <Image src="/bg-how-it-works.png" alt="" fill className="object-cover object-bottom" quality={100} sizes="100vw" />
+
 
         <div className="relative z-10 mx-auto max-w-7xl px-5">
           <Reveal className="text-center">
@@ -793,7 +795,7 @@ export default function Home() {
               { num: "3", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps.", icon: "calendar" },
               { num: "4", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals.", icon: "rocket" },
             ].map(({ num, title, body, icon }) => (
-              <Reveal key={num} className="flex flex-col items-center rounded-2xl bg-white/88 px-4 pb-6 pt-5 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)]">
+              <Reveal key={num} className="flex flex-col items-center rounded-2xl bg-white/50 px-4 pb-6 pt-5 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)] backdrop-blur-sm">
                 <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-[#f5ede6] text-gold shadow-inner">
                   <LineIcon name={icon} className="h-8 w-8" />
                 </div>
@@ -805,7 +807,7 @@ export default function Home() {
           </div>
 
           {/* Ornament + CTA */}
-          <div className="mt-8 flex flex-col items-center gap-3 md:pl-16">
+          <div className="mt-8 flex flex-col items-center gap-3 md:pl-[21.25rem]">
             <div className="flex w-full max-w-xs items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/50" />
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>

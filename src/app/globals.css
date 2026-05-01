@@ -129,6 +129,10 @@ select.field {
   cursor: pointer;
 }
 
+.process-rose-fade {
+  background: radial-gradient(ellipse at 38% 40%, transparent 35%, #fdf5ef 72%);
+}
+
 .gold-rule {
   display: flex;
   align-items: center;
