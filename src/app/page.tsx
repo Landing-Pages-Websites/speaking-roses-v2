@@ -644,19 +644,12 @@ export default function Home() {
       </section>
 
       {/* ── OUR ROSE PROCESS ── */}
-<<<<<<< HEAD
-      <section id="story" className="scroll-mt-24 bg-petal py-16">
-=======
       <section id="story" className="rose-section scroll-mt-24 py-16">
->>>>>>> ac94346 (updating the lay out design updateding hero section)
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-rose">Our Rose Process</p>
             <h2 className="font-display text-4xl text-plum md:text-[2.75rem] md:leading-tight">Raised in South America.<br /><span className="text-rose">Perfected Like a Diamond.</span></h2>
-<<<<<<< HEAD
-=======
             <OrnateRule />
->>>>>>> ac94346 (updating the lay out design updateding hero section)
             <p className="mt-2 text-base font-medium text-ink/55">From the mountains to meticulous preservation, printing, and luxury packaging.</p>
             <p className="mt-5 text-base leading-7 text-ink/70">
               Our roses are raised in the majestic mountains of South America. Once fully mature, they are cut and guided through a two-week-plus diamond-grade preservation process. Each rose is individually perfected to look, feel, and smell real while lasting for years.
@@ -674,11 +667,7 @@ export default function Home() {
             {/* Process points */}
             <div className="mt-6 grid grid-cols-2 gap-3">
               {processPoints.map((p) => (
-<<<<<<< HEAD
-                <div key={p.label} className="flex items-center gap-3 rounded-xl border border-blush/50 bg-white px-4 py-2.5 shadow-sm">
-=======
                 <div key={p.label} className="luxe-card flex items-center gap-3 rounded-xl px-4 py-2.5">
->>>>>>> ac94346 (updating the lay out design updateding hero section)
                   <div className="h-2 w-2 shrink-0 rounded-full bg-rose" />
                   <span className="text-sm font-semibold text-plum">{p.label}</span>
                 </div>
@@ -690,11 +679,7 @@ export default function Home() {
           </Reveal>
 
           {/* Process video */}
-<<<<<<< HEAD
-          <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-blush/20">
-=======
           <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20">
->>>>>>> ac94346 (updating the lay out design updateding hero section)
             <div className="bg-plum px-5 py-3">
               <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">Watch the Process</p>
               <h3 className="mt-1 font-display text-xl text-white">See How Our Roses Are Grown, Preserved &amp; Prepared</h3>
