@@ -766,63 +766,62 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="process" className="relative overflow-hidden py-20">
+      <section id="process" className="relative overflow-hidden py-10">
         <Image src="/bg-how-it-works.png" alt="" fill className="object-cover object-center" quality={100} sizes="100vw" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-5">
           <Reveal className="text-center">
-            <div className="mb-4 flex items-center justify-center gap-4">
+            <div className="mb-2 flex items-center justify-center gap-3">
               <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
-                <RoseIcon className="h-5 w-5 text-gold" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+                <RoseIcon className="h-4 w-4 text-gold" />
               </div>
               <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
             </div>
-            <p className="mb-4 text-[0.6875rem] font-bold uppercase tracking-[0.45em] text-gold">How It Works</p>
-            <h2 className="font-display text-4xl font-bold leading-tight text-plum md:text-5xl">Apply, Review, and<br />Launch Your Market.</h2>
+            <p className="mb-2 text-[0.6rem] font-bold uppercase tracking-[0.45em] text-gold">How It Works</p>
+            <h2 className="font-display text-3xl font-bold leading-tight text-plum md:text-4xl">Apply, Review, and Launch Your Market.</h2>
             <OrnateRule />
-            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-ink/65">
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-ink/65">
               Our process is designed to keep things selective, simple, and strategic. We review each application individually and guide qualified partners toward the right path for their market.
             </p>
           </Reveal>
 
-          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { num: "1", title: "Apply", body: "Submit your information, market, and timeline so our team can review your interest.", icon: "clipboard" },
               { num: "2", title: "Review", body: "We evaluate fit, readiness, and market availability to determine the best partner path.", icon: "review" },
               { num: "3", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps.", icon: "calendar" },
               { num: "4", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals.", icon: "rocket" },
             ].map(({ num, title, body, icon }) => (
-              <Reveal key={num} className="flex flex-col items-center rounded-3xl bg-white/88 px-5 pb-8 pt-7 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)]">
-                <div className="mb-5 flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-[#f5ede6] text-gold shadow-inner">
-                  <LineIcon name={icon} className="h-9 w-9" />
+              <Reveal key={num} className="flex flex-col items-center rounded-2xl bg-white/88 px-4 pb-6 pt-5 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)]">
+                <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-[#f5ede6] text-gold shadow-inner">
+                  <LineIcon name={icon} className="h-8 w-8" />
                 </div>
-                <h3 className="font-display text-2xl text-plum">{num}. {title}</h3>
-                <div className="ornate-rule my-3"><span /></div>
-                <p className="text-sm leading-7 text-ink/60">{body}</p>
+                <h3 className="font-display text-xl text-plum">{num}. {title}</h3>
+                <div className="ornate-rule my-2"><span /></div>
+                <p className="text-xs leading-6 text-ink/60">{body}</p>
               </Reveal>
             ))}
           </div>
 
           {/* Ornament + CTA */}
-          <div className="mt-14 flex flex-col items-center gap-4 md:pl-16">
-            {/* Lines + logo circle + lines */}
-            <div className="flex w-full max-w-sm items-center gap-2">
+          <div className="mt-8 flex flex-col items-center gap-3 md:pl-16">
+            <div className="flex w-full max-w-xs items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/50" />
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
-              <div className="mx-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
-                <Image src="/logo.svg" alt="Speaking Roses" width={20} height={20} className="h-5 w-auto object-contain opacity-80" />
+              <div className="mx-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+                <Image src="/logo.svg" alt="Speaking Roses" width={18} height={18} className="h-[1.1rem] w-auto object-contain opacity-80" />
               </div>
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/50" />
             </div>
 
-            <a href="#apply" className="inline-flex w-full max-w-[30rem] items-center justify-center rounded-2xl bg-gradient-to-b from-[#d4b860] via-[#c9a84c] to-[#9e7a18] px-8 py-4 font-display text-lg font-semibold text-[#1a1208] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <a href="#apply" className="inline-flex w-full max-w-[28rem] items-center justify-center rounded-xl bg-gradient-to-b from-[#d4b860] via-[#c9a84c] to-[#9e7a18] px-8 py-3.5 font-display text-base font-semibold text-[#1a1208] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
               Apply to Check Market Availability
             </a>
 
-            <p className="flex items-center gap-2 text-sm font-semibold text-rose/70">
-              <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <p className="flex items-center gap-2 text-xs font-semibold text-rose/70">
+              <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
               Limited partner openings available
