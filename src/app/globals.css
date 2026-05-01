@@ -16,6 +16,85 @@ html { scroll-behavior: smooth; }
 body { background: #fff; color: #2c3345; }
 .font-display { font-family: var(--font-display); }
 
+.rose-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.95), transparent 34rem),
+    linear-gradient(180deg, #fffaf7 0%, #fff2f7 100%);
+}
+.rose-section > * {
+  position: relative;
+  z-index: 1;
+}
+.rose-section::before,
+.rose-section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: min(34vw, 28rem);
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.2;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg width='420' height='420' viewBox='0 0 420 420' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23a84f65' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='.55'%3E%3Cpath d='M194 106c38-36 93-20 107 21 14 43-21 95-77 117-56-22-91-74-77-117 7-22 24-37 47-21Z'/%3E%3Cpath d='M183 132c22-23 61-25 86-3 29 25 21 67-8 89-31 24-77 22-102-6-23-27-6-58 24-80Z'/%3E%3Cpath d='M202 151c16-13 41-12 56 1 17 15 10 37-7 49-20 13-48 10-61-8-12-17-3-32 12-42Z'/%3E%3Cpath d='M218 174c9-5 21-3 27 4 6 8 1 19-9 23-12 5-27 0-30-10-3-8 4-14 12-17Z'/%3E%3Cpath d='M172 244c-44 28-77 67-98 116M246 241c22 32 59 62 104 88M126 304c-28-5-54-21-78-49 39-3 69 7 91 29M298 291c24-20 54-29 91-24-18 29-43 45-75 48M105 339c30-9 55-5 75 13-28 16-56 16-83 1M322 330c29-3 52 5 70 26-31 10-58 6-81-12'/%3E%3C/g%3E%3C/svg%3E");
+}
+.rose-section::before {
+  left: -8rem;
+  top: 3rem;
+}
+.rose-section::after {
+  right: -7rem;
+  bottom: 2rem;
+  transform: rotate(180deg);
+}
+.rose-section-dark {
+  background:
+    radial-gradient(circle at 50% -20%, rgba(224, 192, 200, 0.12), transparent 35rem),
+    linear-gradient(180deg, #1b121a 0%, #2a1620 100%);
+}
+.rose-section-dark::before,
+.rose-section-dark::after {
+  opacity: 0.16;
+  filter: brightness(1.4) saturate(0.8);
+}
+.luxe-card {
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 50px rgba(23, 18, 25, 0.08), inset 0 1px 0 rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+}
+.luxe-card-dark {
+  border: 1px solid rgba(224, 192, 200, 0.16);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+.ornate-rule {
+  margin: 1.25rem auto 0;
+  display: flex;
+  width: min(17rem, 70%);
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #c9a84c;
+}
+.ornate-rule::before,
+.ornate-rule::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.75), transparent);
+}
+.ornate-rule span {
+  width: 0.42rem;
+  height: 0.42rem;
+  transform: rotate(45deg);
+  border: 1px solid currentColor;
+  background: currentColor;
+}
+
 .scroll-progress {
   position: fixed;
   top: 0;
