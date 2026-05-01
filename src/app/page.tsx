@@ -805,19 +805,19 @@ export default function Home() {
           </div>
 
           {/* Ornament + CTA */}
-          <div className="mt-14 flex flex-col items-center gap-5">
+          <div className="mt-14 flex flex-col items-center gap-4 md:pl-16">
             {/* Lines + logo circle + lines */}
-            <div className="flex w-full max-w-md items-center gap-2">
+            <div className="flex w-full max-w-sm items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/50" />
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
-              <div className="mx-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
-                <Image src="/logo.svg" alt="Speaking Roses" width={22} height={22} className="h-[1.35rem] w-auto object-contain opacity-80" />
+              <div className="mx-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+                <Image src="/logo.svg" alt="Speaking Roses" width={20} height={20} className="h-5 w-auto object-contain opacity-80" />
               </div>
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/50" />
             </div>
 
-            <a href="#apply" className="inline-flex w-full max-w-[40rem] items-center justify-center rounded-2xl bg-gradient-to-b from-[#d4b860] via-[#c9a84c] to-[#9e7a18] px-10 py-6 font-display text-xl font-semibold text-[#1a1208] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+            <a href="#apply" className="inline-flex w-full max-w-[30rem] items-center justify-center rounded-2xl bg-gradient-to-b from-[#d4b860] via-[#c9a84c] to-[#9e7a18] px-8 py-4 font-display text-lg font-semibold text-[#1a1208] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
               Apply to Check Market Availability
             </a>
 
