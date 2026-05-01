@@ -322,7 +322,7 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section id="hero" className="relative min-h-screen overflow-hidden">
+      <section id="hero" className="relative isolate min-h-screen overflow-hidden lg:min-h-[760px]">
         <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-center" priority quality={100} sizes="100vw" />
         {/* layered overlays for depth */}
         <div className="absolute inset-0 bg-black/25" />
@@ -330,7 +330,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/40 to-transparent" />
 
         {/* DESKTOP: headline left, form right */}
-        <div className="absolute inset-0 hidden lg:flex items-center justify-between px-8 pt-20">
+        <div className="relative z-10 mx-auto hidden min-h-screen max-w-[1500px] items-center justify-between px-8 pb-14 pt-28 lg:flex lg:min-h-[760px] xl:min-h-screen">
 
           {/* Left: headline card */}
           <div className="w-[420px] max-w-[38%]">
@@ -347,8 +347,8 @@ export default function Home() {
                 <div className="mt-5 flex items-start gap-3 border-t border-white/10 pt-4">
                   <RoseIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                   <div>
-                    <p className="text-sm font-semibold text-white">100% Real Roses, Preserved to Last a Lifetime</p>
-                    <p className="mt-1 text-xs leading-5 text-white/65">Distributor, licensee, and strategic partner opportunities are now being reviewed in select markets.</p>
+                    <p className="text-sm font-semibold text-white">100% Real Roses, Preserved for a Lifetime</p>
+                    <p className="mt-1 text-xs leading-5 text-white/65">Distributor, licensee &amp; strategic partner spots now open. <span className="font-semibold text-gold">Limited availability.</span></p>
                   </div>
                 </div>
               </div>
@@ -376,7 +376,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="mt-2.5 rounded-xl border border-blush/20 bg-plum/85 px-4 py-2.5 backdrop-blur-md">
+              <div className="mt-4 rounded-xl border border-blush/20 bg-plum/85 px-4 py-2.5 backdrop-blur-md">
                 <p className="text-xs font-bold uppercase tracking-widest text-blush">Limited partner openings available</p>
                 <p className="mt-0.5 text-xs text-white/65"><span className="text-blush">Apply today</span> — spots in your market may already be claimed.</p>
               </div>
@@ -385,7 +385,7 @@ export default function Home() {
         </div>
 
         {/* MOBILE: stacked layout */}
-        <div className="lg:hidden absolute inset-0 flex flex-col justify-between px-4 pb-6 pt-24">
+        <div className="relative z-10 flex min-h-screen flex-col justify-between px-4 pb-8 pt-24 lg:hidden">
           <Reveal>
             <div className="rounded-2xl border border-white/15 bg-black/55 px-5 py-4 shadow-2xl backdrop-blur-md">
               <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-blush">Bring Personalized Roses to Your Market</p>
