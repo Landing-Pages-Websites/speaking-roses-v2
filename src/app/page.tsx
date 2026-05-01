@@ -766,48 +766,61 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="process" className="rose-section py-24">
-        <Image src="/bg-process-products-ai.png" alt="" fill className="object-cover object-center opacity-65" sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-b from-petal/88 via-petal/78 to-petal/60" />
+      <section id="process" className="rose-section py-20">
+        <Image src="/bg-how-it-works.png" alt="" fill className="object-cover object-center" quality={100} priority sizes="100vw" />
+        <div className="absolute inset-0 bg-white/5" />
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="text-center">
             {/* Ornamental crown row */}
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <span className="select-none text-sm tracking-[0.5em] text-gold/50">···</span>
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/35 bg-white/80 shadow-sm">
-                <RoseIcon className="h-4 w-4 text-gold" />
+            <div className="mb-4 flex items-center justify-center gap-4">
+              <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+                <RoseIcon className="h-5 w-5 text-gold" />
               </div>
-              <span className="select-none text-sm tracking-[0.5em] text-gold/50">···</span>
+              <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
             </div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">How It Works</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">Apply, Review, and<br />Launch Your Market.</h2>
+            <p className="mb-4 text-[0.6875rem] font-bold uppercase tracking-[0.45em] text-gold">How It Works</p>
+            <h2 className="font-display text-5xl font-bold leading-tight text-plum md:text-7xl">Apply, Review, and<br />Launch Your Market.</h2>
             <OrnateRule />
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-ink/70">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-ink/65">
               Our process is designed to keep things selective, simple, and strategic. We review each application individually and guide qualified partners toward the right path for their market.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { num: "1", title: "Apply", body: "Submit your information, market, and timeline so our team can review your interest.", icon: "clipboard" },
               { num: "2", title: "Review", body: "We evaluate fit, readiness, and market availability to determine the best partner path.", icon: "review" },
               { num: "3", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps.", icon: "calendar" },
               { num: "4", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals.", icon: "rocket" },
             ].map(({ num, title, body, icon }) => (
-              <Reveal key={num} className="luxe-card rounded-2xl p-8 text-center">
-                <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-gold/40 bg-white text-gold shadow-md">
-                  <LineIcon name={icon} className="h-7 w-7" />
+              <Reveal key={num} className="flex flex-col items-center rounded-3xl bg-white/88 px-5 pb-10 pt-8 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)]">
+                <div className="mb-6 flex h-32 w-32 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-[#f5ede6] text-gold shadow-inner">
+                  <LineIcon name={icon} className="h-12 w-12" />
                 </div>
                 <h3 className="font-display text-2xl text-plum">{num}. {title}</h3>
                 <div className="ornate-rule my-3"><span /></div>
-                <p className="mt-3 text-sm leading-7 text-ink/65">{body}</p>
+                <p className="text-sm leading-7 text-ink/60">{body}</p>
               </Reveal>
             ))}
           </div>
-          <div className="mt-12 flex flex-col items-center gap-3">
-            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-[#d4a84b] to-[#b08828] px-10 py-5 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl">
+
+          {/* Second ornament + CTA */}
+          <div className="mt-14 flex flex-col items-center gap-5">
+            {/* Ornamental rule: lines + sparkle circle + lines */}
+            <div className="flex w-full max-w-sm items-center gap-3">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/55" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+                <svg className="h-3.5 w-3.5 text-gold" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2c0 0 .7 6.3 1.8 9.2C14.9 14.1 22 12 22 12s-6.3.7-9.2 1.8C9.9 14.9 12 22 12 22s-.7-6.3-1.8-9.2C9.1 9.9 2 12 2 12s6.3-.7 9.2-1.8C14.1 9.1 12 2 12 2z" />
+                </svg>
+              </div>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/55" />
+            </div>
+            <a href="#apply" className="inline-flex w-full max-w-[36rem] items-center justify-center rounded-2xl bg-gradient-to-b from-[#c9a84c] via-[#b8952e] to-[#9a7818] px-10 py-5 text-lg font-bold text-[#1a1208] shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
               Apply to Check Market Availability
             </a>
-            <p className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-rose/80">
+            <p className="flex items-center gap-2 text-sm font-semibold text-ink/50">
               <svg className="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
