@@ -610,45 +610,47 @@ export default function Home() {
       </section>
 
       {/* ── OUR ROSE PROCESS ── */}
-      <section id="story" className="bg-petal py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2">
+      <section id="story" className="scroll-mt-24 bg-petal py-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">Our Rose Process</p>
-            <h2 className="font-display text-4xl text-plum md:text-5xl">Raised in South America.<br /><span className="text-rose">Perfected Like a Diamond.</span></h2>
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-rose">Our Rose Process</p>
+            <h2 className="font-display text-4xl text-plum md:text-[2.75rem] md:leading-tight">Raised in South America.<br /><span className="text-rose">Perfected Like a Diamond.</span></h2>
             <p className="mt-2 text-base font-medium text-ink/55">From the mountains to meticulous preservation, printing, and luxury packaging.</p>
-            <p className="mt-6 text-base leading-8 text-ink/70">
+            <p className="mt-5 text-base leading-7 text-ink/70">
               Our roses are raised in the majestic mountains of South America. Once fully mature, they are cut and guided through a two-week-plus diamond-grade preservation process. Each rose is individually perfected to look, feel, and smell real while lasting for years.
             </p>
-            <p className="mt-4 text-base leading-8 text-ink/70">
+            <p className="mt-3 text-base leading-7 text-ink/70">
               Every rose is treated like a diamond. We check on each one daily, carefully protecting its beauty and quality through every stage of the process.
             </p>
-            <p className="mt-4 text-base leading-8 text-ink/70">
+            <p className="mt-3 text-base leading-7 text-ink/70">
               Once the roses arrive in the United States, they are meticulously printed, packaged, and prepared by our team using a precise, hands-on process. From there, each finished product is placed in luxurious packaging and delivered to distributors across the United States.
             </p>
-            <p className="mt-5 text-base font-semibold text-rose">
+            <p className="mt-4 text-base font-semibold text-rose">
               We are not beginners bringing a random product to market. We are a proven brand built on process, quality, and presentation.
             </p>
 
             {/* Process points */}
-            <div className="mt-8 grid grid-cols-2 gap-3">
+            <div className="mt-6 grid grid-cols-2 gap-3">
               {processPoints.map((p) => (
-                <div key={p.label} className="flex items-center gap-3 rounded-xl border border-blush/50 bg-white px-4 py-3 shadow-sm">
+                <div key={p.label} className="flex items-center gap-3 rounded-xl border border-blush/50 bg-white px-4 py-2.5 shadow-sm">
                   <div className="h-2 w-2 shrink-0 rounded-full bg-rose" />
                   <span className="text-sm font-semibold text-plum">{p.label}</span>
                 </div>
               ))}
             </div>
-            <CTA />
+            <div className="[&>div]:mt-6">
+              <CTA />
+            </div>
           </Reveal>
 
           {/* Process video */}
           <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-blush/20">
-            <div className="bg-plum px-5 py-4">
+            <div className="bg-plum px-5 py-3">
               <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">Watch the Process</p>
               <h3 className="mt-1 font-display text-xl text-white">See How Our Roses Are Grown, Preserved &amp; Prepared</h3>
               <p className="mt-1 text-sm text-white/55">A behind-the-scenes look at sourcing, preservation, printing, and packaging.</p>
             </div>
-            <video src={PRODUCT_VIDEO_URL} controls playsInline className="h-auto w-full" poster="/rose-1.webp">
+            <video src={PRODUCT_VIDEO_URL} controls playsInline className="aspect-video max-h-[56vh] w-full bg-plum object-contain" poster="/rose-1.webp">
               Your browser does not support the video tag.
             </video>
           </Reveal>
