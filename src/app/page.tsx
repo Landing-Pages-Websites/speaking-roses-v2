@@ -10,9 +10,15 @@ const SITE_KEY = "sk_mo06cibl_0o7i2f0t7lxf";
 const GTM_ID = "GTM-TTDNNJDM";
 const SITE_ID = "8c4333c3-cd49-480a-8934-3914aec3901b";
 
-// Videos from the Speaking Roses reference page
 const BRAND_VIDEO_URL = "https://storage.googleapis.com/msgsndr/ioeX0AohKO7FTyLYF9kf/media/69025f3b074008a75d3aa1de.mp4";
 const PRODUCT_VIDEO_URL = "https://storage.googleapis.com/msgsndr/WbJSzu9tJKeleGsNQ6dR/media/68252c05a1908e31dfd47a74.mp4";
+
+const productFeatures = [
+  { title: "100% Real Preserved Roses", body: "Real roses, preserved to last for years." },
+  { title: "Printed on the Petal", body: "Names, logos, photos, and messages printed directly on real roses." },
+  { title: "Luxury Packaging", body: "Acrylic boxes and signature round boxes designed to be kept and displayed." },
+  { title: "Built for Many Markets", body: "Perfect for corporate, funeral, retail, wedding, fundraising, and e-commerce channels." },
+];
 
 const proofPoints = [
   ["$334B+", "The global personalization market — and it's still growing. Speaking Roses is positioned at its center."],
@@ -37,27 +43,37 @@ const testimonials = [
 const paths = [
   {
     title: "Distributor",
-    body: "Dive into the world of distribution without the production hustle. Earn the right to represent Speaking Roses in your market and bring this unique product to customers, companies, gift shops, weddings, fundraising campaigns, and local or national accounts. This is your opportunity to build a meaningful distribution business around a product that creates emotion, personalization, and unforgettable experiences.",
+    sub: "Starting opportunities from $1,500",
+    body: "Represent Speaking Roses products in your market without handling production. Ideal for entrepreneurs, gift sellers, funeral industry contacts, corporate gift reps, and local market builders.",
   },
   {
     title: "Licensee",
-    body: "Access our patented technology, equipment, training, and support to produce and sell personalized flowers locally. Secure exclusive rights to your territory — city, region, or even country-level.",
+    sub: "For qualified partners only",
+    body: "For qualified partners who want access to training, systems, equipment, and the ability to produce personalized roses in an approved market.",
   },
   {
-    title: "Exclusive Partnerships",
-    body: "For qualified partners, Speaking Roses offers the ability to explore exclusive partnership opportunities by zip code, city, state, country, industry, or market channel. As we expand worldwide, we are looking for serious strategic partners who can help bring Speaking Roses products into new regions, industries, and national accounts. These opportunities are selective and based on market fit, capacity, and the ability to represent the product at a high level.",
+    title: "Strategic Partnership",
+    sub: "Regional, industry, or national opportunities",
+    body: "For qualified partners, Speaking Roses offers exclusive partnership opportunities by zip code, city, state, country, industry, or market channel. Selective — based on market fit, capacity, and the ability to represent the product at a high level.",
   },
 ];
 
 const markets = [
-  "Weddings and events",
-  "Gift shops and retail",
-  "Funeral homes",
-  "Corporate gifts",
-  "Fundraising groups",
-  "Souvenir shops",
-  "Promotional companies",
-  "E-commerce and social selling",
+  { title: "Weddings & Events", body: "Personalized roses for proposals, centerpieces, thank-you gifts, and memorable keepsakes." },
+  { title: "Funeral Homes", body: "Offer families a unique way to honor and remember loved ones with personalized roses." },
+  { title: "Corporate Gifts", body: "Strengthen relationships with branded roses for clients, employees, and special recognition." },
+  { title: "Retail & Gift Shops", body: "A high-margin luxury gift that stands out and drives repeat customer visits." },
+  { title: "Fundraising", body: "A meaningful product that helps organizations raise more with emotional impact." },
+  { title: "Souvenir Shops", body: "Premium keepsakes for tourists looking for something unique and personal to take home." },
+  { title: "Promotional Companies", body: "Add meaningful personalization to campaigns, events, and brand activations." },
+  { title: "E-commerce & Social Selling", body: "Perfect for online sellers and influencers who create emotional, shareable moments." },
+];
+
+const processPoints = [
+  { label: "South American Grown" },
+  { label: "Diamond-Grade Preservation" },
+  { label: "Printed & Packaged in the USA" },
+  { label: "Shipped Worldwide" },
 ];
 
 const faqs = [
@@ -66,20 +82,28 @@ const faqs = [
     a: "We are selective. This is not an open sign-up program. We are looking for serious, committed distributors, licensees, and exclusive partners who are ready to lead their market and represent the brand correctly. Capacity is limited and every applicant is evaluated individually.",
   },
   {
-    q: "What does it mean to 'earn the right to represent'?",
-    a: "When someone joins the program, they are not just buying products. They are gaining access to the right to represent the brand, receive samples, access products, and potentially grow into larger opportunities — including production programs, exclusive territories, specific industries, regions, or even country-level opportunities in the future.",
+    q: "What does it mean to earn the right to represent?",
+    a: "It means you gain the right to immediately sell Speaking Roses products, access approved product lines, and represent the brand in your area. You can market and resell to local businesses such as funeral homes, hotels, restaurants, flower shops, gift stores, and strategic partners, and in some cases pursue larger regional or national opportunities.",
   },
   {
     q: "Do I need to produce the roses myself?",
-    a: "Not for the distributor path. Distributors purchase products at wholesale and resell locally. Licensees can explore production rights, equipment, training, and support to produce locally with exclusive territorial rights.",
+    a: "No. For the Distributor path, you do not need to purchase inventory or produce the roses yourself. You generate the sales, we handle the production, and you earn the commission. Licensees can explore local production rights, equipment, training, and support.",
   },
   {
     q: "What is the minimum investment?",
-    a: "The minimum investment to start as a Distributor is $1,500 in liquid funds or credit. Licensee and Exclusive Partnership programs have higher minimums depending on scope and territory.",
+    a: "The minimum investment to begin as a Distributor is $1,500 in liquid funds or available credit. Licensee and Exclusive Partnership programs require higher minimums depending on the territory and scope.",
+  },
+  {
+    q: "Can I own exclusive rights in an area?",
+    a: "Yes. Depending on the opportunity and availability, partners may qualify for exclusive rights tied to a zip code, local market, region, industry segment, or even a country. Availability is limited and based on strategic fit.",
+  },
+  {
+    q: "Can I upgrade later?",
+    a: "Possibly, if space is still available. Because openings are limited, an upgrade is not guaranteed. If higher-level territories or programs are already filled, you may be locked into the path you entered under.",
   },
   {
     q: "What happens after I apply?",
-    a: "Qualified applicants — those with $1,500+ in liquid funds and a timeline within six months — are redirected to schedule a Zoom call with the Speaking Roses team. All leads are captured and the team may follow up for future market openings.",
+    a: "Qualified applicants may be invited to schedule a Zoom call with the Speaking Roses team. We will review your background, goals, and territory interests, and if a match is confirmed, we will share next steps.",
   },
 ];
 
@@ -177,7 +201,7 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <p className="text-xs leading-5 text-ink/60">By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
           {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
           <button disabled={isSubmitting} className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-plum disabled:opacity-60">
-            {isSubmitting ? "Submitting..." : "Apply to Check Availability"}
+            {isSubmitting ? "Submitting..." : "Apply to Check Market Availability"}
           </button>
         </form>
       )}
@@ -189,9 +213,9 @@ function CTA({ dark = false }: { dark?: boolean }) {
   return (
     <div className="mt-10 flex flex-col items-center gap-2">
       <a href="#apply" className={`rounded-full px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] shadow-xl transition hover:-translate-y-0.5 ${dark ? "bg-white text-plum" : "bg-rose text-white"}`}>
-        Apply to Check Availability
+        Apply to Check Market Availability
       </a>
-      <p className={`text-xs font-semibold tracking-wide ${dark ? "text-white/60" : "text-ink/50"}`}>Limited spots available</p>
+      <p className={`text-xs font-semibold tracking-wide ${dark ? "text-white/60" : "text-ink/50"}`}>Limited partner openings available</p>
     </div>
   );
 }
@@ -280,67 +304,93 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ── HERO ── */}
-      {/* Hero — min-h-screen full viewport, product anchored left so cropping only hits dark right */}
+      {/* ── HERO — Page 1 ── */}
       <section id="hero" className="relative min-h-screen overflow-hidden">
-        <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-left" priority quality={100} sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-black/20 to-black/75" />
-        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/50 to-transparent" />
+        <Image src="/hero-hq.jpg" alt="" fill className="object-cover object-center" priority quality={100} sizes="100vw" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/60 to-transparent" />
 
-        {/* H1 — top-left, above the rose product */}
-        <div className="absolute inset-x-0 top-0 pt-32 md:pt-36">
-          <div className="w-full max-w-7xl mx-auto px-5">
-            <div className="w-full max-w-lg">
-              <Reveal>
-                <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-blush drop-shadow">Selective Distributor Recruitment — Limited Spots</p>
-                <h1 className="font-display leading-[0.95] text-white drop-shadow-lg">
-                  <span className="text-5xl md:text-6xl font-black text-blush">Bring </span>
-                  <span className="text-3xl md:text-5xl">Personalized Roses to Your Market</span>
+        {/* HEADLINE — top-left corner, absolutely positioned so it never touches the center */}
+        <div className="absolute bottom-16 left-5 w-[420px] hidden lg:block">
+          <div className="max-w-sm">
+            <Reveal>
+              <div className="rounded-2xl border border-white/10 bg-black/55 px-6 py-5 shadow-2xl backdrop-blur-md">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-blush">
+                  Bring Personalized Roses to Your Market
+                </p>
+                <h1 className="font-display">
+                  <span className="block text-5xl font-black leading-none text-blush">Real Roses.</span>
+                  <span className="mt-1 block text-5xl font-black leading-none text-white">Real Emotion.</span>
+                  <span className="mt-1 block text-5xl font-black leading-none text-white">Real Opportunity.</span>
                 </h1>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
           </div>
         </div>
 
-        {/* Subheading + form — right side, pushed toward bottom so it clears the man's face */}
-        <div className="absolute inset-0 flex items-end justify-end">
-          <div className="w-full max-w-7xl mx-auto px-5 flex justify-end pb-12">
-            <Reveal className="flex flex-col gap-4 w-full max-w-lg">
+        {/* FORM — bottom-right corner, absolutely positioned so it never touches the center */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-5 w-[420px] hidden lg:block">
+          <div className="max-w-md ml-auto flex flex-col gap-3">
+            <Reveal>
+              <ApplyForm
+                form={form} setField={setField} formatPhone={formatPhone}
+                validatePhone={validatePhone} phoneError={phoneError}
+                setPhoneError={setPhoneError} handleSubmit={handleSubmit}
+                isSubmitting={isSubmitting} error={error} submitted={submitted}
+                isQualified={isQualified} compact
+              />
+            </Reveal>
+            <Reveal>
+              <div className="rounded-xl border border-blush/20 bg-plum/85 px-4 py-2.5 backdrop-blur-md">
+                <p className="text-xs font-bold uppercase tracking-widest text-blush">100% Real Roses, Preserved for a Lifetime</p>
+                <p className="mt-0.5 text-xs text-white/75">Distributor, licensee &amp; strategic partner spots now open. <span className="text-blush/80">Limited availability.</span></p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* MOBILE — full stacked layout */}
+        <div className="lg:hidden absolute inset-0 flex flex-col justify-between p-5 pt-24">
+          <Reveal>
+            <div className="rounded-2xl border border-white/10 bg-black/55 px-5 py-4 shadow-2xl backdrop-blur-md">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.28em] text-blush">Bring Personalized Roses to Your Market</p>
+              <h1 className="font-display">
+                <span className="block text-4xl font-black leading-none text-blush">Real Roses.</span>
+                <span className="mt-1 block text-4xl font-black leading-none text-white">Real Emotion.</span>
+                <span className="mt-1 block text-4xl font-black leading-none text-white">Real Opportunity.</span>
+              </h1>
+            </div>
+          </Reveal>
+          <div className="flex flex-col gap-3">
+            <Reveal>
               <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
             </Reveal>
           </div>
         </div>
 
-        {/* Subheading bottom-left — centered under the rose */}
-        <div className="absolute bottom-0 left-0 pb-12 w-[58%] flex justify-center">
-          <Reveal className="text-center px-4 w-full max-w-xl">
-            <div className="rounded-2xl bg-plum/80 backdrop-blur-sm border border-blush/20 px-6 py-3 shadow-xl flex flex-col sm:flex-row sm:items-center sm:gap-5 sm:text-left">
-              <div className="shrink-0">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-blush mb-1">Selective Recruitment</p>
-                <p className="text-sm leading-5 text-white/90">Speaking Roses is expanding worldwide — accepting serious, qualified partners. Spots are earned.</p>
-              </div>
-              <div className="hidden sm:block w-px self-stretch bg-blush/20" />
-              <p className="text-xs text-blush/80 shrink-0">The world's only preserved rose with a message printed on the petals.</p>
-            </div>
-          </Reveal>
-        </div>
-
       </section>
 
-      {/* ── PRODUCT SECTION — finished product only, no process video ── */}
+      {/* ── PRODUCT — Page 2 ── */}
       <section id="product" className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">The product</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">A rose that becomes a memory.</h2>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">The Product</p>
+            <h2 className="font-display text-4xl text-plum md:text-6xl">A Product That Turns Real Roses Into Keepsakes.</h2>
             <p className="mt-6 text-lg leading-8 text-ink/72">
-              Ordinary flowers fade and get thrown away. A Speaking Rose is different. We print personalized messages, logos, and images directly on real preserved rose petals — creating a gift customers keep on their desk, give to clients, bring to a wedding, and remember for years.
-            </p>
-            <p className="mt-5 text-lg leading-8 text-ink/72">
-              The personalization is what sells it. The moment someone sees their name, logo, or message on a real rose petal, the reaction is immediate. This is a product that sells itself.
+              Represent a patented product that prints names, logos, photos, and messages directly on real preserved roses — creating emotional gifts for corporate, funeral, retail, wedding, fundraising, and e-commerce markets.
             </p>
           </Reveal>
-          {/* Product gallery — finished product photos, no process/growing video here */}
+
+          {/* Proof badges */}
+          <Reveal className="mt-8 flex flex-wrap justify-center gap-4">
+            {["Patented Petal Printing", "20+ Years of Proof", "Featured in 500+ Media Outlets"].map((badge) => (
+              <span key={badge} className="rounded-full border border-rose/30 bg-petal px-5 py-2 text-sm font-bold text-rose">
+                {badge}
+              </span>
+            ))}
+          </Reveal>
+
+          {/* Product gallery */}
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {["/rose-1.webp", "/rose-2.webp", "/rose-3.webp"].map((src, index) => (
               <Reveal key={src} className="overflow-hidden rounded-[2rem] bg-petal p-3 shadow-xl">
@@ -348,15 +398,25 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          {/* Product video — shows the finished product experience */}
-          <Reveal className="mt-10 overflow-hidden rounded-[2rem] bg-petal p-3 shadow-2xl max-w-3xl mx-auto">
-            <video
-              src={PRODUCT_VIDEO_URL}
-              controls
-              playsInline
-              className="h-auto w-full rounded-[1.5rem]"
-              poster="/rose-1.webp"
-            >
+
+          {/* Product feature cards */}
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {productFeatures.map((f) => (
+              <Reveal key={f.title} className="rounded-2xl border border-blush bg-petal p-6 shadow-sm">
+                <Icon>
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2v20M5 9c4 0 7-3 7-7 0 4 3 7 7 7-4 0-7 3-7 7 0-4-3-7-7-7Z" />
+                  </svg>
+                </Icon>
+                <h3 className="font-bold text-plum">{f.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink/72">{f.body}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Product video */}
+          <Reveal className="mt-10 overflow-hidden rounded-2xl bg-petal p-2 shadow-xl max-w-xs mx-auto">
+            <video src={PRODUCT_VIDEO_URL} controls playsInline className="h-auto w-full rounded-[1.5rem]" poster="/rose-1.webp">
               Your browser does not support the video tag.
             </video>
           </Reveal>
@@ -364,42 +424,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HOLLYWOOD APPROVED / PRESS — full powerful logo row ── */}
-      <section id="press" className="bg-plum py-20 text-white">
+      {/* ── MARKET OPPORTUNITY — Page 3 — rose background ── */}
+      <section id="markets" className="relative py-20 overflow-hidden">
+        <Image src="/rose-2.webp" alt="" fill className="object-cover object-center opacity-10" />
+        <div className="absolute inset-0 bg-petal/90" />
+        <div className="relative">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">Hollywood Approved</p>
-            <h2 className="font-display text-4xl text-white md:text-5xl">Featured in 500+ outlets. Grammys. Oscars. The Ellen Show.</h2>
-            <p className="mt-6 text-lg leading-8 text-white/75">
-              Speaking Roses has been on some of the world&apos;s most recognized stages — from top business publications to Hollywood award shows. Featured at the Grammys, the Oscars, The Ellen Show, partnerships with Disney, and validated by Forbes, the Wall Street Journal, Good Morning America, CNN, Inc. Magazine, and 500+ media outlets worldwide.
-            </p>
-            <p className="mt-5 text-lg leading-8 text-white/75">
-              This is not a startup product. This is a brand with two decades of proof, global media recognition, and staying power. That is what you earn the right to represent.
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">The Market Opportunity</p>
+            <h2 className="font-display text-4xl text-plum md:text-6xl">A Global Market Built on Emotion. Endless Opportunities for Our Partners.</h2>
+            <p className="mt-6 text-lg leading-8 text-ink/72">
+              Speaking Roses fits into multiple industries where personalization, emotion, and gifting drive purchasing decisions. One product. Multiple possibilities.
             </p>
           </Reveal>
 
-          {/* Full media logo strip — all SVG, crisp at any size */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {markets.map((m) => (
+              <Reveal key={m.title} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-blush/50">
+                <h3 className="font-bold text-plum">{m.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink/72">{m.body}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Positioning strip */}
+          <Reveal className="mt-10 flex flex-wrap justify-center gap-3">
+            {["High-Emotion Purchase Categories", "Built for Multiple Sales Channels", "Premium Keepsake Positioning"].map((tag) => (
+              <span key={tag} className="rounded-full bg-plum px-5 py-2 text-sm font-bold text-blush">
+                {tag}
+              </span>
+            ))}
+          </Reveal>
+
+          <Reveal className="mt-10 rounded-[2rem] bg-plum p-8 text-center text-white shadow-xl">
+            <p className="font-display text-2xl text-white md:text-3xl">This is more than a product.</p>
+            <p className="mt-2 font-display text-2xl text-blush md:text-3xl">This is a business opportunity with global potential.</p>
+            <div className="mt-8 flex flex-col items-center gap-2">
+              <a href="#apply" className="rounded-full bg-rose px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-white hover:text-plum">
+                Apply to Check Market Availability
+              </a>
+              <p className="text-xs font-semibold tracking-wide text-white/60">Select partner openings available</p>
+            </div>
+          </Reveal>
+        </div>
+        </div>
+      </section>
+
+      {/* ── HOLLYWOOD APPROVED — Page 4 ── */}
+      <section id="press" className="bg-plum py-20 text-white">
+        <div className="mx-auto max-w-7xl px-5">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">As Seen On / Featured In</p>
+            <h2 className="font-display text-4xl text-white md:text-5xl">Hollywood Approved.</h2>
+            <p className="mt-4 font-display text-2xl text-blush">Featured in 500+ outlets. Grammys. Oscars. The Ellen Show.</p>
+            <p className="mt-6 text-lg leading-8 text-white/75">
+              Speaking Roses has been on some of the world&apos;s most recognized stages — from top business publications to Hollywood award shows. Featured at the Grammys, the Oscars, The Ellen Show, partnerships with Disney, and validated by Forbes, the Wall Street Journal, Good Morning America, CNN, Inc. Magazine, and 500+ media outlets worldwide.
+            </p>
+          </Reveal>
+
+          {/* Quote box */}
+          <Reveal className="mx-auto mt-10 max-w-2xl rounded-[2rem] border border-blush/30 bg-white/5 p-8 text-center">
+            <p className="font-display text-2xl text-white">This is not a startup product.</p>
+            <p className="mt-2 font-display text-2xl text-blush">This is a brand with two decades of proof, global media recognition, and staying power.</p>
+          </Reveal>
+
+          {/* Media logo strip */}
           <Reveal className="mt-12 flex flex-wrap items-center justify-center gap-3">
             {[
-              { src: "/logo-forbes.svg",  alt: "Forbes",               dark: false },
-              { src: "/logo-wsj.svg",     alt: "Wall Street Journal",  dark: false },
-              { src: "/logo-oscars.svg",  alt: "Oscars",               dark: false },
-              { src: "/logo-grammys.svg", alt: "Grammys",              dark: false },
-              { src: "/logo-ellen.svg",   alt: "The Ellen Show",       dark: true  },
-              { src: "/logo-fox.svg",     alt: "Fox News",             dark: false },
-              { src: "/logo-cnn.svg",     alt: "CNN",                  dark: false },
-              { src: "/logo-gma.svg",     alt: "Good Morning America", dark: false },
-              { src: "/logo-inc.svg",     alt: "Inc. Magazine",        dark: false },
-              { src: "/logo-e.svg",       alt: "E! Entertainment",     dark: true  },
+              { src: "/logo-forbes.svg",       alt: "Forbes",               bg: "bg-white" },
+              { src: "/logo-wsj.svg",          alt: "Wall Street Journal",  bg: "bg-white" },
+              { src: "/logo-oscars-4x.png",    alt: "Oscars",               bg: "bg-white" },
+              { src: "/logo-grammys.svg",      alt: "Grammys",              bg: "bg-white" },
+              { src: "/logo-ellen-4x.png",     alt: "The Ellen Show",       bg: "bg-black" },
+              { src: "/logo-fox.svg",          alt: "Fox News",             bg: "bg-white" },
+              { src: "/logo-cnn.svg",          alt: "CNN",                  bg: "bg-white" },
+              { src: "/logo-gma.svg",          alt: "Good Morning America", bg: "bg-white" },
+              { src: "/logo-inc.svg",          alt: "Inc. Magazine",        bg: "bg-white" },
+              { src: "/logo-e-entertainment.png", alt: "E! Entertainment",  bg: "bg-white" },
             ].map((logo) => (
-              <div key={logo.alt} className={`flex h-12 items-center justify-center rounded-xl px-5 py-2 shadow-sm ${logo.dark ? "bg-plum" : "bg-white"}`}>
+              <div key={logo.alt} className={`flex h-14 items-center justify-center rounded-xl px-5 py-2 shadow-sm ${logo.bg}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-7 w-auto object-contain"
-                />
+                <img src={logo.src} alt={logo.alt} className="h-8 w-auto max-w-[140px] object-contain" />
               </div>
+            ))}
+          </Reveal>
+
+          {/* Recognition strip */}
+          <Reveal className="mt-10 flex flex-wrap justify-center gap-3">
+            {["National TV", "Business Press", "Entertainment Media", "Lifestyle Coverage", "Global Recognition", "High-Visibility Events"].map((tag) => (
+              <span key={tag} className="rounded-full border border-blush/30 px-4 py-2 text-sm font-semibold text-blush">
+                {tag}
+              </span>
             ))}
           </Reveal>
           <CTA dark />
@@ -425,31 +540,41 @@ export default function Home() {
         <CTA dark />
       </section>
 
-      {/* ── BRAND HISTORY / OUR STORY — Andes video lives here ── */}
+      {/* ── OUR ROSE PROCESS — Page 5 ── */}
       <section id="story" className="bg-petal py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2">
           <Reveal>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">Our story</p>
-            <h2 className="font-display text-4xl text-plum md:text-5xl">Born in the Majestic Andes. Perfected over 20 years.</h2>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">Our Rose Process</p>
+            <h2 className="font-display text-4xl text-plum md:text-5xl">Raised in South America. Perfected Like a Diamond.</h2>
+            <p className="mt-2 text-lg font-semibold text-ink/60">From the mountains to meticulous preservation, printing, and luxury packaging.</p>
             <p className="mt-6 text-lg leading-8 text-ink/72">
-              Our roses are raised in the majestic mountains of South America. Once fully mature, they are cut and guided through a two-plus-week, diamond-grade preservation process — individually perfected to look, feel, and smell real, while lasting for years.
+              Our roses are raised in the majestic mountains of South America. Once fully mature, they are cut and guided through a two-week-plus diamond-grade preservation process. Each rose is individually perfected to look, feel, and smell real while lasting for years.
             </p>
             <p className="mt-5 text-lg leading-8 text-ink/72">
-              The technology to print directly on petals took over 20 years to develop and is protected by patents. This is not a commodity. When a customer holds a Speaking Rose with their logo, their name, or their message on the petal — the reaction is immediate. Emotion. Surprise. Delight. That feeling is what you are selling.
+              Every rose is treated like a diamond. We check on each one daily, carefully protecting its beauty and quality through every stage of the process.
             </p>
-            <p className="mt-5 text-lg leading-8 text-ink/72 font-semibold text-plum">
-              We are not beginners bringing a random product to market. That product — and that credibility — is what you earn the right to represent.
+            <p className="mt-5 text-lg leading-8 text-ink/72">
+              Once the roses arrive in the United States, they are meticulously printed, packaged, and prepared by our team using a precise, hands-on process. From there, each finished product is placed in luxurious packaging and delivered to distributors across the United States.
             </p>
+            <p className="mt-5 text-lg font-semibold text-plum">
+              We are not beginners bringing a random product to market. We are a proven brand built on process, quality, and presentation.
+            </p>
+
+            {/* Process points */}
+            <div className="mt-8 grid grid-cols-2 gap-3">
+              {processPoints.map((p) => (
+                <div key={p.label} className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm ring-1 ring-blush/50">
+                  <div className="h-2 w-2 shrink-0 rounded-full bg-rose" />
+                  <span className="text-sm font-bold text-plum">{p.label}</span>
+                </div>
+              ))}
+            </div>
             <CTA />
           </Reveal>
-          {/* Andes/origin/brand story video — correct placement: story section, not product */}
+
+          {/* Brand/process video */}
           <Reveal className="overflow-hidden rounded-[2rem] bg-white/80 p-3 shadow-2xl ring-1 ring-blush/30">
-            <video
-              src={BRAND_VIDEO_URL}
-              controls
-              playsInline
-              className="h-auto w-full rounded-[1.5rem]"
-            >
+            <video src={BRAND_VIDEO_URL} controls playsInline className="h-auto w-full rounded-[1.5rem]">
               Your browser does not support the video tag.
             </video>
             <p className="mt-3 px-2 pb-1 text-center text-sm text-ink/50">The journey: from the Andes to the Oscars.</p>
@@ -457,14 +582,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PARTNERSHIP OPPORTUNITY ── */}
+      {/* ── PARTNER PATHS — Page 6 ── */}
       <section id="opportunity" className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">Partnership Opportunity</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">This is selective. Capacity is limited.</h2>
+            <h2 className="font-display text-4xl text-plum md:text-6xl">Choose the Partner Path That Fits Your Market</h2>
             <p className="mt-6 text-lg leading-8 text-ink/72">
-              Speaking Roses is not open wholesale. This is a brand representation opportunity — not just a product purchasing program. When you join, you are not just buying products. You are gaining the right to represent the brand, receive samples, access products, and potentially grow into larger opportunities — including production programs, exclusive territories, specific industries, regions, or even country-level opportunities in the future.
+              Speaking Roses offers different entry points depending on your goals, market, experience, and ability to grow. Start as a distributor, explore licensed production, or discuss a strategic partnership.
             </p>
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -476,31 +600,16 @@ export default function Home() {
                   </svg>
                 </Icon>
                 <h3 className="font-display text-3xl text-plum">{path.title}</h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-widest text-rose">{path.sub}</p>
                 <p className="mt-4 leading-7 text-ink/72">{path.body}</p>
               </Reveal>
             ))}
           </div>
-          <CTA />
-        </div>
-      </section>
 
-      {/* ── WHERE PARTNERS SELL ── */}
-      <section id="markets" className="bg-petal py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[.9fr_1.1fr]">
-          <Reveal>
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">Where partners sell</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">Built for high-emotion, high-intent occasions.</h2>
-            <p className="mt-6 text-lg leading-8 text-ink/72">
-              A Speaking Rose sells itself the moment someone sees it. The personalization angle opens doors in virtually every relationship-driven sales channel — from wedding planners and funeral homes to corporate gift buyers, retail brands, and fundraising organizations.
-            </p>
+          <Reveal className="mt-10 rounded-[2rem] bg-petal border border-blush p-8 text-center shadow-sm">
+            <p className="text-lg font-semibold text-plum">Not sure which path fits you?</p>
+            <p className="mt-1 text-ink/72">Apply and we&apos;ll review your market.</p>
             <CTA />
-          </Reveal>
-          <Reveal className="grid content-center gap-3 sm:grid-cols-2">
-            {markets.map((market) => (
-              <div key={market} className="flex min-h-14 items-center justify-center rounded-2xl bg-white px-4 py-3 text-center text-sm font-bold leading-snug text-plum shadow-sm ring-1 ring-blush/70">
-                {market}
-              </div>
-            ))}
           </Reveal>
         </div>
       </section>
@@ -530,22 +639,26 @@ export default function Home() {
         <CTA dark />
       </section>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* ── HOW IT WORKS — Page 7 (4 steps) ── */}
       <section id="process" className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">How it works</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">Apply, qualify, and schedule a partnership call.</h2>
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">How It Works</p>
+            <h2 className="font-display text-4xl text-plum md:text-6xl">Apply, Review, and Launch Your Market.</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-ink/72">
+              Our process is designed to keep things selective, simple, and strategic. We review each application individually and guide qualified partners toward the right path for their market.
+            </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["01", "Apply to Check Availability", "Tell us about your market, your available funds, and your timeline. Every application is reviewed individually — we are not an open sign-up."],
-              ["02", "Qualification review", "Qualified partners have at least $1,500 in liquid funds or credit and a start timeline within six months. We evaluate every applicant and select serious partners only."],
-              ["03", "Book a Zoom call", "Qualified applicants are redirected to schedule a call with the Speaking Roses team to explore the opportunity, your market, and next steps."],
+              ["1", "Apply", "Submit your information, market, and timeline so our team can review your interest."],
+              ["2", "Review", "We evaluate fit, readiness, and market availability to determine the best partner path."],
+              ["3", "Strategy Call", "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps."],
+              ["4", "Launch", "Move forward with the distributor, licensee, or strategic partner option that fits your goals."],
             ].map(([num, title, body]) => (
               <Reveal key={num} className="rounded-[2rem] bg-plum p-8 text-white shadow-xl">
                 <div className="font-display text-5xl text-blush">{num}</div>
-                <h3 className="mt-8 text-2xl font-bold text-white">{title}</h3>
+                <h3 className="mt-6 text-xl font-bold text-white">{title}</h3>
                 <p className="mt-4 leading-7 text-white/75">{body}</p>
               </Reveal>
             ))}
@@ -554,14 +667,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* ── FAQ — Page 9 ── */}
       <section id="faq" className="bg-petal py-20">
-        <div className="mx-auto max-w-5xl px-5">
-          <Reveal className="text-center">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-rose">Questions</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">Before you apply</h2>
+        <div className="mx-auto max-w-7xl gap-12 px-5 lg:grid lg:grid-cols-[1fr_2fr]">
+          <Reveal className="mb-10 lg:mb-0">
+            <p className="mb-2 text-sm font-bold uppercase tracking-[0.28em] text-rose">Questions</p>
+            <h2 className="font-display text-4xl text-plum md:text-5xl">Before You Apply</h2>
+            <p className="mt-4 text-lg leading-8 text-ink/72">Answers to the questions serious partners ask most.</p>
+            <p className="mt-4 leading-7 text-ink/72">
+              Speaking Roses is selective. This is not an open sign-up program. We are looking for committed distributors, licensees, and exclusive partners who want to represent the brand correctly and grow their market.
+            </p>
+            <p className="mt-5 font-semibold text-plum">What matters most</p>
+            <p className="mt-1 text-ink/72">Commitment, market fit, available funds, and the ability to represent the brand the right way.</p>
+            <CTA />
           </Reveal>
-          <div className="mt-12 space-y-4">
+          <div className="space-y-4">
             {faqs.map((faq) => (
               <Reveal key={faq.q} className="rounded-3xl border border-blush bg-white p-7 shadow-sm">
                 <h3 className="text-xl font-bold text-plum">{faq.q}</h3>
@@ -569,20 +689,29 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <CTA />
         </div>
       </section>
 
-      {/* ── APPLY CTA ── */}
+      {/* ── APPLY CTA — Page 8 ── */}
       <section id="apply" className="bg-plum py-20 text-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[.9fr_1.1fr]">
           <Reveal>
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em] text-blush">Apply to Check Availability</p>
             <h2 className="font-display text-4xl text-white md:text-6xl">See if your market is open.</h2>
+
+            {/* Trust points */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              {["Shipped Worldwide", "Premium Quality", "Trusted Worldwide"].map((tp) => (
+                <span key={tp} className="rounded-full border border-blush/40 px-4 py-1.5 text-sm font-semibold text-blush">
+                  {tp}
+                </span>
+              ))}
+            </div>
+
             <p className="mt-6 text-lg leading-8 text-white/75">
-              Spots are limited. We evaluate every applicant individually. Partners with $1,500+ in liquid funds and a timeline within six months are redirected to book a call with the team. All leads are captured — the team may follow up for future openings.
+              Spots are limited. We evaluate every applicant individually. Partners with $1,500+ in liquid funds or available credit may be invited to book a call with the team.
             </p>
-            <p className="mt-4 text-sm font-semibold text-blush/80 uppercase tracking-wide">Limited spots available</p>
+            <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-blush/80">Limited spots available — High demand. Limited access.</p>
           </Reveal>
           <Reveal>
             <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} />
@@ -594,7 +723,7 @@ export default function Home() {
 
       {showFloat && (
         <a href="#apply" className="fixed bottom-5 right-5 z-50 rounded-full bg-rose px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white shadow-2xl transition hover:-translate-y-1 md:bottom-7 md:right-7">
-          Apply to Check Availability
+          Apply to Check Market Availability
         </a>
       )}
     </main>
