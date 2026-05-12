@@ -224,20 +224,26 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <input name="email" required type="email" placeholder="Email Address" value={form.email} onChange={(e) => setField("email", e.target.value)} className="field" />
           <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone Number" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
           {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
-          <select name="liquidFunds" required aria-label="Liquid funds available" value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
-            <option value="">To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</option>
-            <option value="under-1500">&lt;$1,500</option>
-            <option value="1500-5000">$1,500–$5,000</option>
-            <option value="5000-10000">$5,000–$10,000</option>
-            <option value="10000-plus">$10,000+</option>
-          </select>
-          <select name="timeline" required aria-label="Timeline to start" value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
-            <option value="">How soon would you like to start?</option>
-            <option value="immediately">Immediately</option>
-            <option value="1-3-months">Over the next 1–3 months</option>
-            <option value="3-6-months">3–6 months</option>
-            <option value="6-plus-months">6+ months</option>
-          </select>
+          <div className="grid gap-1">
+            <label htmlFor="liquidFunds" className="text-xs font-medium text-ink/70">To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</label>
+            <select id="liquidFunds" name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
+              <option value="">Select available funds…</option>
+              <option value="under-1500">&lt;$1,500</option>
+              <option value="1500-5000">$1,500–$5,000</option>
+              <option value="5000-10000">$5,000–$10,000</option>
+              <option value="10000-plus">$10,000+</option>
+            </select>
+          </div>
+          <div className="grid gap-1">
+            <label htmlFor="timeline" className="text-xs font-medium text-ink/70">How soon would you like to start?</label>
+            <select id="timeline" name="timeline" required value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
+              <option value="">Select a timeline…</option>
+              <option value="immediately">Immediately</option>
+              <option value="1-3-months">Over the next 1–3 months</option>
+              <option value="3-6-months">3–6 months</option>
+              <option value="6-plus-months">6+ months</option>
+            </select>
+          </div>
           <p className={`${compact ? "text-[0.6875rem] leading-4" : "text-xs leading-5"} text-ink/50`}>By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
           {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
           <button type="submit" disabled={isSubmitting} className={`w-full rounded-full bg-rose px-7 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-plum disabled:opacity-60 ${compact ? "py-3" : "py-4"}`}>
