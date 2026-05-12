@@ -225,14 +225,14 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone Number" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
           {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
           <select name="liquidFunds" required aria-label="Liquid funds available" value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
-            <option value="">When would you like to start?</option>
+            <option value="">To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</option>
             <option value="under-1500">&lt;$1,500</option>
             <option value="1500-5000">$1,500–$5,000</option>
             <option value="5000-10000">$5,000–$10,000</option>
             <option value="10000-plus">$10,000+</option>
           </select>
           <select name="timeline" required aria-label="Timeline to start" value={form.timeline} onChange={(e) => setField("timeline", e.target.value)} className="field">
-            <option value="">Select timeline</option>
+            <option value="">How soon would you like to start?</option>
             <option value="immediately">Immediately</option>
             <option value="1-3-months">Over the next 1–3 months</option>
             <option value="3-6-months">3–6 months</option>
