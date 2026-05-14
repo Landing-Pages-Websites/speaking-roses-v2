@@ -225,7 +225,7 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           <input name="phone" required type="tel" inputMode="numeric" placeholder="Phone Number" value={form.phone} onChange={(e) => { const next = formatPhone(e.target.value); setField("phone", next); setPhoneError(validatePhone(next)); }} className="field" />
           {phoneError && <p className="text-sm font-semibold text-red-700">{phoneError}</p>}
           <div className="grid gap-1">
-            <label htmlFor="liquidFunds" className="text-xs font-medium text-ink/70">To start as a Distributor you need $1,000+ in liquid funds or credit. Which best fits you?</label>
+            <label htmlFor="liquidFunds" className="text-xs font-medium text-ink/70">How much liquid capital do you currently have available to invest?</label>
             <select id="liquidFunds" name="liquidFunds" required value={form.liquidFunds} onChange={(e) => setField("liquidFunds", e.target.value)} className="field">
               <option value="">Select available funds…</option>
               <option value="under-1500">&lt;$1,500</option>
@@ -354,7 +354,7 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="hero" className="relative isolate min-h-screen overflow-hidden lg:min-h-[700px]">
-        <Image src="/hero-wedding-acrylic-roses-ai.png" alt="" fill className="object-cover object-center" priority quality={100} sizes="100vw" />
+        <Image src="/hero-rene-couple.jpg" alt="" fill className="object-cover object-center" priority quality={90} sizes="100vw" />
         {/* layered overlays for depth */}
         <div className="absolute inset-0 bg-black/5" />
         <div className="absolute inset-y-0 left-0 w-[42%] bg-gradient-to-r from-black/62 via-black/22 to-transparent" />
@@ -531,26 +531,21 @@ export default function Home() {
             </div>
 
             {/* Video card */}
-            <Reveal className="flex flex-col">
-              <div className="relative overflow-hidden rounded-2xl bg-plum shadow-2xl flex-1">
-                <div className="absolute inset-0 bg-gradient-to-b from-plum/40 to-plum/10 z-10 pointer-events-none" />
+            <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20 self-start">
+              <div className="bg-plum px-5 py-3">
+                <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">See the Possibilities</p>
+                <h3 className="mt-1 font-display text-xl text-white">Watch the Market Opportunity Video</h3>
+                <p className="mt-1 text-sm text-white/55">Discover how Speaking Roses creates meaningful impact across industries and around the world.</p>
+              </div>
                 <video
                   src={BRAND_VIDEO_URL}
                   controls
                   playsInline
-                  className="h-full w-full object-cover"
+                className="aspect-video w-full bg-plum object-contain"
                   poster="/rose-product.webp"
                 >
                   Your browser does not support the video tag.
                 </video>
-                <div className="absolute top-0 inset-x-0 z-20 p-5 pointer-events-none">
-                  <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">See the Possibilities</p>
-                  <h3 className="mt-1 font-display text-xl font-semibold text-white leading-tight">Watch the Market Opportunity Video</h3>
-                  <div className="gold-rule mt-2 justify-start">
-                    <span className="text-[0.6875rem] font-semibold text-white/60 ml-0">Discover how Speaking Roses creates meaningful impact across industries and around the world.</span>
-                  </div>
-                </div>
-              </div>
             </Reveal>
           </div>
 
@@ -590,10 +585,11 @@ export default function Home() {
           </Reveal>
 
           {/* Quote box */}
-          <Reveal className="luxe-card-dark mx-auto mt-10 max-w-2xl rounded-2xl p-8 text-center">
-            <p className="text-3xl text-gold/60">&ldquo;</p>
+          <Reveal className="luxe-card-dark relative mx-auto mt-10 max-w-2xl rounded-2xl px-10 py-10 text-center">
+            <span aria-hidden="true" className="pointer-events-none absolute left-4 top-2 font-display text-6xl leading-none text-gold/40 select-none">&ldquo;</span>
             <p className="font-display text-xl text-white">This is not a startup product.</p>
             <p className="mt-2 font-display text-xl text-blush">This is a brand with two decades of proof, global media recognition, and staying power.</p>
+            <span aria-hidden="true" className="pointer-events-none absolute bottom-2 right-4 font-display text-6xl leading-none text-gold/40 select-none">&rdquo;</span>
           </Reveal>
 
           {/* Media logo strip */}
