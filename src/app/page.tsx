@@ -13,6 +13,16 @@ const SITE_ID = "8c4333c3-cd49-480a-8934-3914aec3901b";
 const BRAND_VIDEO_URL = "https://storage.googleapis.com/msgsndr/ioeX0AohKO7FTyLYF9kf/media/69025f3b074008a75d3aa1de.mp4";
 const PRODUCT_VIDEO_URL = "https://storage.googleapis.com/msgsndr/WbJSzu9tJKeleGsNQ6dR/media/68252c05a1908e31dfd47a74.mp4";
 
+const productCarouselImages: { src: string; alt: string; caption: string }[] = [
+  { src: "/rose-1.webp",                    alt: "Personalized preserved Speaking Rose with custom photo printed on petals",      caption: "Personalized photos printed on real preserved petals" },
+  { src: "/rose-2.webp",                    alt: "Custom-printed Speaking Rose with logo on petal",                                caption: "Logos and branding printed directly on real roses" },
+  { src: "/rose-3.webp",                    alt: "Speaking Rose with handwritten message printed on petal",                        caption: "Names, messages, and milestones printed petal by petal" },
+  { src: "/roses-product-hero.png",         alt: "Speaking Roses luxury acrylic gift box display",                                  caption: "Luxury acrylic box presentation built to be kept" },
+  { src: "/rose-product.webp",              alt: "Speaking Roses signature round box with personalized rose",                      caption: "Signature round-box packaging — a true keepsake" },
+  { src: "/hero-couple-red-roses-ai.png",   alt: "Couple celebrating with Speaking Roses preserved bouquet",                       caption: "Built for weddings, proposals, and milestone moments" },
+  { src: "/hero-wedding-acrylic-roses-ai.png", alt: "Speaking Roses wedding centerpiece in acrylic display",                       caption: "Wedding centerpieces and luxury event florals" },
+];
+
 const productFeatures = [
   { title: "100% Real Preserved Roses", body: "Real roses, preserved to last for years." },
   { title: "Printed on the Petal", body: "Names, logos, photos, and messages printed directly on real roses." },
@@ -268,6 +278,99 @@ function CTA({ dark = false }: { dark?: boolean }) {
   );
 }
 
+type CarouselItem = { src: string; alt: string; caption: string };
+
+function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; autoPlayMs?: number }) {
+  const [index, setIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const goTo = (next: number) => {
+    const total = items.length;
+    setIndex(((next % total) + total) % total);
+  };
+  const prev = () => goTo(index - 1);
+  const next = () => goTo(index + 1);
+
+  useEffect(() => {
+    if (isHovered || autoPlayMs <= 0 || items.length <= 1) return;
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % items.length), autoPlayMs);
+    return () => window.clearInterval(id);
+  }, [isHovered, autoPlayMs, items.length]);
+
+  const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; touchEndX.current = null; };
+  const onTouchMove  = (e: React.TouchEvent) => { touchEndX.current = e.touches[0].clientX; };
+  const onTouchEnd   = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const delta = touchStartX.current - touchEndX.current;
+    if (Math.abs(delta) > 50) { delta > 0 ? next() : prev(); }
+    touchStartX.current = null; touchEndX.current = null;
+  };
+
+  return (
+    <div
+      className="carousel-shell"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Speaking Roses product gallery"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+        {items.map((item, i) => (
+          <div
+            key={item.src}
+            className="carousel-slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${items.length}`}
+            aria-hidden={i !== index}
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 800px"
+              priority={i === 0}
+            />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-plum/85 via-plum/35 to-transparent" />
+            <div className="carousel-caption">
+              <p className="text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">The Product</p>
+              <p className="mt-1 font-display text-lg text-white md:text-xl">{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button type="button" className="carousel-arrow prev" aria-label="Previous product image" onClick={prev}>
+        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      <button type="button" className="carousel-arrow next" aria-label="Next product image" onClick={next}>
+        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+
+      <div className="carousel-dots" role="tablist" aria-label="Choose product image">
+        {items.map((item, i) => (
+          <button
+            key={item.src + "-dot"}
+            type="button"
+            role="tab"
+            aria-selected={i === index}
+            aria-label={`Show product image ${i + 1}`}
+            className={`carousel-dot ${i === index ? "active" : ""}`}
+            onClick={() => goTo(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   useTracking({ siteKey: SITE_KEY, gtmId: GTM_ID, siteId: SITE_ID });
   const { submit } = useMegaLeadForm();
@@ -353,49 +456,77 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section id="hero" className="relative isolate min-h-screen overflow-hidden lg:min-h-[700px]">
-        <Image src="/hero-rene-couple.jpg" alt="" fill className="object-cover object-center" priority quality={90} sizes="100vw" />
-        {/* layered overlays for depth */}
-        <div className="absolute inset-0 bg-black/5" />
-        <div className="absolute inset-y-0 left-0 w-[42%] bg-gradient-to-r from-black/62 via-black/22 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-[46%] bg-gradient-to-l from-plum/68 via-plum/24 to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/70 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+      <section id="hero" className="relative isolate overflow-hidden lg:min-h-[760px]">
+        {/* Background product photo — kept mostly visible (light overlays only) */}
+        <Image
+          src="/roses-product-hero.png"
+          alt="Speaking Roses personalized preserved roses in a luxury acrylic display"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+        {/* Soft side gradients only — leave the product visible across the middle */}
+        <div className="absolute inset-y-0 left-0 hidden w-[34%] bg-gradient-to-r from-plum/85 via-plum/55 to-transparent lg:block" />
+        <div className="absolute inset-y-0 right-0 hidden w-[32%] bg-gradient-to-l from-white/0 via-transparent to-transparent lg:block" />
+        {/* Mobile: stronger dark wash so text & form remain readable */}
+        <div className="absolute inset-0 bg-plum/55 lg:hidden" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent" />
 
-        {/* DESKTOP: headline left, form right */}
-        <div className="relative z-10 mx-auto hidden min-h-screen max-w-[1500px] grid-cols-[minmax(300px,0.48fr)_minmax(480px,0.92fr)_minmax(390px,0.7fr)] items-center gap-8 px-8 pb-9 pt-24 lg:grid lg:min-h-[700px] xl:min-h-screen">
+        {/* DESKTOP: headline-left, product-center (visible), form-right */}
+        <div className="relative z-10 mx-auto hidden max-w-[1500px] grid-cols-[minmax(320px,0.95fr)_minmax(360px,1.25fr)_minmax(380px,0.95fr)] items-center gap-8 px-8 pb-12 pt-28 lg:grid lg:min-h-[760px]">
 
-          {/* Left: headline card */}
-          <div className="w-[360px] max-w-full self-center">
+          {/* LEFT: dark "Be the First in Your Market" card */}
+          <div className="w-full max-w-[420px] self-center">
             <Reveal>
-              <div className="rounded-2xl border border-white/15 bg-plum/62 px-6 py-5 shadow-2xl backdrop-blur-md">
-                <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.26em] text-blush">
-                  Bring Personalized Roses to Your Market
+              <div className="rounded-2xl border border-white/10 bg-plum/92 px-7 py-7 shadow-2xl backdrop-blur-md">
+                <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">
+                  Distributor &amp; Partnership Opportunity
                 </p>
                 <h1 className="font-display">
-                  <span className="block text-[2.35rem] font-bold leading-[1.06] text-blush">Real Roses.</span>
-                  <span className="block text-[2.35rem] font-bold leading-[1.06] text-white">Real Emotion.</span>
-                  <span className="block text-[2.35rem] font-bold leading-[1.06] text-white">Real Opportunity.</span>
+                  <span className="block text-[2.5rem] font-bold leading-[1.05] text-white">Be the First in</span>
+                  <span className="block text-[2.5rem] font-bold leading-[1.05] text-blush">Your Market.</span>
                 </h1>
-                <div className="mt-4 flex items-start gap-3 border-t border-white/10 pt-4">
-                  <RoseIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-                  <div>
-                    <p className="text-sm font-semibold text-white">100% Real Roses, Preserved for a Lifetime</p>
-                    <p className="mt-1 text-xs leading-5 text-white/65">Distributor, licensee &amp; strategic partner spots now open. <span className="font-semibold text-gold">Limited availability.</span></p>
-                  </div>
-                </div>
+                <p className="mt-4 text-sm leading-6 text-white/75">
+                  Bring patented, personalized preserved roses to corporate, funeral, wedding,
+                  retail, and e-commerce markets in your area. Distributor, licensee &amp; exclusive
+                  partner openings now available — and capacity is limited by territory.
+                </p>
+                <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-4">
+                  {[
+                    "Start as a distributor from $1,500",
+                    "Exclusive territory rights available",
+                    "20+ years of patented petal-printing technology",
+                    "Featured in Forbes, Inc., Grammys, Oscars &amp; 500+ outlets",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2.5 text-sm text-white/85">
+                      <RoseIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                      <span dangerouslySetInnerHTML={{ __html: line }} />
+                    </li>
+                  ))}
+                </ul>
+                <a href="#apply" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-white hover:text-plum">
+                  Check My Market Availability <span aria-hidden>→</span>
+                </a>
+                <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-gold/80">
+                  Limited partner openings available
+                </p>
               </div>
             </Reveal>
           </div>
 
-          {/* Right: form card */}
-          <div className="col-start-3 w-[420px] max-w-full justify-self-end self-end pb-2">
+          {/* CENTER: deliberately empty — the background product photo IS the centerpiece. */}
+          <div aria-hidden="true" />
+
+          {/* RIGHT: white form card */}
+          <div className="w-full max-w-[440px] justify-self-end self-center">
             <Reveal>
-              <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
-                {/* Form header */}
+              <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20">
                 <div className="bg-white px-5 pt-5 pb-1 text-center">
-                  <h2 className="font-display text-[1.25rem] font-semibold text-plum">Check Market Availability</h2>
+                  <h2 className="font-display text-[1.35rem] font-semibold text-plum">Check Market Availability</h2>
                   <GoldDivider />
+                  <p className="mt-1 text-xs text-ink/60">See if your territory is still open.</p>
                 </div>
                 <div className="px-5 pb-5">
                   <ApplyForm
@@ -409,7 +540,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="mt-3 rounded-xl border border-blush/20 bg-plum/85 px-4 py-2 backdrop-blur-md">
+              <div className="mt-3 rounded-xl border border-blush/20 bg-plum/90 px-4 py-2 backdrop-blur-md">
                 <p className="text-xs font-bold uppercase tracking-widest text-blush">Limited partner openings available</p>
                 <p className="mt-0.5 text-xs text-white/65"><span className="text-blush">Apply today</span> — spots in your market may already be claimed.</p>
               </div>
@@ -418,30 +549,44 @@ export default function Home() {
         </div>
 
         {/* MOBILE: stacked layout */}
-        <div className="relative z-10 flex min-h-screen flex-col justify-between px-4 pb-8 pt-24 lg:hidden">
+        <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-24 lg:hidden">
           <Reveal>
-            <div className="rounded-2xl border border-white/15 bg-black/55 px-5 py-4 shadow-2xl backdrop-blur-md">
-              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-blush">Bring Personalized Roses to Your Market</p>
+            <div className="rounded-2xl border border-white/10 bg-plum/92 px-5 py-5 shadow-2xl backdrop-blur-md">
+              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Distributor &amp; Partnership Opportunity</p>
               <h1 className="font-display">
-                <span className="block text-4xl font-bold leading-tight text-blush">Real Roses.</span>
-                <span className="block text-4xl font-bold leading-tight text-white">Real Emotion.</span>
-                <span className="block text-4xl font-bold leading-tight text-white">Real Opportunity.</span>
+                <span className="block text-4xl font-bold leading-tight text-white">Be the First in</span>
+                <span className="block text-4xl font-bold leading-tight text-blush">Your Market.</span>
               </h1>
+              <p className="mt-3 text-sm leading-6 text-white/75">
+                Bring patented, personalized preserved roses to corporate, funeral, wedding,
+                retail, and e-commerce markets in your area. Distributor &amp; partner spots open
+                — but capacity is limited by territory.
+              </p>
+              <ul className="mt-4 space-y-2 border-t border-white/10 pt-3">
+                {[
+                  "Start as a distributor from $1,500",
+                  "Exclusive territory rights available",
+                  "20+ years of patented petal-printing technology",
+                ].map((line) => (
+                  <li key={line} className="flex items-start gap-2 text-sm text-white/85">
+                    <RoseIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
-          <div className="mt-4 flex flex-col gap-3">
-            <Reveal>
-              <div className="rounded-2xl bg-white shadow-2xl overflow-hidden">
-                <div className="px-5 pt-5 pb-2 text-center">
-                  <h2 className="font-display text-xl font-semibold text-plum">Check Market Availability</h2>
-                  <GoldDivider />
-                </div>
-                <div className="px-5 pb-5">
-                  <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
-                </div>
+          <Reveal>
+            <div className="overflow-hidden rounded-2xl bg-white shadow-2xl">
+              <div className="px-5 pt-5 pb-2 text-center">
+                <h2 className="font-display text-xl font-semibold text-plum">Check Market Availability</h2>
+                <GoldDivider />
               </div>
-            </Reveal>
-          </div>
+              <div className="px-5 pb-5">
+                <ApplyForm form={form} setField={setField} formatPhone={formatPhone} validatePhone={validatePhone} phoneError={phoneError} setPhoneError={setPhoneError} handleSubmit={handleSubmit} isSubmitting={isSubmitting} error={error} submitted={submitted} isQualified={isQualified} compact />
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -473,14 +618,15 @@ export default function Home() {
             ))}
           </Reveal>
 
-          {/* Product gallery */}
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {["/rose-1.webp", "/rose-2.webp", "/rose-3.webp"].map((src, index) => (
-              <Reveal key={src} className="overflow-hidden rounded-2xl shadow-lg">
-                <Image src={src} alt={`Speaking Roses personalized preserved rose ${index + 1}`} width={720} height={720} className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105" />
-              </Reveal>
-            ))}
-          </div>
+          {/* Product gallery — interactive carousel */}
+          <Reveal className="mt-12">
+            <div className="mx-auto max-w-5xl">
+              <ProductCarousel items={productCarouselImages} autoPlayMs={5000} />
+              <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.22em] text-rose">
+                Scroll through the gallery — every rose is real, preserved, and personalized.
+              </p>
+            </div>
+          </Reveal>
 
           {/* Product feature cards */}
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

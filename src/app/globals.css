@@ -147,3 +147,85 @@ select.field {
   height: 1px;
   background: linear-gradient(90deg, transparent, #c9a84c80, transparent);
 }
+
+/* ── Product Carousel ───────────────────────────────────────── */
+.carousel-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #1b121a;
+  box-shadow: 0 24px 60px rgba(23, 18, 25, 0.18);
+  border: 1px solid rgba(201, 168, 76, 0.22);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.carousel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  aspect-ratio: 16 / 10;
+  background: #1b121a;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #171219;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 3;
+}
+.carousel-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
+.carousel-arrow.prev { left: 1rem; }
+.carousel-arrow.next { right: 1rem; }
+.carousel-dots {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 3;
+}
+.carousel-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+.carousel-dot.active {
+  background: #c9a84c;
+  border-color: #c9a84c;
+  transform: scale(1.25);
+}
+.carousel-caption {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 2.6rem;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  max-width: 60%;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .carousel-slide { aspect-ratio: 4 / 5; }
+  .carousel-caption { bottom: 3rem; max-width: 80%; }
+  .carousel-arrow { width: 2.25rem; height: 2.25rem; }
+}
