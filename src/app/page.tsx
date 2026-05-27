@@ -457,60 +457,61 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="hero" className="relative isolate overflow-hidden lg:min-h-[760px]">
-        {/* Background product photo — kept mostly visible (light overlays only) */}
+        {/* Background product photo — kept fully visible across the page; only the left card sits over a dark plate */}
         <Image
           src="/roses-product-hero.png"
-          alt="Speaking Roses personalized preserved roses in a luxury acrylic display"
+          alt="Speaking Roses personalized preserved roses in a luxury keepsake display"
           fill
           className="object-cover object-center"
           priority
           quality={90}
           sizes="100vw"
         />
-        {/* Soft side gradients only — leave the product visible across the middle */}
-        <div className="absolute inset-y-0 left-0 hidden w-[34%] bg-gradient-to-r from-plum/85 via-plum/55 to-transparent lg:block" />
-        <div className="absolute inset-y-0 right-0 hidden w-[32%] bg-gradient-to-l from-white/0 via-transparent to-transparent lg:block" />
-        {/* Mobile: stronger dark wash so text & form remain readable */}
+        {/* DESKTOP: no full-width overlays — the product photo is the centerpiece. Only a faint top vignette for nav contrast. */}
+        <div className="absolute inset-x-0 top-0 h-28 hidden bg-gradient-to-b from-black/40 to-transparent lg:block" />
+        {/* MOBILE: keep a stronger plum wash behind stacked content for readability */}
         <div className="absolute inset-0 bg-plum/55 lg:hidden" />
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent lg:hidden" />
 
         {/* DESKTOP: headline-left, product-center (visible), form-right */}
         <div className="relative z-10 mx-auto hidden max-w-[1500px] grid-cols-[minmax(320px,0.95fr)_minmax(360px,1.25fr)_minmax(380px,0.95fr)] items-center gap-8 px-8 pb-12 pt-28 lg:grid lg:min-h-[760px]">
 
-          {/* LEFT: dark "Be the First in Your Market" card */}
+          {/* LEFT: dark "Be the First in Your Market" card — floats over the product photo */}
           <div className="w-full max-w-[420px] self-center">
             <Reveal>
-              <div className="rounded-2xl border border-white/10 bg-plum/92 px-7 py-7 shadow-2xl backdrop-blur-md">
+              <div className="rounded-2xl border border-white/10 bg-plum/95 px-7 py-7 shadow-2xl backdrop-blur-md">
                 <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">
-                  Distributor &amp; Partnership Opportunity
+                  Limited Distributor Opportunity
                 </p>
                 <h1 className="font-display">
                   <span className="block text-[2.5rem] font-bold leading-[1.05] text-white">Be the First in</span>
                   <span className="block text-[2.5rem] font-bold leading-[1.05] text-blush">Your Market.</span>
                 </h1>
-                <p className="mt-4 text-sm leading-6 text-white/75">
-                  Bring patented, personalized preserved roses to corporate, funeral, wedding,
-                  retail, and e-commerce markets in your area. Distributor, licensee &amp; exclusive
-                  partner openings now available — and capacity is limited by territory.
+                <p className="mt-3 text-[0.95rem] font-semibold leading-snug text-gold">
+                  $100 Billion Opportunity in Personalized Real Roses
                 </p>
-                <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-4">
+                <p className="mt-4 text-sm leading-6 text-white/75">
+                  100% real preserved roses. Printed right on the petals. A luxury product for
+                  birthdays, romance, weddings, events, corporate gifting and more.
+                </p>
+                <ul className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
                   {[
-                    "Start as a distributor from $1,500",
-                    "Exclusive territory rights available",
-                    "20+ years of patented petal-printing technology",
-                    "Featured in Forbes, Inc., Grammys, Oscars &amp; 500+ outlets",
-                  ].map((line) => (
-                    <li key={line} className="flex items-start gap-2.5 text-sm text-white/85">
-                      <RoseIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                      <span dangerouslySetInnerHTML={{ __html: line }} />
+                    { title: "Premium", sub: "Product" },
+                    { title: "Proven", sub: "Demand" },
+                    { title: "Multiple", sub: "Markets" },
+                  ].map((badge) => (
+                    <li key={badge.title} className="flex flex-col items-center justify-center rounded-lg border border-gold/25 bg-white/5 px-2 py-3 text-center">
+                      <RoseIcon className="mb-1.5 h-4 w-4 text-gold" />
+                      <span className="text-[0.78rem] font-bold leading-tight text-white">{badge.title}</span>
+                      <span className="text-[0.7rem] font-medium uppercase tracking-wide text-white/65">{badge.sub}</span>
                     </li>
                   ))}
                 </ul>
                 <a href="#apply" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-rose px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-white hover:text-plum">
-                  Check My Market Availability <span aria-hidden>→</span>
+                  Apply to Check Availability <span aria-hidden>→</span>
                 </a>
                 <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-gold/80">
-                  Limited partner openings available
+                  Limited capacity. Now accepting new distributor applications.
                 </p>
               </div>
             </Reveal>
@@ -552,28 +553,34 @@ export default function Home() {
         <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-24 lg:hidden">
           <Reveal>
             <div className="rounded-2xl border border-white/10 bg-plum/92 px-5 py-5 shadow-2xl backdrop-blur-md">
-              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Distributor &amp; Partnership Opportunity</p>
+              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Limited Distributor Opportunity</p>
               <h1 className="font-display">
                 <span className="block text-4xl font-bold leading-tight text-white">Be the First in</span>
                 <span className="block text-4xl font-bold leading-tight text-blush">Your Market.</span>
               </h1>
-              <p className="mt-3 text-sm leading-6 text-white/75">
-                Bring patented, personalized preserved roses to corporate, funeral, wedding,
-                retail, and e-commerce markets in your area. Distributor &amp; partner spots open
-                — but capacity is limited by territory.
+              <p className="mt-2.5 text-sm font-semibold leading-snug text-gold">
+                $100 Billion Opportunity in Personalized Real Roses
               </p>
-              <ul className="mt-4 space-y-2 border-t border-white/10 pt-3">
+              <p className="mt-3 text-sm leading-6 text-white/75">
+                100% real preserved roses. Printed right on the petals. A luxury product for
+                birthdays, romance, weddings, events, corporate gifting and more.
+              </p>
+              <ul className="mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-3">
                 {[
-                  "Start as a distributor from $1,500",
-                  "Exclusive territory rights available",
-                  "20+ years of patented petal-printing technology",
-                ].map((line) => (
-                  <li key={line} className="flex items-start gap-2 text-sm text-white/85">
-                    <RoseIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                    <span>{line}</span>
+                  { title: "Premium", sub: "Product" },
+                  { title: "Proven", sub: "Demand" },
+                  { title: "Multiple", sub: "Markets" },
+                ].map((badge) => (
+                  <li key={badge.title} className="flex flex-col items-center justify-center rounded-lg border border-gold/25 bg-white/5 px-2 py-2.5 text-center">
+                    <RoseIcon className="mb-1 h-3.5 w-3.5 text-gold" />
+                    <span className="text-[0.72rem] font-bold leading-tight text-white">{badge.title}</span>
+                    <span className="text-[0.65rem] font-medium uppercase tracking-wide text-white/65">{badge.sub}</span>
                   </li>
                 ))}
               </ul>
+              <p className="mt-4 text-center text-[0.625rem] font-semibold tracking-wide text-gold/80">
+                Limited capacity. Now accepting new distributor applications.
+              </p>
             </div>
           </Reveal>
           <Reveal>
