@@ -14,13 +14,16 @@ const BRAND_VIDEO_URL = "https://storage.googleapis.com/msgsndr/ioeX0AohKO7FTyLY
 const PRODUCT_VIDEO_URL = "https://storage.googleapis.com/msgsndr/WbJSzu9tJKeleGsNQ6dR/media/68252c05a1908e31dfd47a74.mp4";
 
 const productCarouselImages: { src: string; alt: string; caption: string }[] = [
-  { src: "/rose-1.webp",                    alt: "Personalized preserved Speaking Rose with custom photo printed on petals",      caption: "Personalized photos printed on real preserved petals" },
-  { src: "/rose-2.webp",                    alt: "Custom-printed Speaking Rose with logo on petal",                                caption: "Logos and branding printed directly on real roses" },
-  { src: "/rose-3.webp",                    alt: "Speaking Rose with handwritten message printed on petal",                        caption: "Names, messages, and milestones printed petal by petal" },
-  { src: "/roses-product-hero.png",         alt: "Speaking Roses luxury acrylic gift box display",                                  caption: "Luxury acrylic box presentation built to be kept" },
-  { src: "/rose-product.webp",              alt: "Speaking Roses signature round box with personalized rose",                      caption: "Signature round-box packaging — a true keepsake" },
-  { src: "/hero-couple-red-roses-ai.png",   alt: "Couple celebrating with Speaking Roses preserved bouquet",                       caption: "Built for weddings, proposals, and milestone moments" },
-  { src: "/hero-wedding-acrylic-roses-ai.png", alt: "Speaking Roses wedding centerpiece in acrylic display",                       caption: "Wedding centerpieces and luxury event florals" },
+  { src: "/client-rose-01.webp", alt: "Preserved Speaking Rose with petal-printed message under a clear acrylic dome",     caption: "Personalized message printed petal-by-petal — sealed in an acrylic dome" },
+  { src: "/client-rose-02.webp", alt: "Personalized Speaking Rose keepsake displayed in a clear acrylic dome",              caption: "Real preserved roses, custom-printed and built to last" },
+  { src: "/client-rose-03.webp", alt: "Speaking Rose with custom petal print in a luxury display dome",                    caption: "Branded keepsake — petal printing showcased in a luxury dome" },
+  { src: "/client-rose-04.webp", alt: "Speaking Roses arrangement in a presentation box with petal-printed designs",        caption: "Boxed Speaking Roses arrangement — ready for gift, event, or retail" },
+  { src: "/client-rose-05.webp", alt: "Speaking Roses presentation box with custom-printed branding on the petals",        caption: "Custom-printed presentation box — petal-perfect branding" },
+  { src: "/client-rose-06.webp", alt: "Designed Speaking Roses keepsake with petal printing in a finished display",         caption: "Finished keepsake design — luxury presentation, custom petal print" },
+  { src: "/client-rose-07.webp", alt: "Branded Speaking Roses product detail with custom petal printing",                   caption: "Up-close petal print detail — corporate branding on a real rose" },
+  { src: "/client-rose-08.webp", alt: "Speaking Roses corporate branding sample printed on real preserved petals",          caption: "Corporate branding sample — your logo on real preserved petals" },
+  { src: "/client-rose-09.webp", alt: "Speaking Roses corporate gift example featuring Lamborghini-branded petal print",    caption: "Luxury corporate gift example — Lamborghini-branded Speaking Rose" },
+  { src: "/client-rose-10.webp", alt: "Finished Speaking Roses branded keepsake product photo",                             caption: "Finished branded keepsake — ready for distributor markets nationwide" },
 ];
 
 const productFeatures = [
