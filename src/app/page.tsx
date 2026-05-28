@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useMegaLeadForm } from "@/hooks/useMegaLeadForm";
 import { useTracking } from "@/hooks/useTracking";
@@ -512,9 +512,11 @@ export default function Home() {
             <Reveal>
               <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-7 py-7 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
                 {/* Speaking Roses logo at top of card (matches client ref doc). Inverted to white for the dark card. */}
-                <div className="mb-4 flex justify-center">
+                <div className="mb-3 flex justify-center">
                   <Image src="/logo.svg" alt="Speaking Roses" width={200} height={52} className="h-10 w-auto brightness-0 invert" priority />
                 </div>
+                {/* Thin gold accent rule under the logo */}
+                <div className="mx-auto mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
                 <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">
                   Limited Distributor Opportunity
                 </p>
@@ -529,22 +531,33 @@ export default function Home() {
                   100% real preserved roses. Printed right on the petals. A luxury product for
                   birthdays, romance, weddings, events, corporate gifting and more.
                 </p>
-                <ul className="mt-5 grid grid-cols-3 gap-3 border-t border-gold/15 pt-4">
-                  {[
-                    { title: "Premium", sub: "Product", icon: "diamond" },
-                    { title: "Proven", sub: "Demand", icon: "growth" },
-                    { title: "Multiple", sub: "Markets", icon: "globe" },
-                  ].map((badge) => (
-                    <li key={badge.title} className="flex flex-col items-center justify-start text-center">
-                      <HeroBadgeIcon name={badge.icon} className="mb-1.5 h-5 w-5 text-gold" />
-                      <span className="text-[0.8rem] font-bold leading-tight text-white">{badge.title}</span>
-                      <span className="text-[0.7rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
-                    </li>
+                {/* Gold rule above pillars */}
+                <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+                <ul className="mt-4 flex items-start justify-between gap-0">
+                  {(
+                    [
+                      { title: "Premium", sub: "Product", icon: "diamond" },
+                      { title: "Proven", sub: "Demand", icon: "growth" },
+                      { title: "Multiple", sub: "Markets", icon: "globe" },
+                    ] as const
+                  ).map((badge, i, arr) => (
+                    <Fragment key={badge.title}>
+                      <li className="flex flex-1 flex-col items-center justify-start text-center">
+                        <HeroBadgeIcon name={badge.icon} className="mb-1.5 h-[1.35rem] w-[1.35rem] text-gold" />
+                        <span className="text-[0.82rem] font-bold leading-tight text-white">{badge.title}</span>
+                        <span className="text-[0.7rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
+                      </li>
+                      {i < arr.length - 1 && (
+                        <span aria-hidden className="mx-1 mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-gold/80 shadow-[0_0_6px_rgba(201,168,76,0.55)]" />
+                      )}
+                    </Fragment>
                   ))}
                 </ul>
-                <a href="#apply" className="mt-6 relative flex w-full items-center justify-center rounded-full bg-gold px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
-                  <span>Apply to Check Availability</span>
-                  <span aria-hidden className="absolute right-5">→</span>
+                {/* Gold rule below pillars */}
+                <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+                <a href="#apply" className="mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gold px-6 py-3.5 text-[0.92rem] font-semibold tracking-wide text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
+                  Apply to Check Availability
+                  <span aria-hidden className="text-[1.05em] leading-none">→</span>
                 </a>
                 <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-gold/70">
                   Limited capacity. Now accepting new distributor applications.
@@ -585,9 +598,10 @@ export default function Home() {
           <Reveal>
             <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-5 py-5 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
               {/* Speaking Roses logo (matches client ref doc / desktop card). */}
-              <div className="mb-3 flex justify-center">
+              <div className="mb-2 flex justify-center">
                 <Image src="/logo.svg" alt="Speaking Roses" width={180} height={48} className="h-9 w-auto brightness-0 invert" priority />
               </div>
+              <div className="mx-auto mb-3 h-px w-14 bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
               <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Limited Distributor Opportunity</p>
               <h1 className="font-display">
                 <span className="block text-[2rem] font-bold leading-[1.05] text-white">Be the First in</span>
@@ -600,22 +614,31 @@ export default function Home() {
                 100% real preserved roses. Printed right on the petals. A luxury product for
                 birthdays, romance, weddings, events, corporate gifting and more.
               </p>
-              <ul className="mt-4 grid grid-cols-3 gap-3 border-t border-gold/15 pt-3">
-                {[
-                  { title: "Premium", sub: "Product", icon: "diamond" },
-                  { title: "Proven", sub: "Demand", icon: "growth" },
-                  { title: "Multiple", sub: "Markets", icon: "globe" },
-                ].map((badge) => (
-                  <li key={badge.title} className="flex flex-col items-center justify-start text-center">
-                    <HeroBadgeIcon name={badge.icon} className="mb-1 h-[1.1rem] w-[1.1rem] text-gold" />
-                    <span className="text-[0.78rem] font-bold leading-tight text-white">{badge.title}</span>
-                    <span className="text-[0.65rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
-                  </li>
+              <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+              <ul className="mt-3 flex items-start justify-between gap-0">
+                {(
+                  [
+                    { title: "Premium", sub: "Product", icon: "diamond" },
+                    { title: "Proven", sub: "Demand", icon: "growth" },
+                    { title: "Multiple", sub: "Markets", icon: "globe" },
+                  ] as const
+                ).map((badge, i, arr) => (
+                  <Fragment key={badge.title}>
+                    <li className="flex flex-1 flex-col items-center justify-start text-center">
+                      <HeroBadgeIcon name={badge.icon} className="mb-1 h-[1.25rem] w-[1.25rem] text-gold" />
+                      <span className="text-[0.8rem] font-bold leading-tight text-white">{badge.title}</span>
+                      <span className="text-[0.65rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
+                    </li>
+                    {i < arr.length - 1 && (
+                      <span aria-hidden className="mx-1 mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-gold/80 shadow-[0_0_5px_rgba(201,168,76,0.55)]" />
+                    )}
+                  </Fragment>
                 ))}
               </ul>
-              <a href="#apply" className="mt-5 relative flex w-full items-center justify-center rounded-full bg-gold px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
-                <span>Apply to Check Availability</span>
-                <span aria-hidden className="absolute right-4">→</span>
+              <div className="mt-3 h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+              <a href="#apply" className="mt-4 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gold px-5 py-3 text-[0.9rem] font-semibold tracking-wide text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
+                Apply to Check Availability
+                <span aria-hidden className="text-[1.05em] leading-none">→</span>
               </a>
               <p className="mt-3 text-center text-[0.625rem] font-semibold tracking-wide text-gold/70">
                 Limited capacity. Now accepting new distributor applications.
