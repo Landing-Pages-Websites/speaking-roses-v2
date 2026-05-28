@@ -481,9 +481,7 @@ export default function Home() {
           <a href="#hero" aria-label="Speaking Roses home">
             <Image src="/logo.svg" alt="Speaking Roses" width={300} height={78} className="h-12 w-auto md:h-14 brightness-0 invert" priority />
           </a>
-          <a href="#apply" className="rounded-full bg-rose px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow transition hover:bg-white hover:text-plum">
-            Apply Now
-          </a>
+          {/* Floating top-right "Apply Now" removed per client ref (single CTA in hero card). */}
         </div>
       </header>
 
@@ -501,48 +499,48 @@ export default function Home() {
         />
         {/* DESKTOP: no full-width overlays — the product photo is the centerpiece. Only a faint top vignette for nav contrast. */}
         <div className="absolute inset-x-0 top-0 h-28 hidden bg-gradient-to-b from-black/40 to-transparent lg:block" />
-        {/* MOBILE: keep a stronger plum wash behind stacked content for readability */}
-        <div className="absolute inset-0 bg-black/30 lg:hidden" />
+        {/* MOBILE: dark wash behind stacked content for readability */}
+        <div className="absolute inset-0 bg-black/45 lg:hidden" />
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/55 to-transparent lg:hidden" />
 
         {/* DESKTOP: headline-left, product-center (visible), form-right */}
-        <div className="relative z-10 mx-auto hidden max-w-[1500px] grid-cols-[minmax(280px,0.78fr)_minmax(440px,1.55fr)_minmax(360px,0.92fr)] items-center gap-6 px-8 pb-12 pt-28 lg:grid lg:min-h-[760px]">
+        <div className="relative z-10 mx-auto hidden max-w-[1500px] grid-cols-[minmax(280px,0.85fr)_minmax(440px,1.1fr)_minmax(340px,0.95fr)] items-center gap-6 px-8 pb-12 pt-28 lg:grid lg:min-h-[760px]">
 
-          {/* LEFT: light translucent card matching client ref doc — sits over the dark wood area, dome stays centered & uncovered */}
-          <div className="w-full max-w-[360px] self-center">
+          {/* LEFT: dark luxury card per client brief — translucent #1A1410 w/ gold accents. Narrower so the bowl sits centered to the right. */}
+          <div className="w-full max-w-[340px] self-center">
             <Reveal>
-              <div className="rounded-2xl border border-white/40 bg-white/85 px-7 py-7 shadow-2xl backdrop-blur-xl ring-1 ring-plum/5">
-                <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-rose">
+              <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-7 py-7 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
+                <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">
                   Limited Distributor Opportunity
                 </p>
                 <h1 className="font-display">
-                  <span className="block text-[2.25rem] font-bold leading-[1.05] text-plum">Be the First in</span>
-                  <span className="block text-[2.25rem] font-bold leading-[1.05] text-rose">Your Market.</span>
+                  <span className="block text-[2.15rem] font-bold leading-[1.05] text-white">Be the First in</span>
+                  <span className="block text-[2.15rem] font-bold leading-[1.05] text-gold">Your Market.</span>
                 </h1>
-                <p className="mt-3 text-[0.95rem] font-semibold leading-snug text-rose">
+                <p className="mt-3 text-[0.95rem] font-semibold leading-snug text-gold">
                   $100 Billion Opportunity in Personalized Real Roses
                 </p>
-                <p className="mt-4 text-[0.875rem] leading-6 text-ink/75">
+                <p className="mt-4 text-[0.875rem] leading-[1.65] text-white/80">
                   100% real preserved roses. Printed right on the petals. A luxury product for
                   birthdays, romance, weddings, events, corporate gifting and more.
                 </p>
-                <ul className="mt-5 grid grid-cols-3 gap-3 border-t border-plum/10 pt-4">
+                <ul className="mt-5 grid grid-cols-3 gap-3 border-t border-gold/15 pt-4">
                   {[
                     { title: "Premium", sub: "Product", icon: "diamond" },
                     { title: "Proven", sub: "Demand", icon: "growth" },
                     { title: "Multiple", sub: "Markets", icon: "globe" },
                   ].map((badge) => (
                     <li key={badge.title} className="flex flex-col items-center justify-start text-center">
-                      <HeroBadgeIcon name={badge.icon} className="mb-1.5 h-5 w-5 text-plum" />
-                      <span className="text-[0.8rem] font-bold leading-tight text-plum">{badge.title}</span>
-                      <span className="text-[0.7rem] font-medium uppercase tracking-wide text-ink/60">{badge.sub}</span>
+                      <HeroBadgeIcon name={badge.icon} className="mb-1.5 h-5 w-5 text-gold" />
+                      <span className="text-[0.8rem] font-bold leading-tight text-white">{badge.title}</span>
+                      <span className="text-[0.7rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="#apply" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-plum px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-rose">
+                <a href="#apply" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
                   Apply to Check Availability <span aria-hidden>→</span>
                 </a>
-                <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-ink/55">
+                <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-gold/70">
                   Limited capacity. Now accepting new distributor applications.
                 </p>
               </div>
@@ -572,48 +570,43 @@ export default function Home() {
                 </div>
               </div>
             </Reveal>
-            <Reveal>
-              <div className="mt-3 rounded-xl border border-blush/20 bg-plum/90 px-4 py-2 backdrop-blur-md">
-                <p className="text-xs font-bold uppercase tracking-widest text-blush">Limited partner openings available</p>
-                <p className="mt-0.5 text-xs text-white/65"><span className="text-blush">Apply today</span> — spots in your market may already be claimed.</p>
-              </div>
-            </Reveal>
+            {/* "Limited partner openings available" pill removed per client ref (off-brand for luxury aesthetic). */}
           </div>
         </div>
 
         {/* MOBILE: stacked layout */}
         <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-24 lg:hidden">
           <Reveal>
-            <div className="rounded-2xl border border-white/50 bg-white/90 px-5 py-5 shadow-2xl backdrop-blur-xl ring-1 ring-plum/5">
-              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-rose">Limited Distributor Opportunity</p>
+            <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-5 py-5 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
+              <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Limited Distributor Opportunity</p>
               <h1 className="font-display">
-                <span className="block text-[2rem] font-bold leading-[1.05] text-plum">Be the First in</span>
-                <span className="block text-[2rem] font-bold leading-[1.05] text-rose">Your Market.</span>
+                <span className="block text-[2rem] font-bold leading-[1.05] text-white">Be the First in</span>
+                <span className="block text-[2rem] font-bold leading-[1.05] text-gold">Your Market.</span>
               </h1>
-              <p className="mt-2.5 text-sm font-semibold leading-snug text-rose">
+              <p className="mt-2.5 text-sm font-semibold leading-snug text-gold">
                 $100 Billion Opportunity in Personalized Real Roses
               </p>
-              <p className="mt-3 text-[0.875rem] leading-6 text-ink/75">
+              <p className="mt-3 text-[0.875rem] leading-[1.65] text-white/80">
                 100% real preserved roses. Printed right on the petals. A luxury product for
                 birthdays, romance, weddings, events, corporate gifting and more.
               </p>
-              <ul className="mt-4 grid grid-cols-3 gap-3 border-t border-plum/10 pt-3">
+              <ul className="mt-4 grid grid-cols-3 gap-3 border-t border-gold/15 pt-3">
                 {[
                   { title: "Premium", sub: "Product", icon: "diamond" },
                   { title: "Proven", sub: "Demand", icon: "growth" },
                   { title: "Multiple", sub: "Markets", icon: "globe" },
                 ].map((badge) => (
                   <li key={badge.title} className="flex flex-col items-center justify-start text-center">
-                    <HeroBadgeIcon name={badge.icon} className="mb-1 h-[1.1rem] w-[1.1rem] text-plum" />
-                    <span className="text-[0.78rem] font-bold leading-tight text-plum">{badge.title}</span>
-                    <span className="text-[0.65rem] font-medium uppercase tracking-wide text-ink/60">{badge.sub}</span>
+                    <HeroBadgeIcon name={badge.icon} className="mb-1 h-[1.1rem] w-[1.1rem] text-gold" />
+                    <span className="text-[0.78rem] font-bold leading-tight text-white">{badge.title}</span>
+                    <span className="text-[0.65rem] font-medium uppercase tracking-wide text-white/55">{badge.sub}</span>
                   </li>
                 ))}
               </ul>
-              <a href="#apply" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-plum px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-rose">
+              <a href="#apply" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
                 Apply to Check Availability <span aria-hidden>→</span>
               </a>
-              <p className="mt-3 text-center text-[0.625rem] font-semibold tracking-wide text-ink/55">
+              <p className="mt-3 text-center text-[0.625rem] font-semibold tracking-wide text-gold/70">
                 Limited capacity. Now accepting new distributor applications.
               </p>
             </div>
