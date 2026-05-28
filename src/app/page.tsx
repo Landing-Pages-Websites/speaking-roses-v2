@@ -504,12 +504,17 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/55 to-transparent lg:hidden" />
 
         {/* DESKTOP: headline-left, product-center (visible), form-right */}
-        <div className="relative z-10 mx-auto hidden max-w-[1500px] grid-cols-[minmax(280px,0.85fr)_minmax(440px,1.1fr)_minmax(340px,0.95fr)] items-center gap-6 px-8 pb-12 pt-28 lg:grid lg:min-h-[760px]">
+        {/* Cards anchored to viewport edges (left & right rails) so the rose bowl gets max breathing room. No max-w cap on the row; padding pushes the cards out to the edges and lets the middle expand. */}
+        <div className="relative z-10 hidden w-full grid-cols-[auto_1fr_auto] items-center gap-6 px-6 pb-12 pt-28 lg:grid lg:min-h-[760px] xl:px-10 2xl:px-16">
 
           {/* LEFT: dark luxury card per client brief — translucent #1A1410 w/ gold accents. Narrower so the bowl sits centered to the right. */}
-          <div className="w-full max-w-[340px] self-center">
+          <div className="w-[340px] self-center justify-self-start">
             <Reveal>
               <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-7 py-7 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
+                {/* Speaking Roses logo at top of card (matches client ref doc). Inverted to white for the dark card. */}
+                <div className="mb-4 flex justify-center">
+                  <Image src="/logo.svg" alt="Speaking Roses" width={200} height={52} className="h-10 w-auto brightness-0 invert" priority />
+                </div>
                 <p className="mb-3 text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">
                   Limited Distributor Opportunity
                 </p>
@@ -537,8 +542,9 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a href="#apply" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
-                  Apply to Check Availability <span aria-hidden>→</span>
+                <a href="#apply" className="mt-6 relative flex w-full items-center justify-center rounded-full bg-gold px-6 py-3 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
+                  <span>Apply to Check Availability</span>
+                  <span aria-hidden className="absolute right-5">→</span>
                 </a>
                 <p className="mt-3 text-center text-[0.6875rem] font-semibold tracking-wide text-gold/70">
                   Limited capacity. Now accepting new distributor applications.
@@ -550,8 +556,8 @@ export default function Home() {
           {/* CENTER: deliberately empty — the background product photo IS the centerpiece. */}
           <div aria-hidden="true" />
 
-          {/* RIGHT: white form card */}
-          <div className="w-full max-w-[440px] justify-self-end self-center">
+          {/* RIGHT: white form card — anchored to right rail */}
+          <div className="w-[420px] justify-self-end self-center">
             <Reveal>
               <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20">
                 <div className="bg-white px-5 pt-5 pb-1 text-center">
@@ -578,6 +584,10 @@ export default function Home() {
         <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-24 lg:hidden">
           <Reveal>
             <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-5 py-5 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
+              {/* Speaking Roses logo (matches client ref doc / desktop card). */}
+              <div className="mb-3 flex justify-center">
+                <Image src="/logo.svg" alt="Speaking Roses" width={180} height={48} className="h-9 w-auto brightness-0 invert" priority />
+              </div>
               <p className="mb-2 text-[0.6875rem] font-bold uppercase tracking-[0.28em] text-gold">Limited Distributor Opportunity</p>
               <h1 className="font-display">
                 <span className="block text-[2rem] font-bold leading-[1.05] text-white">Be the First in</span>
@@ -603,8 +613,9 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a href="#apply" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
-                Apply to Check Availability <span aria-hidden>→</span>
+              <a href="#apply" className="mt-5 relative flex w-full items-center justify-center rounded-full bg-gold px-5 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[#1A1410] shadow-lg transition hover:bg-[#e6c46a]">
+                <span>Apply to Check Availability</span>
+                <span aria-hidden className="absolute right-4">→</span>
               </a>
               <p className="mt-3 text-center text-[0.625rem] font-semibold tracking-wide text-gold/70">
                 Limited capacity. Now accepting new distributor applications.
