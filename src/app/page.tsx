@@ -462,8 +462,8 @@ export default function Home() {
       <section id="hero" className="relative isolate overflow-hidden lg:min-h-[760px]">
         {/* Background product photo — kept fully visible across the page; only the left card sits over a dark plate */}
         <Image
-          src="/roses-product-hero.png"
-          alt="Speaking Roses personalized preserved roses in a luxury keepsake display"
+          src="/hero.jpeg"
+          alt="Personalized preserved Speaking Rose in a clear acrylic dome on a wooden surface surrounded by red roses"
           fill
           className="object-cover object-center"
           priority
