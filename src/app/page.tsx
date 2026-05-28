@@ -460,10 +460,10 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="hero" className="relative isolate overflow-hidden lg:min-h-[760px]">
-        {/* Background product photo — kept fully visible across the page; only the left card sits over a dark plate */}
+        {/* Background product photo — extracted from the client's reference doc (2048x698). Composition: clear acrylic dome with a single preserved Speaking Rose on a dark wooden surface, with scattered red roses around it. NO PEOPLE in frame per client spec. The dark plum card on the left overlays the doc's mockup-card region. */}
         <Image
-          src="/hero.jpeg"
-          alt="Personalized preserved Speaking Rose in a clear acrylic dome on a wooden surface surrounded by red roses"
+          src="/hero-ref-doc.jpg"
+          alt="Personalized preserved Speaking Rose displayed under a clear acrylic dome on a dark wooden surface with scattered red roses"
           fill
           className="object-cover object-center"
           priority
