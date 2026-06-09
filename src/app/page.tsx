@@ -975,25 +975,20 @@ export default function Home() {
               {/* Licensee (i===1): featured dark "Most Chosen" card */}
               if (i === 1) {
                 return (
-                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)', minHeight: '460px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                    <div>
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
-                      </div>
-                      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
-                        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-                        </svg>
-                      </div>
-                      <h3 className="font-display text-2xl text-white">{path.title}</h3>
-                      <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
-                        <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
-                      </div>
-                      <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
+                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)'}}>
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
                     </div>
-                    <a href="#apply" className="mt-6 block w-full rounded-full py-3 text-center text-sm font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>
-                      Apply Now →
-                    </a>
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                      </svg>
+                    </div>
+                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
+                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
+                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
+                    </div>
+                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
                   </Reveal>
                 );
               }
@@ -1032,11 +1027,11 @@ export default function Home() {
             })}
           </div>
 
-          <Reveal className="mt-8" style={{border: '1px solid rgba(201,168,76,0.2)', borderRadius: '1rem', padding: '2rem', textAlign: 'center'}}>
-            <RoseIcon className="mx-auto mb-3 h-6 w-6 text-gold" />
-            <p className="text-xl font-semibold text-white">Not sure which path fits you?</p>
-            <p className="mt-1 text-white/65">Apply and we&apos;ll review your market.</p>
-            <CTA dark />
+          <Reveal className="mt-10 flex flex-col items-center gap-3">
+            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-rose px-10 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-xl transition hover:bg-white hover:text-plum">
+              Apply to Check Market Availability <span>→</span>
+            </a>
+            <p className="text-xs font-semibold tracking-wide text-white/40">Select partner openings available</p>
           </Reveal>
         </div>
       </section>
