@@ -13,17 +13,16 @@ const SITE_ID = "8c4333c3-cd49-480a-8934-3914aec3901b";
 const BRAND_VIDEO_URL = "https://storage.googleapis.com/msgsndr/ioeX0AohKO7FTyLYF9kf/media/69025f3b074008a75d3aa1de.mp4";
 const PRODUCT_VIDEO_URL = "https://storage.googleapis.com/msgsndr/WbJSzu9tJKeleGsNQ6dR/media/68252c05a1908e31dfd47a74.mp4";
 
-const productCarouselImages: { src: string; alt: string; caption: string }[] = [
-  { src: "/carousel-01-burbuja8.png",     alt: "Preserved Speaking Rose with a petal-printed message sealed beneath a hand-finished clear acrylic dome", caption: "A single preserved rose, printed petal-by-petal, sealed beneath a hand-finished acrylic dome." },
-  { src: "/carousel-02-burbuja9.png",     alt: "Personalized Speaking Rose keepsake displayed under a luxury acrylic dome",                              caption: "Every dome is a keepsake — real roses preserved to last for years, not days." },
-  { src: "/carousel-03-burbuja5.png",     alt: "Statement-size Speaking Roses acrylic dome arrangement styled as a luxury gift",                         caption: "Statement-size domes for proposals, milestones, and moments worth preserving." },
-  { src: "/carousel-04-13.png",           alt: "Curated arrangement of personalized Speaking Roses ready for gifting and retail display",                caption: "Curated arrangements — ready to gift, display, or sell at luxury margins." },
-  { src: "/carousel-05-chatgpt-a.png",    alt: "Multiple Speaking Roses arrangements showcasing names, dates, and messages printed on real petals",      caption: "One product, infinite personalization — names, dates, and messages on real petals." },
-  { src: "/carousel-06-chatgpt-b.png",    alt: "Speaking Rose with corporate branding printed directly on the preserved petals",                         caption: "Your brand, printed directly on a living rose. Corporate gifting, elevated." },
-  { src: "/carousel-07-design2.png",      alt: "Bespoke Speaking Roses design concept with custom petal printing on preserved blooms",                   caption: "Bespoke petal printing — design concepts realized on preserved blooms." },
-  { src: "/carousel-08-design5.png",      alt: "Speaking Roses keepsake design featuring diamond-grade preservation and precise petal printing",         caption: "From concept to keepsake — every detail printed with diamond-grade precision." },
-  { src: "/carousel-09-lamborghini.png",  alt: "Luxury co-branded Speaking Rose featuring Lamborghini branding printed on the petals",                   caption: "Trusted by luxury icons — a co-branded Speaking Rose for Lamborghini." },
-  { src: "/carousel-10-screenshot.png",   alt: "Finished heirloom-quality Speaking Rose product ready for distributor markets nationwide",               caption: "The finished Speaking Rose — heirloom-quality, ready for markets nationwide." },
+const productCarouselImages: { src: string; brand: string; caption: string }[] = [
+  { src: "/situation-lambo-1.png",     brand: "Lamborghini", caption: "Personalized petal prints for luxury automotive gifting" },
+  { src: "/situation-rolls-3.png",     brand: "Rolls-Royce", caption: "Custom roses for the world's most exclusive brand events" },
+  { src: "/situation-cocacola-1.png",  brand: "Coca-Cola",   caption: "The iconic brand, preserved in a real rose" },
+  { src: "/situation-lambo-2.png",     brand: "Lamborghini", caption: "Every detail printed petal-by-petal on real preserved roses" },
+  { src: "/situation-rolls-1.png",     brand: "Rolls-Royce", caption: "Bespoke keepsakes for the moments worth preserving" },
+  { src: "/situation-cocacola-2.png",  brand: "Coca-Cola",   caption: "From boardrooms to storefronts — one product, every market" },
+  { src: "/situation-lambo-3.png",     brand: "Lamborghini", caption: "Trusted by the world's most recognized luxury icons" },
+  { src: "/situation-rolls-2.png",     brand: "Rolls-Royce", caption: "Premium gifting that leaves a lasting impression" },
+  { src: "/situation-anniversary.png", brand: "Personal",    caption: "Birthdays, anniversaries, proposals — personalized forever" },
 ];
 
 const productFeatures = [
@@ -310,7 +309,7 @@ function CTA({ dark = false }: { dark?: boolean }) {
   );
 }
 
-type CarouselItem = { src: string; alt: string; caption: string };
+type CarouselItem = { src: string; brand: string; caption: string };
 
 function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; autoPlayMs?: number }) {
   const [index, setIndex] = useState(0);
@@ -374,17 +373,16 @@ function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; 
             {near && (
               <Image
                 src={item.src}
-                alt={item.alt}
+                alt={item.caption}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 800px"
+                sizes="100vw"
                 priority={i === 0}
               />
             )}
-            <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-plum/90 via-plum/45 to-transparent" />
             <div className="carousel-caption">
-              <p className="text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">The Product</p>
-              <p className="mt-1 font-display text-lg text-white md:text-xl">{item.caption}</p>
+              <span className="carousel-brand">{item.brand}</span>
+              <p className="carousel-caption-text">{item.caption}</p>
             </div>
           </div>
         );
@@ -681,58 +679,57 @@ export default function Home() {
       </section>
 
       {/* ── PRODUCT ── */}
-      <section id="product" className="rose-section py-24">
+      <section id="product" className="py-24" style={{ background: "#171219" }}>
+        {/* Header */}
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">The Product</p>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">A Product That Turns Real Roses Into Keepsakes.</h2>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em]" style={{ color: "#c9a84c" }}>The Product</p>
+            <h2 className="font-display text-4xl text-white md:text-6xl">A Product That Turns Real Roses Into Keepsakes.</h2>
             <OrnateRule />
-            <p className="mt-6 text-lg leading-8 text-ink/70">
-              Represent a patented product that prints names, logos, photos, and messages directly on real preserved roses — creating emotional gifts for corporate, funeral, retail, wedding, fundraising, and e-commerce markets.
+            <p className="mt-6 text-lg leading-8" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Represent a patented product that prints names, logos, photos, and messages directly on real preserved roses — trusted by Lamborghini, Rolls-Royce, Coca-Cola, and 500+ brands worldwide.
             </p>
           </Reveal>
 
-          {/* Proof badges */}
+          {/* Proof badges — dark glass versions */}
           <Reveal className="mt-8 flex flex-wrap justify-center gap-3">
             {[
               { label: "Patented Petal Printing", icon: "shield" },
               { label: "20+ Years of Proof", icon: "star" },
               { label: "Featured in 500+ Media Outlets", icon: "press" },
             ].map((badge) => (
-              <div key={badge.label} className="luxe-card flex items-center gap-2.5 rounded-xl px-5 py-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-white text-rose">
+              <div key={badge.label} className="luxe-card-dark flex items-center gap-2.5 rounded-xl px-5 py-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/10 text-gold">
                   <LineIcon name={badge.icon} className="h-4 w-4" />
                 </span>
-                <span className="text-sm font-semibold text-plum">{badge.label}</span>
+                <span className="text-sm font-semibold text-white">{badge.label}</span>
               </div>
             ))}
           </Reveal>
-
-          {/* Product gallery — interactive carousel */}
-          <Reveal className="mt-12">
-            <div className="mx-auto max-w-5xl">
-              <ProductCarousel items={productCarouselImages} autoPlayMs={5000} />
-              <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.22em] text-rose">
-                Scroll through the gallery — every rose is real, preserved, and personalized.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Product feature cards */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {productFeatures.map((f) => (
-              <Reveal key={f.title} className="luxe-card rounded-2xl p-6">
-                <Icon>
-                  <RoseIcon />
-                </Icon>
-                <h3 className="font-bold text-plum">{f.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink/70">{f.body}</p>
-              </Reveal>
-            ))}
-          </div>
-
-          <CTA />
         </div>
+
+        {/* Full-bleed gallery */}
+        <Reveal className="mt-12">
+          <ProductCarousel items={productCarouselImages} autoPlayMs={5500} />
+          <p className="mt-4 text-center text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: "#c9a84c" }}>
+            Trusted by the world&apos;s most recognized brands — every rose is real, preserved, and personalized.
+          </p>
+        </Reveal>
+
+        {/* Product feature cards */}
+        <div className="mx-auto mt-12 grid max-w-7xl gap-4 px-5 sm:grid-cols-2 lg:grid-cols-4">
+          {productFeatures.map((f) => (
+            <Reveal key={f.title} className="luxe-card-dark rounded-2xl p-6">
+              <Icon>
+                <RoseIcon />
+              </Icon>
+              <h3 className="font-bold text-white">{f.title}</h3>
+              <p className="mt-2 text-sm leading-6" style={{ color: "rgba(255,255,255,0.65)" }}>{f.body}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <CTA dark />
       </section>
 
       {/* ── MARKET OPPORTUNITY ── */}
