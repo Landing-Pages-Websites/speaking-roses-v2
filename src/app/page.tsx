@@ -333,6 +333,57 @@ function CTA({ dark = false }: { dark?: boolean }) {
 
 type CarouselItem = { src: string; brand: string; caption: string };
 
+function BrandVideo({ src, poster }: { src: string; poster?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  function toggleMute() {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = !vid.muted;
+    setMuted(vid.muted);
+  }
+
+  return (
+    <div className="relative aspect-video w-full overflow-hidden" style={{background: '#0e0a0d'}}>
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        autoPlay
+        muted
+        playsInline
+        loop
+        className="h-full w-full object-cover"
+      />
+      {/* Unmute / mute button — bottom-right corner */}
+      <button
+        type="button"
+        onClick={toggleMute}
+        aria-label={muted ? "Unmute video" : "Mute video"}
+        className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-md transition hover:scale-105"
+        style={{background: 'rgba(23,18,25,0.65)', border: '1px solid rgba(255,255,255,0.18)'}}
+      >
+        {muted ? (
+          <>
+            <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <span>Unmute</span>
+          </>
+        ) : (
+          <>
+            <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+            <span>Mute</span>
+          </>
+        )}
+      </button>
+    </div>
+  );
+}
+
 function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; autoPlayMs?: number }) {
   const [index, setIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -798,17 +849,8 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              {/* Right: video */}
-              <video
-                src={BRAND_VIDEO_URL}
-                controls
-                playsInline
-                poster="/rose-product.webp"
-                className="aspect-video w-full object-cover"
-                style={{background: '#0e0a0d'}}
-              >
-                Your browser does not support the video tag.
-              </video>
+              {/* Right: video — autoplay muted, tap/click to unmute */}
+              <BrandVideo src={BRAND_VIDEO_URL} poster="/rose-product.webp" />
             </div>
           </Reveal>
 
