@@ -453,6 +453,7 @@ export default function Home() {
   const [phoneError, setPhoneError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [showFloat, setShowFloat] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setShowFloat(window.scrollY > 600);
@@ -758,7 +759,6 @@ export default function Home() {
       <section id="markets" className="rose-section relative overflow-hidden py-24">
         <Image src="/bg-market-acrylic-roses-ai.png" alt="" fill className="object-cover object-center opacity-55" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-r from-petal via-petal/94 to-petal/72" />
-        <div className="absolute inset-0 bg-white/35" />
         <div className="relative mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">The Market Opportunity</p>
@@ -880,78 +880,83 @@ export default function Home() {
       </section>
 
       {/* ── PROOF STATS ── */}
-      <section id="proof" className="rose-section rose-section-dark py-20 text-white">
+      <section id="proof" className="py-20" style={{ background: "#faf6f2" }}>
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-white/60">The opportunity in numbers</p>
-            <h2 className="font-display text-4xl text-white md:text-5xl">Built on two decades of proof.</h2>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">The opportunity in numbers</p>
+            <h2 className="font-display text-4xl text-plum md:text-5xl">Built on two decades of proof.</h2>
             <OrnateRule />
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {proofPoints.map(([title, label]) => (
-              <Reveal key={title} className="luxe-card-dark rounded-2xl p-7" style={{borderTop: '2px solid rgba(201,168,76,0.35)'}}>
+              <Reveal key={title} className="luxe-card rounded-2xl p-7" style={{borderTop: '2px solid rgba(201,168,76,0.35)'}}>
                 <div className="font-display text-5xl font-bold" style={{color: '#c9a84c'}}>{title}</div>
-                <p className="mt-3 text-sm leading-6 text-white/75">{label}</p>
+                <p className="mt-3 text-sm leading-6 text-ink/70">{label}</p>
               </Reveal>
             ))}
           </div>
         </div>
-        <CTA dark />
+        <CTA />
       </section>
 
       {/* ── OUR ROSE PROCESS ── */}
-      <section id="story" className="rose-section scroll-mt-24 py-16">
+      <section id="story" className="scroll-mt-24 py-20" style={{ background: "#1b121a" }}>
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal>
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-rose">Our Rose Process</p>
-            <h2 className="font-display text-4xl text-plum md:text-[2.75rem] md:leading-tight">Raised in South America.<br /><span className="text-rose">Perfected Like a Diamond.</span></h2>
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gold">Our Rose Process</p>
+            <h2 className="font-display text-4xl text-white md:text-[2.75rem] md:leading-tight">Raised in South America.<br /><span className="text-gold">Perfected Like a Diamond.</span></h2>
             <OrnateRule />
-            <p className="mt-2 text-base font-medium text-ink/55">From the mountains to meticulous preservation, printing, and luxury packaging.</p>
-            <p className="mt-5 text-base leading-7 text-ink/70">
+            <p className="mt-2 text-base font-medium text-white/55">From the mountains to meticulous preservation, printing, and luxury packaging.</p>
+            <p className="mt-5 text-base leading-7 text-white/70">
               Our roses are raised in the majestic mountains of South America. Once fully mature, they are cut and guided through a two-week-plus diamond-grade preservation process. Each rose is individually perfected to look, feel, and smell real while lasting for years.
             </p>
-            <p className="mt-3 text-base leading-7 text-ink/70">
+            <p className="mt-3 text-base leading-7 text-white/70">
               Every rose is treated like a diamond. We check on each one daily, carefully protecting its beauty and quality through every stage of the process.
             </p>
-            <p className="mt-3 text-base leading-7 text-ink/70">
+            <p className="mt-3 text-base leading-7 text-white/70">
               Once the roses arrive in the United States, they are meticulously printed, packaged, and prepared by our team using a precise, hands-on process. From there, each finished product is placed in luxurious packaging and delivered to distributors across the United States.
             </p>
-            <p className="mt-4 text-base font-semibold text-rose">
+            <p className="mt-4 text-base font-semibold text-gold">
               We are not beginners bringing a random product to market. We are a proven brand built on process, quality, and presentation.
             </p>
 
             {/* Process points */}
             <div className="mt-6 grid grid-cols-2 gap-3">
               {processPoints.map((p) => (
-                <div key={p.label} className="luxe-card flex items-center gap-3 rounded-xl px-4 py-2.5">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose/10">
-                    <MarketIcon name={p.icon} className="h-3.5 w-3.5 text-rose" />
+                <div key={p.label} className="luxe-card-dark flex items-center gap-3 rounded-xl px-4 py-2.5">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15">
+                    <MarketIcon name={p.icon} className="h-3.5 w-3.5 text-gold" />
                   </div>
-                  <span className="text-sm font-semibold text-plum">{p.label}</span>
+                  <span className="text-sm font-semibold text-white">{p.label}</span>
                 </div>
               ))}
             </div>
             <div className="[&>div]:mt-6">
-              <CTA />
+              <CTA dark />
             </div>
           </Reveal>
 
-          {/* Process video */}
-          <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20">
-            <div className="bg-plum px-5 py-3">
-              <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">Watch the Process</p>
-              <h3 className="mt-1 font-display text-xl text-white">See How Our Roses Are Grown, Preserved &amp; Prepared</h3>
-              <p className="mt-1 text-sm text-white/55">A behind-the-scenes look at sourcing, preservation, printing, and packaging.</p>
-            </div>
-            <video src={PRODUCT_VIDEO_URL} controls playsInline className="aspect-video max-h-[56vh] w-full bg-plum object-contain" poster="/rose-1.webp">
-              Your browser does not support the video tag.
-            </video>
-          </Reveal>
+          {/* Story video — full column, autoplay */}
+          <div>
+            <Reveal className="overflow-hidden rounded-2xl" style={{ background: "#0e0a0d" }}>
+              <video
+                src={PRODUCT_VIDEO_URL}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full object-cover"
+                style={{ display: "block", aspectRatio: "16/9" }}
+                poster="/rose-1.webp"
+              />
+            </Reveal>
+            <p className="mt-3 text-center text-xs font-semibold uppercase tracking-[0.22em] text-gold">Watch: Grown in South America. Perfected Like a Diamond.</p>
+          </div>
         </div>
       </section>
 
       {/* ── PARTNER PATHS ── */}
-      <section id="opportunity" className="rose-section py-24">
+      <section id="opportunity" className="py-24" style={{ background: "#171219" }}>
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
             <div className="mb-4 flex justify-center">
@@ -959,31 +964,36 @@ export default function Home() {
                 <RoseIcon className="h-5 w-5" />
               </div>
             </div>
-            <h2 className="font-display text-4xl text-plum md:text-6xl">Choose the Partner Path That Fits Your Market</h2>
+            <h2 className="font-display text-4xl text-white md:text-6xl">Choose the Partner Path That Fits Your Market</h2>
             <OrnateRule />
-            <p className="mt-6 text-lg leading-8 text-ink/70">
+            <p className="mt-6 text-lg leading-8 text-white/65">
               Speaking Roses offers different entry points depending on your goals, market, experience, and ability to grow. Start as a distributor, explore licensed production, or discuss a strategic partnership.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-3 items-start">
             {paths.map((path, i) => {
               {/* Licensee (i===1): featured dark "Most Chosen" card */}
               if (i === 1) {
                 return (
-                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)'}}>
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
+                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)', minHeight: '460px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                    <div>
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                        <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
+                      </div>
+                      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
+                        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                        </svg>
+                      </div>
+                      <h3 className="font-display text-2xl text-white">{path.title}</h3>
+                      <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
+                        <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
+                      </div>
+                      <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
                     </div>
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-                      </svg>
-                    </div>
-                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
-                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
-                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
-                    </div>
-                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
+                    <a href="#apply" className="mt-6 block w-full rounded-full py-3 text-center text-sm font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>
+                      Apply Now →
+                    </a>
                   </Reveal>
                 );
               }
@@ -1006,103 +1016,104 @@ export default function Home() {
               }
               {/* Distributor (i===0): standard light card */}
               return (
-                <Reveal key={path.title} className="luxe-card relative rounded-2xl p-8">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/30 bg-petal text-rose">
+                <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-white/5 text-gold">
                     <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M16 11c0-2.21-1.79-4-4-4S8 8.79 8 11m0 0c0 2.21 1.79 4 4 4m-4-4H3m13 0h5M5 19h14" />
                     </svg>
                   </div>
-                  <h3 className="font-display text-2xl text-plum">{path.title}</h3>
-                  <div className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-rose/25 bg-rose/8 px-3 py-0.5">
-                    <span className="text-[0.6875rem] font-bold uppercase tracking-wide text-rose">{path.sub}</span>
+                  <h3 className="font-display text-2xl text-white">{path.title}</h3>
+                  <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
+                    <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
                   </div>
-                  <p className="mt-4 text-sm leading-7 text-ink/70">{path.body}</p>
+                  <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
                 </Reveal>
               );
             })}
           </div>
 
-          <Reveal className="luxe-card mt-8 rounded-2xl p-8 text-center">
-            <RoseIcon className="mx-auto mb-3 h-6 w-6 text-rose" />
-            <p className="text-xl font-semibold text-plum">Not sure which path fits you?</p>
-            <p className="mt-1 text-ink/65">Apply and we&apos;ll review your market.</p>
-            <CTA />
+          <Reveal className="mt-8" style={{border: '1px solid rgba(201,168,76,0.2)', borderRadius: '1rem', padding: '2rem', textAlign: 'center'}}>
+            <RoseIcon className="mx-auto mb-3 h-6 w-6 text-gold" />
+            <p className="text-xl font-semibold text-white">Not sure which path fits you?</p>
+            <p className="mt-1 text-white/65">Apply and we&apos;ll review your market.</p>
+            <CTA dark />
           </Reveal>
         </div>
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section id="testimonials" className="rose-section rose-section-dark py-24 text-white">
+      <section id="testimonials" className="rose-section py-24">
         <div className="mx-auto max-w-7xl px-5">
           <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blush">From our partners</p>
-            <h2 className="font-display text-4xl text-white md:text-5xl">What partners are saying.</h2>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rose">From our partners</p>
+            <h2 className="font-display text-4xl text-plum md:text-5xl">What partners are saying.</h2>
             <OrnateRule />
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
-              <Reveal key={t.name} className="luxe-card-dark rounded-2xl p-8">
-                <p className="font-display text-4xl text-blush/50 leading-none">&ldquo;</p>
-                <p className="mt-2 text-base leading-8 text-white/80">{t.quote}</p>
-                <div className="mt-6 border-t border-white/10 pt-5">
-                  <p className="font-bold text-white">{t.name}</p>
-                  <p className="text-sm text-blush/60">{t.title}</p>
+              <Reveal key={t.name} className="luxe-card rounded-2xl p-8">
+                <div className="flex gap-0.5 mb-3">
+                  {[1,2,3,4,5].map((n) => (
+                    <svg key={n} className="h-4 w-4" viewBox="0 0 24 24" fill="#c9a84c"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  ))}
+                </div>
+                <p className="font-display leading-none select-none" style={{fontSize: '6rem', color: 'rgba(168,79,101,0.15)', lineHeight: 1, marginBottom: '-1.5rem'}}>&#8220;</p>
+                <p className="mt-2 text-base leading-8 text-ink/80">{t.quote}</p>
+                <div className="mt-6 border-t border-rose/10 pt-5">
+                  <p className="font-bold text-plum">{t.name}</p>
+                  <p className="text-sm text-rose/60">{t.title}</p>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
-        <CTA dark />
+        <CTA />
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="process" className="relative overflow-hidden pt-10 pb-32">
-        {/* Cream botanical background */}
-        <Image src="/bg-how-it-works.png" alt="" fill className="object-cover object-bottom" quality={100} sizes="100vw" />
-
-
-        <div className="relative z-10 mx-auto max-w-7xl px-5">
+      <section id="process" className="py-20" style={{ background: "#1b121a" }}>
+        <div className="mx-auto max-w-7xl px-5">
           <Reveal className="text-center">
             <div className="mb-2 flex items-center justify-center gap-3">
               <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
-              <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-white/5 shadow-sm">
                 <RoseIcon className="h-4 w-4 text-gold" />
               </div>
               <span className="select-none text-xs tracking-[0.6em] text-gold/55">···</span>
             </div>
             <p className="mb-2 text-[0.6rem] font-bold uppercase tracking-[0.45em] text-gold">How It Works</p>
-            <h2 className="font-display text-3xl font-bold leading-tight text-plum md:text-4xl">Apply, Review, and Launch Your Market.</h2>
+            <h2 className="font-display text-3xl font-bold leading-tight text-white md:text-4xl">Apply, Review, and Launch Your Market.</h2>
             <OrnateRule />
-            <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-ink/65">
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-white/65">
               Our process is designed to keep things selective, simple, and strategic. We review each application individually and guide qualified partners toward the right path for their market.
             </p>
           </Reveal>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="steps-grid mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { num: "01", title: "Apply", body: "Submit your information, market, and timeline so our team can review your interest." },
               { num: "02", title: "Review", body: "We evaluate fit, readiness, and market availability to determine the best partner path." },
               { num: "03", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps." },
               { num: "04", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals." },
             ].map(({ num, title, body }) => (
-              <Reveal key={num} className="flex flex-col items-center rounded-2xl bg-white/50 px-4 pb-6 pt-5 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)] backdrop-blur-sm">
+              <Reveal key={num} className="luxe-card-dark relative z-10 flex flex-col items-center rounded-2xl px-4 pb-6 pt-5 text-center">
                 {/* Large architectural number */}
-                <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/30" style={{background: 'linear-gradient(135deg, #f5ede6 0%, #fff8f0 100%)'}}>
+                <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/40" style={{background: 'linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)'}}>
                   <span className="font-display text-3xl font-bold" style={{color: '#c9a84c', letterSpacing: '-0.04em'}}>{num}</span>
                 </div>
-                <h3 className="font-display text-xl text-plum">{title}</h3>
+                <h3 className="font-display text-xl text-white">{title}</h3>
                 <div className="ornate-rule my-2"><span /></div>
-                <p className="text-xs leading-6 text-ink/60">{body}</p>
+                <p className="text-xs leading-6 text-white/65">{body}</p>
               </Reveal>
             ))}
           </div>
 
           {/* Ornament + CTA */}
-          <div className="mt-8 flex flex-col items-center gap-3 md:pl-[21.25rem]">
+          <div className="mt-10 flex flex-col items-center gap-3">
             <div className="flex w-full max-w-xs items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/50" />
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
-              <div className="mx-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/90 shadow-sm">
+              <div className="mx-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-white/5 shadow-sm">
                 <Image src="/logo.svg" alt="Speaking Roses" width={18} height={18} className="h-[1.1rem] w-auto object-contain opacity-80" />
               </div>
               <span className="select-none text-[0.5rem] tracking-[0.35em] text-gold/50">···</span>
@@ -1113,7 +1124,7 @@ export default function Home() {
               Apply to Check Market Availability
             </a>
 
-            <p className="flex items-center gap-2 text-xs font-semibold text-rose/70">
+            <p className="flex items-center gap-2 text-xs font-semibold text-gold/70">
               <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -1147,14 +1158,24 @@ export default function Home() {
           </Reveal>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
-              <Reveal key={faq.q} className="luxe-card rounded-2xl p-6">
-                <div className="flex items-start gap-4">
+              <Reveal key={faq.q} className="luxe-card rounded-2xl overflow-hidden">
+                <button
+                  type="button"
+                  className="flex w-full items-start gap-4 p-6 text-left"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose/10 text-sm font-bold text-rose">{i + 1}</span>
-                  <div>
-                    <h3 className="text-base font-bold text-plum">{faq.q}</h3>
-                    <p className="mt-2 text-sm leading-7 text-ink/70">{faq.a}</p>
+                  <span className="flex-1 text-base font-bold text-plum">{faq.q}</span>
+                  <span className="ml-2 shrink-0 text-rose/50 transition-transform duration-200" style={{transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)'}}>
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </span>
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-6 pt-0">
+                    <p className="text-sm leading-7 text-ink/70 pl-12">{faq.a}</p>
                   </div>
-                </div>
+                )}
               </Reveal>
             ))}
           </div>
@@ -1164,8 +1185,7 @@ export default function Home() {
       {/* ── APPLY CTA ── */}
       <section id="apply" className="rose-section relative overflow-hidden py-24">
         <Image src="/bg-application-desk.png" alt="" fill className="object-cover object-center opacity-70" sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/96 via-petal/92 to-white/72" />
-        <div className="absolute inset-0 bg-white/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-petal/80 to-white/40" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[1fr_1.1fr] items-center">
           <Reveal className="luxe-card rounded-3xl p-6 md:p-8">
             <div className="flex justify-center lg:justify-start mb-5">

@@ -148,6 +148,25 @@ select.field {
   background: linear-gradient(90deg, transparent, #c9a84c80, transparent);
 }
 
+/* ── Process steps timeline connector ── */
+.steps-grid {
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 2.5rem; /* center of the number circle */
+  left: calc(12.5% + 2.5rem); /* start after first circle */
+  right: calc(12.5% + 2.5rem); /* end before last circle */
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(201,168,76,0.5), rgba(201,168,76,0.15));
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 1023px) {
+  .steps-grid::before { display: none; }
+}
+
 /* ── Product Carousel — Full-Bleed Cinematic ───────────────── */
 /* Edge-to-edge gallery: slides are stacked and crossfade between each
    other. No border-radius, no max-width, no border — the dramatic studio
