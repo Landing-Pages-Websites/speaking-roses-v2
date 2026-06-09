@@ -71,21 +71,21 @@ const paths = [
 ];
 
 const markets = [
-  { title: "Weddings & Events", body: "Personalized roses for proposals, centerpieces, thank-you gifts, and memorable keepsakes." },
-  { title: "Funeral Homes", body: "Offer families a unique way to honor and remember loved ones with personalized roses." },
-  { title: "Corporate Gifts", body: "Strengthen relationships with branded roses for clients, employees, and special recognition." },
-  { title: "Retail & Gift Shops", body: "A high-margin luxury gift that stands out and drives repeat customer visits." },
-  { title: "Fundraising", body: "A meaningful product that helps organizations raise more with emotional impact." },
-  { title: "Souvenir Shops", body: "Premium keepsakes for tourists looking for something unique and personal to take home." },
-  { title: "Promotional Companies", body: "Add meaningful personalization to campaigns, events, and brand activations." },
-  { title: "E-commerce & Social Selling", body: "Perfect for online sellers and influencers who create emotional, shareable moments." },
+  { title: "Weddings & Events", icon: "rings", body: "Personalized roses for proposals, centerpieces, thank-you gifts, and memorable keepsakes." },
+  { title: "Funeral Homes", icon: "flower", body: "Offer families a unique way to honor and remember loved ones with personalized roses." },
+  { title: "Corporate Gifts", icon: "briefcase", body: "Strengthen relationships with branded roses for clients, employees, and special recognition." },
+  { title: "Retail & Gift Shops", icon: "store", body: "A high-margin luxury gift that stands out and drives repeat customer visits." },
+  { title: "Fundraising", icon: "heart", body: "A meaningful product that helps organizations raise more with emotional impact." },
+  { title: "Souvenir Shops", icon: "bag", body: "Premium keepsakes for tourists looking for something unique and personal to take home." },
+  { title: "Promotional Companies", icon: "megaphone", body: "Add meaningful personalization to campaigns, events, and brand activations." },
+  { title: "E-commerce & Social Selling", icon: "cart", body: "Perfect for online sellers and influencers who create emotional, shareable moments." },
 ];
 
 const processPoints = [
-  { label: "South American Grown" },
-  { label: "Diamond-Grade Preservation" },
-  { label: "Printed & Packaged in the USA" },
-  { label: "Shipped Worldwide" },
+  { label: "South American Grown", icon: "mountain" },
+  { label: "Diamond-Grade Preservation", icon: "gem" },
+  { label: "Printed & Packaged in the USA", icon: "flag" },
+  { label: "Shipped Worldwide", icon: "globe" },
 ];
 
 const faqs = [
@@ -137,7 +137,7 @@ const initialForm: FormState = {
   timeline: "",
 };
 
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Reveal({ children, className = "", style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -146,7 +146,7 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
     return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"} ${className}`}>
+    <div ref={ref} style={style} className={`transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"} ${className}`}>
       {children}
     </div>
   );
@@ -156,6 +156,28 @@ function RoseIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M12 2v20M5 9c4 0 7-3 7-7 0 4 3 7 7 7-4 0-7 3-7 7 0-4-3-7-7-7Z" />
+    </svg>
+  );
+}
+
+function MarketIcon({ name, className = "h-4 w-4" }: { name: string; className?: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    rings:     <><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><path d="M11 12h2"/></>,
+    flower:    <><path d="M12 22V12m0-10v10M7 7c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5-5-2.2-5-5"/><path d="M22 12c0-2.8-2.2-5-5-5s-5 2.2-5 5 2.2 5 5 5 5-2.2 5-5"/><path d="M7 17c0 2.8 2.2 5 5 5s5-2.2 5-5-2.2-5-5-5-5 2.2-5 5"/></>,
+    briefcase: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></>,
+    store:     <><path d="M3 9l1-5h16l1 5"/><path d="M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/><path d="M9 9v3a3 3 0 0 0 6 0V9"/></>,
+    heart:     <><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></>,
+    bag:       <><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></>,
+    megaphone: <><path d="M3 11l19-9-9 19-2-8-8-2z"/></>,
+    cart:      <><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></>,
+    mountain:  <><path d="M3 20l6-12 4 8 3-5 5 9H3z"/></>,
+    gem:       <><polygon points="6 3 18 3 22 9 12 22 2 9"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="12" y1="3" x2="6" y2="9"/><line x1="12" y1="3" x2="18" y2="9"/></>,
+    flag:      <><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></>,
+    globe:     <><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
+  };
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      {paths[name] ?? <circle cx="12" cy="12" r="8"/>}
     </svg>
   );
 }
@@ -747,48 +769,47 @@ export default function Home() {
             </p>
           </Reveal>
 
-          {/* Markets grid + video */}
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_420px]">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {markets.map((m) => (
-                <Reveal key={m.title} className="luxe-card flex items-start gap-4 rounded-xl p-5">
-                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rose/25 bg-rose/10 text-rose">
-                    <RoseIcon className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-plum">{m.title}</h3>
-                    <p className="mt-1 text-sm leading-5 text-ink/70">{m.body}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* Video card */}
-            <Reveal className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gold/20 self-start">
-              <div className="bg-plum px-5 py-3">
-                <p className="text-[0.6875rem] font-bold uppercase tracking-[0.22em] text-gold">See the Possibilities</p>
-                <h3 className="mt-1 font-display text-xl text-white">Watch the Market Opportunity Video</h3>
-                <p className="mt-1 text-sm text-white/55">Discover how Speaking Roses creates meaningful impact across industries and around the world.</p>
-              </div>
-                <video
-                  src={BRAND_VIDEO_URL}
-                  controls
-                  playsInline
-                className="aspect-video w-full bg-plum object-contain"
-                  poster="/rose-product.webp"
-                >
-                  Your browser does not support the video tag.
-                </video>
-            </Reveal>
+          {/* Markets grid — full 2-column */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {markets.map((m) => (
+              <Reveal key={m.title} className="luxe-card flex items-start gap-4 rounded-xl p-5">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rose/25 bg-rose/10 text-rose">
+                  <MarketIcon name={m.icon} className="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-plum">{m.title}</h3>
+                  <p className="mt-1 text-sm leading-5 text-ink/70">{m.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
 
-          {/* Positioning strip */}
-          <Reveal className="mt-8 flex flex-wrap justify-center gap-3">
-            {["High-Emotion Purchase Categories", "Built for Multiple Sales Channels", "Premium Keepsake Positioning"].map((tag) => (
-              <span key={tag} className="rounded-full bg-plum px-5 py-2 text-sm font-bold text-blush shadow-sm">
-                {tag}
-              </span>
-            ))}
+          {/* Featured video — full width */}
+          <Reveal className="mt-12 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-gold/20" style={{background: '#171219'}}>
+            <div className="grid lg:grid-cols-[1fr_2fr]">
+              {/* Left: text */}
+              <div className="flex flex-col justify-center px-8 py-10 lg:py-12">
+                <p className="mb-2 text-[0.65rem] font-bold uppercase tracking-[0.28em]" style={{color: '#c9a84c'}}>See the Possibilities</p>
+                <h3 className="font-display text-2xl text-white md:text-3xl leading-tight">Watch the Market Opportunity Video</h3>
+                <p className="mt-3 text-sm leading-7" style={{color: 'rgba(255,255,255,0.55)'}}>Discover how Speaking Roses creates meaningful impact across industries and around the world.</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {["High-Emotion Purchase Categories", "Built for Multiple Sales Channels", "Premium Keepsake Positioning"].map((tag) => (
+                    <span key={tag} className="rounded-full border border-white/15 px-3 py-1 text-xs font-semibold text-white/60">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              {/* Right: video */}
+              <video
+                src={BRAND_VIDEO_URL}
+                controls
+                playsInline
+                poster="/rose-product.webp"
+                className="aspect-video w-full object-cover"
+                style={{background: '#0e0a0d'}}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </Reveal>
 
           <Reveal className="mt-8 rounded-2xl border border-gold/20 bg-plum/95 p-8 text-center text-white shadow-xl">
@@ -868,8 +889,8 @@ export default function Home() {
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {proofPoints.map(([title, label]) => (
-              <Reveal key={title} className="luxe-card-dark rounded-2xl p-7">
-                <div className="font-display text-5xl font-bold text-white">{title}</div>
+              <Reveal key={title} className="luxe-card-dark rounded-2xl p-7" style={{borderTop: '2px solid rgba(201,168,76,0.35)'}}>
+                <div className="font-display text-5xl font-bold" style={{color: '#c9a84c'}}>{title}</div>
                 <p className="mt-3 text-sm leading-6 text-white/75">{label}</p>
               </Reveal>
             ))}
@@ -903,7 +924,9 @@ export default function Home() {
             <div className="mt-6 grid grid-cols-2 gap-3">
               {processPoints.map((p) => (
                 <div key={p.label} className="luxe-card flex items-center gap-3 rounded-xl px-4 py-2.5">
-                  <div className="h-2 w-2 shrink-0 rounded-full bg-rose" />
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose/10">
+                    <MarketIcon name={p.icon} className="h-3.5 w-3.5 text-rose" />
+                  </div>
                   <span className="text-sm font-semibold text-plum">{p.label}</span>
                 </div>
               ))}
@@ -943,28 +966,60 @@ export default function Home() {
             </p>
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {paths.map((path, i) => (
-              <Reveal key={path.title} className="luxe-card relative rounded-2xl p-8">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/30 bg-petal text-rose">
-                  {i === 0 && (
+            {paths.map((path, i) => {
+              {/* Licensee (i===1): featured dark "Most Chosen" card */}
+              if (i === 1) {
+                return (
+                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)'}}>
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
+                    </div>
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                      </svg>
+                    </div>
+                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
+                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
+                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
+                    </div>
+                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
+                  </Reveal>
+                );
+              }
+              {/* Strategic (i===2): premium dark-glass card with gold gradient top border */}
+              if (i === 2) {
+                return (
+                  <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8" style={{borderTop: '3px solid transparent', borderImage: 'linear-gradient(90deg, #c9a84c, #b9456f) 1'}}>
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-white/5 text-gold">
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                    </div>
+                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
+                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
+                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
+                    </div>
+                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
+                  </Reveal>
+                );
+              }
+              {/* Distributor (i===0): standard light card */}
+              return (
+                <Reveal key={path.title} className="luxe-card relative rounded-2xl p-8">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/30 bg-petal text-rose">
                     <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <path d="M16 11c0-2.21-1.79-4-4-4S8 8.79 8 11m0 0c0 2.21 1.79 4 4 4m-4-4H3m13 0h5M5 19h14" />
                     </svg>
-                  )}
-                  {i === 1 && <RoseIcon className="h-6 w-6" />}
-                  {i === 2 && (
-                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                    </svg>
-                  )}
-                </div>
-                <h3 className="font-display text-2xl text-plum">{path.title}</h3>
-                <div className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-rose/25 bg-rose/8 px-3 py-0.5">
-                  <span className="text-[0.6875rem] font-bold uppercase tracking-wide text-rose">{path.sub}</span>
-                </div>
-                <p className="mt-4 text-sm leading-7 text-ink/70">{path.body}</p>
-              </Reveal>
-            ))}
+                  </div>
+                  <h3 className="font-display text-2xl text-plum">{path.title}</h3>
+                  <div className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-rose/25 bg-rose/8 px-3 py-0.5">
+                    <span className="text-[0.6875rem] font-bold uppercase tracking-wide text-rose">{path.sub}</span>
+                  </div>
+                  <p className="mt-4 text-sm leading-7 text-ink/70">{path.body}</p>
+                </Reveal>
+              );
+            })}
           </div>
 
           <Reveal className="luxe-card mt-8 rounded-2xl p-8 text-center">
@@ -1025,16 +1080,17 @@ export default function Home() {
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { num: "1", title: "Apply", body: "Submit your information, market, and timeline so our team can review your interest.", icon: "clipboard" },
-              { num: "2", title: "Review", body: "We evaluate fit, readiness, and market availability to determine the best partner path.", icon: "review" },
-              { num: "3", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps.", icon: "calendar" },
-              { num: "4", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals.", icon: "rocket" },
-            ].map(({ num, title, body, icon }) => (
+              { num: "01", title: "Apply", body: "Submit your information, market, and timeline so our team can review your interest." },
+              { num: "02", title: "Review", body: "We evaluate fit, readiness, and market availability to determine the best partner path." },
+              { num: "03", title: "Strategy Call", body: "Qualified applicants are invited to a Zoom call to discuss products, market opportunities, and next steps." },
+              { num: "04", title: "Launch", body: "Move forward with the distributor, licensee, or strategic partner option that fits your goals." },
+            ].map(({ num, title, body }) => (
               <Reveal key={num} className="flex flex-col items-center rounded-2xl bg-white/50 px-4 pb-6 pt-5 text-center shadow-[0_8px_40px_rgba(23,18,25,0.07)] backdrop-blur-sm">
-                <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-[#f5ede6] text-gold shadow-inner">
-                  <LineIcon name={icon} className="h-8 w-8" />
+                {/* Large architectural number */}
+                <div className="mb-4 flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-gold/30" style={{background: 'linear-gradient(135deg, #f5ede6 0%, #fff8f0 100%)'}}>
+                  <span className="font-display text-3xl font-bold" style={{color: '#c9a84c', letterSpacing: '-0.04em'}}>{num}</span>
                 </div>
-                <h3 className="font-display text-xl text-plum">{num}. {title}</h3>
+                <h3 className="font-display text-xl text-plum">{title}</h3>
                 <div className="ornate-rule my-2"><span /></div>
                 <p className="text-xs leading-6 text-ink/60">{body}</p>
               </Reveal>
