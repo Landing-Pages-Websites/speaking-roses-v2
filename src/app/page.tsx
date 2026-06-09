@@ -350,6 +350,7 @@ function BrandVideo({ src, poster }: { src: string; poster?: string }) {
         ref={videoRef}
         src={src}
         poster={poster}
+        controls
         autoPlay
         muted
         playsInline
@@ -592,8 +593,7 @@ export default function Home() {
         />
         {/* DESKTOP: no full-width overlays — the product photo is the centerpiece. Only a faint top vignette for nav contrast. */}
         <div className="absolute inset-x-0 top-0 h-28 hidden bg-gradient-to-b from-black/40 to-transparent lg:block" />
-        {/* MOBILE: dark wash behind stacked content for readability */}
-        <div className="absolute inset-0 bg-black/45 lg:hidden" />
+        {/* MOBILE: faint top gradient only for nav — content sits below the image */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/55 to-transparent lg:hidden" />
 
         {/* DESKTOP: headline-left, product-center (visible), form-right */}
@@ -686,8 +686,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* MOBILE: stacked layout */}
-        <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-24 lg:hidden">
+        {/* MOBILE: hero image visible at top, content stacked below */}
+        {/* Spacer so header doesn't clip the image — hero image fills from top */}
+        <div className="relative z-10 lg:hidden">
+          {/* Image reveal strip — gives the hero photo ~45vw of visible height before content */}
+          <div className="h-[52vw] min-h-[200px] max-h-[300px]" aria-hidden="true" />
+        </div>
+        <div className="relative z-10 flex flex-col gap-4 px-4 pb-10 pt-4 lg:hidden" style={{background: '#171219'}}>
           <Reveal>
             <div className="rounded-2xl border border-gold/20 bg-[#1A1410]/88 px-5 py-5 shadow-2xl backdrop-blur-md ring-1 ring-black/30">
               {/* Speaking Roses logo (matches client ref doc / desktop card). */}
@@ -984,6 +989,7 @@ export default function Home() {
               <video
                 src={PRODUCT_VIDEO_URL}
                 autoPlay
+                controls
                 muted
                 loop
                 playsInline
