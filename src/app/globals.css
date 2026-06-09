@@ -347,3 +347,32 @@ h2.font-display { letter-spacing: -0.03em; }
 @media (prefers-reduced-motion: reduce) {
   .cta-shimmer::after { transition: none; }
 }
+
+/* ── Distributor card — animated prismatic border ── */
+.path-card-featured {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(135deg, #c9a84c, #e8b86d, #a84f65, #7b5ea7, #4a9eda, #c9a84c);
+  background-size: 300% 300%;
+  animation: prismatic-shift 4s ease infinite;
+  box-shadow: 0 0 32px rgba(201,168,76,0.18), 0 0 64px rgba(168,79,101,0.1);
+}
+@keyframes prismatic-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.path-card-featured-inner {
+  border-radius: calc(1rem - 2px);
+  background: #171219;
+  height: 100%;
+  padding: 2rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .path-card-featured {
+    animation: none;
+    background: linear-gradient(135deg, #c9a84c, #a84f65);
+    background-size: 100% 100%;
+  }
+}

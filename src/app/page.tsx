@@ -1012,51 +1012,29 @@ export default function Home() {
               Speaking Roses offers different entry points depending on your goals, market, experience, and ability to grow. Start as a distributor, explore licensed production, or discuss a strategic partnership.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3 items-start">
+          <div className="mt-14 grid gap-6 md:grid-cols-3 items-stretch">
             {paths.map((path, i) => {
-              {/* Licensee (i===1): featured dark "Most Chosen" card */}
-              if (i === 1) {
-                return (
-                  <Reveal key={path.title} className="relative rounded-2xl p-8" style={{background: '#171219', border: '1px solid rgba(201, 168, 76, 0.5)', boxShadow: '0 0 40px rgba(201,168,76,0.08)'}}>
+              const icons = [
+                // Distributor
+                <path key="d" d="M16 11c0-2.21-1.79-4-4-4S8 8.79 8 11m0 0c0 2.21 1.79 4 4 4m-4-4H3m13 0h5M5 19h14" />,
+                // Licensee
+                <><circle key="lc" cx="12" cy="8" r="6"/><path key="lp" d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></>,
+                // Strategic
+                <><circle key="sc" cx="12" cy="12" r="10"/><path key="sp" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
+              ];
+
+              // Shared inner card content — identical for all 3
+              const cardInner = (
+                <>
+                  {/* "Most Chosen" badge — Licensee only */}
+                  {i === 1 && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wide" style={{background: '#c9a84c', color: '#1a1208'}}>Most Chosen</span>
                     </div>
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full text-gold" style={{border: '2px solid rgba(201,168,76,0.5)', background: 'rgba(201,168,76,0.12)'}}>
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-                      </svg>
-                    </div>
-                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
-                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
-                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
-                    </div>
-                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
-                  </Reveal>
-                );
-              }
-              {/* Strategic (i===2): premium dark-glass card with gold gradient top border */}
-              if (i === 2) {
-                return (
-                  <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8" style={{borderTop: '3px solid transparent', borderImage: 'linear-gradient(90deg, #c9a84c, #b9456f) 1'}}>
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-white/5 text-gold">
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                      </svg>
-                    </div>
-                    <h3 className="font-display text-2xl text-white">{path.title}</h3>
-                    <div className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3 py-0.5" style={{border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.1)'}}>
-                      <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
-                    </div>
-                    <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
-                  </Reveal>
-                );
-              }
-              {/* Distributor (i===0): standard light card */}
-              return (
-                <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8">
+                  )}
                   <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold/40 bg-white/5 text-gold">
-                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M16 11c0-2.21-1.79-4-4-4S8 8.79 8 11m0 0c0 2.21 1.79 4 4 4m-4-4H3m13 0h5M5 19h14" />
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      {icons[i]}
                     </svg>
                   </div>
                   <h3 className="font-display text-2xl text-white">{path.title}</h3>
@@ -1064,6 +1042,24 @@ export default function Home() {
                     <span className="text-[0.6875rem] font-bold uppercase tracking-wide" style={{color: '#c9a84c'}}>{path.sub}</span>
                   </div>
                   <p className="mt-4 text-sm leading-7" style={{color: 'rgba(255,255,255,0.7)'}}>{path.body}</p>
+                </>
+              );
+
+              // Distributor (i===0): animated prismatic border wrapper
+              if (i === 0) {
+                return (
+                  <Reveal key={path.title} className="path-card-featured">
+                    <div className="path-card-featured-inner relative">
+                      {cardInner}
+                    </div>
+                  </Reveal>
+                );
+              }
+
+              // Licensee + Strategic: identical base card
+              return (
+                <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8">
+                  {cardInner}
                 </Reveal>
               );
             })}
