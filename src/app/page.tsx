@@ -1045,8 +1045,8 @@ export default function Home() {
                 </>
               );
 
-              // Distributor (i===0): animated prismatic border wrapper
-              if (i === 0) {
+              // Strategic (i===2): animated prismatic border wrapper
+              if (i === 2) {
                 return (
                   <Reveal key={path.title} className="path-card-featured">
                     <div className="path-card-featured-inner relative">
@@ -1056,7 +1056,7 @@ export default function Home() {
                 );
               }
 
-              // Licensee + Strategic: identical base card
+              // Distributor + Licensee: identical base card
               return (
                 <Reveal key={path.title} className="luxe-card-dark relative rounded-2xl p-8">
                   {cardInner}
