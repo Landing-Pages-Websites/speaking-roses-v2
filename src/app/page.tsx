@@ -14,16 +14,16 @@ const BRAND_VIDEO_URL = "https://storage.googleapis.com/msgsndr/ioeX0AohKO7FTyLY
 const PRODUCT_VIDEO_URL = "https://storage.googleapis.com/msgsndr/WbJSzu9tJKeleGsNQ6dR/media/68252c05a1908e31dfd47a74.mp4";
 
 const productCarouselImages: { src: string; alt: string; caption: string }[] = [
-  { src: "/client-rose-01.webp", alt: "Preserved Speaking Rose with petal-printed message under a clear acrylic dome",     caption: "Personalized message printed petal-by-petal — sealed in an acrylic dome" },
-  { src: "/client-rose-02.webp", alt: "Personalized Speaking Rose keepsake displayed in a clear acrylic dome",              caption: "Real preserved roses, custom-printed and built to last" },
-  { src: "/client-rose-03.webp", alt: "Speaking Rose with custom petal print in a luxury display dome",                    caption: "Branded keepsake — petal printing showcased in a luxury dome" },
-  { src: "/client-rose-04.webp", alt: "Speaking Roses arrangement in a presentation box with petal-printed designs",        caption: "Boxed Speaking Roses arrangement — ready for gift, event, or retail" },
-  { src: "/client-rose-05.webp", alt: "Speaking Roses presentation box with custom-printed branding on the petals",        caption: "Custom-printed presentation box — petal-perfect branding" },
-  { src: "/client-rose-06.webp", alt: "Designed Speaking Roses keepsake with petal printing in a finished display",         caption: "Finished keepsake design — luxury presentation, custom petal print" },
-  { src: "/client-rose-07.webp", alt: "Branded Speaking Roses product detail with custom petal printing",                   caption: "Up-close petal print detail — corporate branding on a real rose" },
-  { src: "/client-rose-08.webp", alt: "Speaking Roses corporate branding sample printed on real preserved petals",          caption: "Corporate branding sample — your logo on real preserved petals" },
-  { src: "/client-rose-09.webp", alt: "Speaking Roses corporate gift example featuring Lamborghini-branded petal print",    caption: "Luxury corporate gift example — Lamborghini-branded Speaking Rose" },
-  { src: "/client-rose-10.webp", alt: "Finished Speaking Roses branded keepsake product photo",                             caption: "Finished branded keepsake — ready for distributor markets nationwide" },
+  { src: "/carousel-01-burbuja8.png",     alt: "Preserved Speaking Rose with a petal-printed message sealed beneath a hand-finished clear acrylic dome", caption: "A single preserved rose, printed petal-by-petal, sealed beneath a hand-finished acrylic dome." },
+  { src: "/carousel-02-burbuja9.png",     alt: "Personalized Speaking Rose keepsake displayed under a luxury acrylic dome",                              caption: "Every dome is a keepsake — real roses preserved to last for years, not days." },
+  { src: "/carousel-03-burbuja5.png",     alt: "Statement-size Speaking Roses acrylic dome arrangement styled as a luxury gift",                         caption: "Statement-size domes for proposals, milestones, and moments worth preserving." },
+  { src: "/carousel-04-13.png",           alt: "Curated arrangement of personalized Speaking Roses ready for gifting and retail display",                caption: "Curated arrangements — ready to gift, display, or sell at luxury margins." },
+  { src: "/carousel-05-chatgpt-a.png",    alt: "Multiple Speaking Roses arrangements showcasing names, dates, and messages printed on real petals",      caption: "One product, infinite personalization — names, dates, and messages on real petals." },
+  { src: "/carousel-06-chatgpt-b.png",    alt: "Speaking Rose with corporate branding printed directly on the preserved petals",                         caption: "Your brand, printed directly on a living rose. Corporate gifting, elevated." },
+  { src: "/carousel-07-design2.png",      alt: "Bespoke Speaking Roses design concept with custom petal printing on preserved blooms",                   caption: "Bespoke petal printing — design concepts realized on preserved blooms." },
+  { src: "/carousel-08-design5.png",      alt: "Speaking Roses keepsake design featuring diamond-grade preservation and precise petal printing",         caption: "From concept to keepsake — every detail printed with diamond-grade precision." },
+  { src: "/carousel-09-lamborghini.png",  alt: "Luxury co-branded Speaking Rose featuring Lamborghini branding printed on the petals",                   caption: "Trusted by luxury icons — a co-branded Speaking Rose for Lamborghini." },
+  { src: "/carousel-10-screenshot.png",   alt: "Finished heirloom-quality Speaking Rose product ready for distributor markets nationwide",               caption: "The finished Speaking Rose — heirloom-quality, ready for markets nationwide." },
 ];
 
 const productFeatures = [
@@ -288,7 +288,7 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
           </div>
           <p className={`${compact ? "text-[0.6875rem] leading-4" : "text-xs leading-5"} text-ink/50`}>By submitting, you agree to receive calls and SMS messages from Speaking Roses related to this partnership opportunity. Message and data rates may apply. Reply STOP to opt out.</p>
           {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
-          <button type="submit" disabled={isSubmitting} className={`w-full rounded-full bg-rose px-7 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-plum disabled:opacity-60 ${compact ? "py-3" : "py-4"}`}>
+          <button type="submit" disabled={isSubmitting} className={`cta-shimmer w-full rounded-full bg-rose px-7 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-plum disabled:opacity-60 ${compact ? "py-3" : "py-4"}`}>
             {isSubmitting ? "Submitting…" : "Apply to Check Market Availability →"}
           </button>
           <p className="text-center text-xs text-ink/40">Your information is secure and will never be shared.</p>
@@ -301,7 +301,7 @@ function ApplyForm({ form, setField, formatPhone, validatePhone, phoneError, set
 function CTA({ dark = false }: { dark?: boolean }) {
   return (
     <div className="mt-10 flex flex-col items-center gap-2">
-      <a href="#apply" className={`inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] shadow-xl transition hover:-translate-y-0.5 ${dark ? "bg-white text-plum hover:bg-blush" : "bg-rose text-white hover:bg-plum"}`}>
+      <a href="#apply" className={`cta-shimmer inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] shadow-xl transition hover:-translate-y-0.5 ${dark ? "bg-white text-plum hover:bg-blush" : "bg-rose text-white hover:bg-plum"}`}>
         Apply to Check Market Availability
         <span aria-hidden>→</span>
       </a>
@@ -325,11 +325,14 @@ function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; 
   const prev = () => goTo(index - 1);
   const next = () => goTo(index + 1);
 
+  // Auto-advance: timeout keyed on `index` so manual navigation resets the timer,
+  // keeping the progress bar (also keyed on `index`) in sync. Pauses on hover.
+  const autoPlays = autoPlayMs > 0 && items.length > 1;
   useEffect(() => {
-    if (isHovered || autoPlayMs <= 0 || items.length <= 1) return;
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % items.length), autoPlayMs);
-    return () => window.clearInterval(id);
-  }, [isHovered, autoPlayMs, items.length]);
+    if (isHovered || !autoPlays) return;
+    const id = window.setTimeout(() => setIndex((i) => (i + 1) % items.length), autoPlayMs);
+    return () => window.clearTimeout(id);
+  }, [index, isHovered, autoPlays, autoPlayMs, items.length]);
 
   const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; touchEndX.current = null; };
   const onTouchMove  = (e: React.TouchEvent) => { touchEndX.current = e.touches[0].clientX; };
@@ -352,32 +355,50 @@ function ProductCarousel({ items, autoPlayMs = 5000 }: { items: CarouselItem[]; 
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
-        {items.map((item, i) => (
+      {items.map((item, i) => {
+        // Only mount the image for the active slide and its immediate neighbors
+        // (circular distance ≤ 1) so a smooth crossfade has its frames ready
+        // without eagerly decoding all ten large source images at first paint.
+        const total = items.length;
+        const distance = Math.min((i - index + total) % total, (index - i + total) % total);
+        const near = distance <= 1;
+        return (
           <div
             key={item.src}
-            className="carousel-slide"
+            className={`carousel-slide ${i === index ? "active" : ""}`}
             role="group"
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${items.length}`}
             aria-hidden={i !== index}
           >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 800px"
-              priority={i === 0}
-            />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-plum/85 via-plum/35 to-transparent" />
+            {near && (
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority={i === 0}
+              />
+            )}
+            <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-plum/90 via-plum/45 to-transparent" />
             <div className="carousel-caption">
               <p className="text-[0.625rem] font-bold uppercase tracking-[0.28em] text-gold">The Product</p>
               <p className="mt-1 font-display text-lg text-white md:text-xl">{item.caption}</p>
             </div>
           </div>
-        ))}
-      </div>
+        );
+      })}
+
+      {autoPlays && (
+        <div className="carousel-progress" aria-hidden="true">
+          <span
+            key={index}
+            className="carousel-progress-bar"
+            style={{ animationDuration: `${autoPlayMs}ms`, animationPlayState: isHovered ? "paused" : "running" }}
+          />
+        </div>
+      )}
 
       <button type="button" className="carousel-arrow prev" aria-label="Previous product image" onClick={prev}>
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
